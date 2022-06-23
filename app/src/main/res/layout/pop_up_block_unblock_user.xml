@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#707070">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/dp_24"
+        android:layout_marginEnd="@dimen/dp_24"
+        app:cardCornerRadius="@dimen/dp_16">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:fontFamily="@font/arimo_bold"
+                android:gravity="center"
+                android:text="@string/alert_for_block"
+                android:textColor="#030303"
+                android:textSize="@dimen/sp_19" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvWarning"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:fontFamily="@font/arimo_bold"
+                android:gravity="center"
+                android:text="@string/block_warning"
+                android:textColor="#191919"
+                android:textSize="@dimen/sp_15" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnBlockUnBlock"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_48"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/dp_32"
+                android:layout_marginBottom="@dimen/dp_32"
+                android:background="@drawable/gradient_horizontal_round"
+                android:elevation="@dimen/dp_4"
+                android:fontFamily="@font/arimo_bold"
+                android:gravity="center"
+                android:paddingStart="@dimen/dp_64"
+                android:paddingEnd="@dimen/dp_64"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18"
+                app:textAllCaps="true" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

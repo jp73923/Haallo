@@ -1,0 +1,84 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rootAlert"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="@dimen/dp_40"
+    android:layout_marginEnd="@dimen/dp_40"
+    android:elevation="@dimen/dp_4"
+    android:paddingBottom="@dimen/dp_20"
+    app:cardCornerRadius="@dimen/dp_16">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:orientation="vertical"
+        android:paddingBottom="@dimen/dp_20">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvAlertFor"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_16"
+            android:fontFamily="@font/arimo_bold"
+            android:textColor="#030303"
+            android:textSize="@dimen/sp_20" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvWarning"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginStart="@dimen/dp_20"
+            android:layout_marginTop="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:fontFamily="@font/arimo_regular"
+            android:gravity="center"
+            android:textColor="#191919"
+            android:textSize="@dimen/sp_14" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginEnd="@dimen/dp_20"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnTakeMeBack"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dp_4"
+                android:layout_weight="1"
+                android:background="@drawable/round_24dp_drawable_with_green_border"
+                android:backgroundTint="#1A1A1A"
+                android:fontFamily="@font/arimo_bold"
+                android:gravity="center"
+                android:text="@string/take_me_back"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnConfirm"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/dp_4"
+                android:layout_weight="1"
+                android:background="@drawable/gradient_horizontal_round"
+                android:fontFamily="@font/arimo_bold"
+                android:gravity="center"
+                android:text="@string/confirm"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

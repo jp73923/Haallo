@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dp_16"
+    android:minWidth="@dimen/dp_80">
+
+    <LinearLayout
+        android:id="@+id/llTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTimeReceiveContact"
+            style="@style/ReceivedMessageTimeTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/chat_time"
+            tools:text="02:20 Am" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMainReceiveContact"
+        android:layout_width="@dimen/dp_240"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginEnd="@dimen/dp_32"
+        android:background="@drawable/chatbg_blue"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/dp_0"
+        android:paddingEnd="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llTime">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_56"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginEnd="@dimen/dp_8">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tv"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_centerVertical="true"
+                android:background="@drawable/round_drawable_green"
+                android:backgroundTint="#51808080"
+                android:gravity="center"
+                android:text="@string/at"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/sp_19" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNameReceiveContact"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_toEndOf="@+id/tv"
+                android:ellipsize="end"
+                android:fontFamily="@font/arimo_bold"
+                android:maxLines="2"
+                android:textColor="@color/black"
+                android:textSize="@dimen/sp_19" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNumberReceiveContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_4"
+            android:fontFamily="@font/arimo_bold"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_19" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_2"
+            android:layout_marginStart="@dimen/dp_24"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:background="@color/black" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCallReceiveContact"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_40"
+            android:fontFamily="@font/arimo_bold"
+            android:gravity="center"
+            android:text="@string/call"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_19" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStarReceiveContact"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:src="@drawable/star_inactive"
+        app:layout_constraintBottom_toBottomOf="@+id/llMainReceiveContact"
+        app:layout_constraintStart_toEndOf="@+id/llMainReceiveContact"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

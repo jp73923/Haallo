@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey"
+    tools:context=".ui.call.VideoCallAcceptRejectActivityOld">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/dp_144"
+        android:orientation="vertical">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/dp_96"
+            android:layout_height="@dimen/dp_96"
+            android:layout_gravity="center"
+            android:elevation="@dimen/dp_8"
+            app:cardCornerRadius="@dimen/dp_6">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivUserPic"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/logo" />
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_10"
+            android:fontFamily="@font/arimo_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_22" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_8"
+            android:fontFamily="@font/arimo_bold"
+            android:text="@string/calling"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_15" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dp_64"
+        android:layout_marginEnd="@dimen/dp_64"
+        android:layout_marginBottom="@dimen/dp_288"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        tools:ignore="DisableBaselineAlignment">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivRotateBackCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/video_camera_backview" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivRotateFrontCamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/video_camera_frontview"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivPauseVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/video_hide" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivResumeVideo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/video_show"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivMute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/video_mute" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivUnMute"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/video_unmute"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_60"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="@dimen/dp_64"
+        android:layout_marginEnd="@dimen/dp_64"
+        android:layout_marginBottom="@dimen/dp_104"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        tools:ignore="DisableBaselineAlignment">
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivReceiveCall"
+                android:layout_width="@dimen/dp_60"
+                android:layout_height="@dimen/dp_60"
+                android:scaleType="fitXY"
+                android:src="@drawable/receive_video_call" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/dp_0"
+            android:layout_height="wrap_content"
+            android:layout_weight="1">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDisConnectCall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/video_call_cut" />
+
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

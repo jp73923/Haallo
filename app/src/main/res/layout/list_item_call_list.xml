@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootChatList"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_80"
+    android:layout_margin="@dimen/dp_8"
+    android:elevation="@dimen/dp_8"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/dp_4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivUserProfile"
+            android:layout_width="@dimen/dp_50"
+            android:layout_height="@dimen/dp_50"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/logo"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/arimo_regular"
+            android:maxLength="24"
+            android:maxLines="1"
+            android:textColor="#333333"
+            android:textSize="@dimen/sp_15"
+            app:layout_constraintEnd_toStartOf="@+id/ivImageType"
+            app:layout_constraintStart_toEndOf="@+id/ivUserProfile"
+            app:layout_constraintTop_toTopOf="@+id/ivUserProfile"
+            tools:text="Hellow " />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUserTimeStamp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:ellipsize="end"
+            android:fontFamily="@font/arimo_regular"
+            android:maxLength="24"
+            android:maxLines="1"
+            android:textColor="#333333"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toStartOf="@+id/ivImageType"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/ivUserProfile"
+            app:layout_constraintTop_toBottomOf="@+id/tvUserName"
+            tools:text="Hellow " />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivImageType"
+            android:layout_width="0dp"
+            android:layout_height="@dimen/dp_30"
+            android:layout_margin="@dimen/dp_2"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
+            android:src="@drawable/calls_blue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

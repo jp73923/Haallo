@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_vertical"
+    android:paddingStart="@dimen/dp_32"
+    android:paddingTop="16dp"
+    android:paddingEnd="@dimen/dp_32"
+    android:paddingBottom="@dimen/dp_16">
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:indeterminateTint="@color/colorAccent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="@dimen/dp_16"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:text="@string/loading_please_wait"
+        android:textColor="@android:color/black" />
+
+</LinearLayout>

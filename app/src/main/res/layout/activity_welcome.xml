@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    tools:context=".ui.splashToHome.welcome.WelcomeActivityOld">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_24"
+        android:background="@color/colorPrimaryDark" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/logo_haallo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:gravity="center"
+            android:text="@string/welcome_to_haallo"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/sp_24" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_24"
+            android:gravity="center"
+            android:text="@string/free_message_and_calls_to_haallo_users"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/sp_14" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/make_messaging_fun_with_stickers"
+            android:textColor="@color/light_black"
+            android:textSize="@dimen/sp_14" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_40"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ptrn" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_40"
+            android:gravity="center"
+            android:text="@string/by_tapping_continue_you_agree_to_our"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/sp_14" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTermsCondition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/dp_8"
+            android:text="@string/terms_and_conditions"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/sp_16" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnContinue"
+            android:layout_width="@dimen/dp_160"
+            android:layout_height="@dimen/dp_40"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/dp_24"
+            android:background="@drawable/round_button"
+            android:backgroundTint="@color/colorPrimaryDark"
+            android:text="@string/continue_text"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_14" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:layout_width="match_parent"
+            android:layout_height="27dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dp_16"
+            android:gravity="center"
+            android:text="@string/_2019_haallo_privacy_policy"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/sp_12" />
+
+    </RelativeLayout>
+
+</FrameLayout>

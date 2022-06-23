@@ -1,0 +1,63 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+}
+
+
+android {
+    compileSdkVersion 30
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 16
+        versionName "2.1"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        debug{
+
+        }
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main.java.srcDirs += 'src/main/kotlin'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    implementation "androidx.exifinterface:exifinterface:1.3.2"
+    implementation 'androidx.documentfile:documentfile:1.0.1'
+
+
+
+
+
+    //More Info: https://github.com/Yalantis/uCrop
+  //  implementation 'com.github.yalantis:ucrop:2.2.6'
+    //implementation 'com.github.yalantis:ucrop:2.2.6-native'
+    implementation 'com.theartofdev.edmodo:android-image-cropper:2.8.+'
+
+
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test:core:1.3.0'
+}

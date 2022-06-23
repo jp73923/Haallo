@@ -1,0 +1,4 @@
+include ':multicontactpicker'
+include ':imagepicker'
+include ':app'
+rootProject.name = "Haallo"

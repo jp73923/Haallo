@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:emojicon="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/container"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/dp_16">
+
+    <LinearLayout
+        android:id="@+id/llTimeSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTimeSendMessage"
+            style="@style/SentMessageTimeTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:textColor="@color/black"
+            android:textSize="@dimen/chat_time"
+            tool:text="38:30 AM" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSeenStatusSendMessage"
+            android:layout_width="@dimen/dp_12"
+            android:layout_height="@dimen/dp_12"
+            android:layout_gravity="center"
+            android:contentDescription="@string/image"
+            android:src="@drawable/ic_check" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_4"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:background="@drawable/chatbg_one"
+        android:paddingStart="@dimen/dp_10"
+        android:paddingEnd="@dimen/dp_10"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llTimeSendMessage">
+
+        <hani.momanii.supernova_emoji_library.Helper.EmojiconTextView
+            android:id="@+id/tvMessageSendMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/dp_2"
+            android:autoLink="web"
+            android:lineSpacingExtra="@dimen/dp_4"
+            android:maxWidth="@dimen/dp_280"
+            android:minWidth="@dimen/dp_80"
+            android:paddingStart="@dimen/dp_16"
+            android:paddingTop="@dimen/dp_5"
+            android:paddingEnd="@dimen/dp_16"
+            android:paddingBottom="@dimen/dp_4"
+            android:textColor="@color/sent_message_title_color"
+            android:textColorLink="#8498fc"
+            android:textDirection="anyRtl"
+            android:textSize="@dimen/sp_16"
+            emojicon:emojiconSize="@dimen/sp_20" />
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStatusSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:src="@drawable/star_inactive"
+        app:layout_constraintBottom_toBottomOf="@+id/llSendMessage"
+        app:layout_constraintEnd_toStartOf="@+id/llSendMessage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStarSendMessage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_marginBottom="@dimen/dp_20"
+        android:src="@drawable/star_inactive"
+        app:layout_constraintEnd_toStartOf="@+id/ivStatusSendMessage"
+        emojicon:layout_constraintBottom_toBottomOf="@+id/llSendMessage" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

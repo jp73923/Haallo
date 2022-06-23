@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".ui.group.GroupNameActivityOld">
+
+    <RelativeLayout
+        android:id="@+id/relative_header"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/back" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/new_group"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            android:visibility="visible"
+            tools:ignore="RelativeOverlap" />
+
+        <TextView
+            android:id="@+id/tvCreate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_10"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/create_group"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlGroupNameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/relative_header"
+        android:layout_marginStart="@dimen/dp_10"
+        android:layout_marginTop="@dimen/dp_10"
+        android:layout_marginEnd="@dimen/dp_10"
+        android:layout_marginBottom="@dimen/dp_10">
+
+        <RelativeLayout
+            android:id="@+id/rlGroupIconLayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_20">
+
+            <ImageView
+                android:id="@+id/ivGroupIcon"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
+                android:src="@drawable/camera_full_blue" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivGroupIconImage"
+                android:layout_width="@dimen/dp_50"
+                android:layout_height="@dimen/dp_50"
+                android:src="@drawable/camera_full_blue"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etGroupName"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_48"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toEndOf="@+id/rlGroupIconLayout"
+            android:background="@null"
+            android:cursorVisible="true"
+            android:fontFamily="@font/arimo_regular"
+            android:gravity="center_vertical"
+            android:hint="@string/group_subject"
+            android:imeOptions="actionNext"
+            android:inputType="text"
+            android:paddingStart="@dimen/dp_10"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/sp_18" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/etGroupName"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_toEndOf="@+id/rlGroupIconLayout"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Please provide a group subject and optional group icon"
+            android:textSize="@dimen/sp_15" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/participants_count_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rlGroupNameLayout"
+        android:layout_margin="@dimen/dp_10"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_10"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Participants:"
+            android:textAllCaps="true" />
+
+        <TextView
+            android:id="@+id/tvParticipantCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="@dimen/dp_5"
+            android:fontFamily="@font/poppins_regular"
+            android:text="" />
+
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvParticipantList"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/participants_count_layout"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/list_item_user" />
+
+</RelativeLayout>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootFullScreen"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".chat.activity.FullScreenImageActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/dp_4"
+        android:padding="@dimen/dp_8"
+        android:tint="@color/black"
+        android:src="@drawable/back" />
+
+    <com.github.chrisbanes.photoview.PhotoView
+        android:id="@+id/ivPic"
+        android:scaleType="fitCenter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</RelativeLayout>

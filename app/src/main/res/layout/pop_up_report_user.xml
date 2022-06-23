@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#707070">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/dp_24"
+        android:layout_marginEnd="@dimen/dp_24"
+        app:cardCornerRadius="@dimen/dp_16">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="@dimen/dp_20"
+                android:fontFamily="@font/arimo_bold"
+                android:gravity="center"
+                android:text="@string/mention_the_reason_to_report_user"
+                android:textColor="#030303"
+                android:textSize="@dimen/sp_19" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginStart="@dimen/dp_24"
+                android:layout_marginTop="@dimen/dp_8"
+                android:layout_marginEnd="@dimen/dp_24"
+                android:fontFamily="@font/arimo_regular"
+                android:gravity="center"
+                android:text="@string/please_select_the_reasons_give_below_for_the_report_the_user"
+                android:textColor="#191919"
+                android:textSize="@dimen/sp_15" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_2"
+                android:layout_marginTop="@dimen/dp_16"
+                android:background="#E2E2E2" />
+
+            <RadioGroup
+                android:id="@+id/rgReason"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/dp_20"
+                android:layout_marginTop="@dimen/dp_20"
+                android:layout_marginEnd="@dimen/dp_20">
+
+                <RadioButton
+                    android:id="@+id/rb1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Reason 1 for user reporting."
+                    android:textColor="#191919"
+                    android:textSize="@dimen/sp_15" />
+
+                <RadioButton
+                    android:id="@+id/rb2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Reason 2 for user reporting."
+                    android:textColor="#191919"
+                    android:textSize="@dimen/sp_15" />
+
+                <RadioButton
+                    android:id="@+id/rb3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Reason 3 for user reporting."
+                    android:textColor="#191919"
+                    android:textSize="@dimen/sp_15" />
+
+                <RadioButton
+                    android:id="@+id/rb4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Reason 4 for user reporting."
+                    android:textColor="#191919"
+                    android:textSize="@dimen/sp_15" />
+
+            </RadioGroup>
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etComment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:layout_margin="@dimen/dp_24"
+                android:background="@drawable/round_button"
+                android:backgroundTint="@color/white"
+                android:hint="@string/comment"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:minLines="4"
+                android:padding="@dimen/dp_12" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/btnReport"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/dp_48"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dp_20"
+                android:background="@drawable/gradient_horizontal_round"
+                android:elevation="@dimen/dp_4"
+                android:fontFamily="@font/arimo_bold"
+                android:gravity="center"
+                android:paddingStart="@dimen/dp_56"
+                android:paddingEnd="@dimen/dp_56"
+                android:text="@string/report"
+                android:textColor="@color/white"
+                android:textSize="@dimen/sp_18"
+                app:textAllCaps="true" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</RelativeLayout>

@@ -1,0 +1,295 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.haallo">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <uses-permission android:name="android.permission.RECEIVE_SMS" />
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+
+    <application
+        android:name=".application.Haallo"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true">
+
+        <activity
+            android:name=".ui.splashToHome.splash.SplashActivityOld"
+            android:screenOrientation="portrait"
+            android:theme="@style/fullscreenTheme"
+            android:windowSoftInputMode="stateHidden|adjustPan"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".ui.support.SupportActivityOld"
+            android:exported="false"
+            android:label="Support"
+            android:parentActivityName=".ui.home.HomeActivityOld">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".ui.home.HomeActivityOld" />
+        </activity>
+
+        <activity
+            android:name=".ui.home.setting.PrivacySettingsActivityOld"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.home.setting.AccountSettings"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.home.setting.PrivacySettings"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.home.setting.NotificationSettingsActivityOld"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.groupAudio.AudioActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:launchMode="singleTask"
+            android:parentActivityName=".ui.agoraGroupVideo.openvcall.ui.MainActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/FullscreenTheme" />
+
+        <activity
+            android:name=".ui.agoraGroupVideo.openvcall.ui.MainActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/app_name" />
+
+        <activity
+            android:name=".ui.agoraGroupVideo.openvcall.ui.NetworkTestActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/label_network_testing"
+            android:parentActivityName=".ui.agoraGroupVideo.openvcall.ui.MainActivity" />
+
+        <activity
+            android:name=".ui.agoraGroupVideo.openvcall.ui.CallActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:parentActivityName=".ui.agoraGroupVideo.openvcall.ui.MainActivity"
+            android:theme="@style/VideoCallTheme" />
+
+        <activity
+            android:name=".ui.agoraGroupVideo.openvcall.ui.CallOptionsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/label_options"
+            android:parentActivityName=".ui.agoraGroupVideo.openvcall.ui.CallActivity" />
+
+        <activity
+            android:name=".ui.agoraGroupVideo.openvcall.ui.SettingsActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:label="@string/label_settings"
+            android:parentActivityName=".ui.agoraGroupVideo.openvcall.ui.MainActivity" />
+
+        <activity
+            android:name=".ui.chat.activity.ImageDetailActivity"
+            android:exported="true"
+            android:screenOrientation="portrait" />
+
+        <activity
+            android:name=".ui.group.GroupInfoActivityOld"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.group.GroupNameActivityOld"
+            android:exported="true" />
+
+        <activity
+            android:name=".ui.call.OneToOneAudioCallActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.call.AudioCallAcceptRejectActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.call.OneToOneVideoCallActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.call.VideoCallAcceptRejectActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.chat.newChat.NewChatActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.group.PickContactsActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.chat.activity.FullScreenImageActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.chat.activity.WebViewPdfAct"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.chat.activity.ChatActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+
+        <activity
+            android:name=".ui.home.HomeActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.forgotAndResetPassword.ForgotPasswordActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.forgotAndResetPassword.ResetPasswordActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.signIn.SignInActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.profile.CreateProfileActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.otp.OtpActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.registration.RegistrationActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.registration.TermsAndConditionActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.chooseLanguage.ChooseLanguageActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.splashToHome.welcome.WelcomeActivityOld"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.agoraGroupVideo.GroupAudioCallAcceptRejectActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.agoraGroupVideo.GroupVideoCallAcceptRejectActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.chat.placespicker.PlacesPickerActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.chat.activity.GroupChatActivity"
+            android:screenOrientation="portrait" />
+
+      <!--  <activity
+            android:name=".ui.chat.activity.ShowVideoActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateHidden|adjustPan" />-->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_provider_paths"
+                tools:replace="android:resource" />
+        </provider>
+
+        <service
+            android:name=".service.FetchContactsService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <service
+            android:name=".service.MyFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="notification" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@drawable/notification" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorPrimary" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_api_key" />
+
+    </application>
+
+</manifest>

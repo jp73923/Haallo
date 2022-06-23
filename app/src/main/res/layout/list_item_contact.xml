@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:emojicon="http://schemas.android.com/tools"
+    android:id="@+id/rootContact"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_64"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivUserPic"
+        android:layout_width="@dimen/dp_48"
+        android:layout_height="@dimen/dp_48"
+        android:layout_marginStart="@dimen/dp_8"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dp_default"
+        app:civ_border_color="@color/gray"
+        app:civ_border_width="@dimen/dp_1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvUserName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_8"
+        android:layout_marginEnd="@dimen/dp_8"
+        android:layout_toEndOf="@+id/ivUserPic"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp_20"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/ivUserPic"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvInvite"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/dp_16"
+        android:layout_toEndOf="@+id/ivUserPic"
+        android:ellipsize="end"
+        android:fontFamily="@font/arimo_bold"
+        android:maxLines="1"
+        android:text="@string/invite"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/sp_20"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <hani.momanii.supernova_emoji_library.Helper.EmojiconTextView
+        android:id="@+id/tvStatus"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvUserName"
+        android:layout_alignStart="@id/tvUserName"
+        android:layout_marginTop="@dimen/dp_8"
+        android:autoLink="web"
+        android:ellipsize="end"
+        android:lineSpacingExtra="@dimen/dp_4"
+        android:maxLines="1"
+        android:minWidth="@dimen/dp_60"
+        android:textColor="@color/black"
+        android:textDirection="anyRtl"
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintEnd_toEndOf="@+id/tvUserName"
+        app:layout_constraintStart_toStartOf="@+id/tvUserName"
+        app:layout_constraintTop_toBottomOf="@+id/tvUserName"
+        emojicon:emojiconSize="@dimen/sp_20" />
+
+    <View
+        android:id="@+id/view_user"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_1"
+        android:layout_marginTop="@dimen/dp_6"
+        android:background="@color/colorDivider"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <ImageView
+        android:id="@+id/remove_participant"
+        android:layout_width="@dimen/dp_22"
+        android:layout_height="@dimen/dp_22"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:src="@drawable/radiobutton_off_dark"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/add_participant"
+        android:layout_width="@dimen/dp_22"
+        android:layout_height="@dimen/dp_22"
+        android:layout_marginEnd="@dimen/dp_15"
+        android:src="@drawable/group_tick"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

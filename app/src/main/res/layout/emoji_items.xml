@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.codetail.widget.RevealFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reveal_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_attachments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/emojis_recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                app:spanCount="5" />
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+
+</io.codetail.widget.RevealFrameLayout>

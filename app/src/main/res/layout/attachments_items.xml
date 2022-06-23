@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<io.codetail.widget.RevealFrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reveal_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_attachments"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:id="@+id/ll_main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <ImageView
+                    android:id="@+id/iv_image"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/image" />
+
+                <TextView
+                    android:id="@+id/attachment_gallery"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:padding="@dimen/dp_12"
+                    android:text="@string/send_image_and_video"
+                    android:textSize="@dimen/sp_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <ImageView
+                    android:id="@+id/iv_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/contact" />
+
+                <TextView
+                    android:id="@+id/attachment_contact"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:padding="@dimen/dp_12"
+                    android:text="@string/send_contact"
+                    android:textSize="@dimen/sp_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <ImageView
+                    android:id="@+id/iv_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/location" />
+
+                <TextView
+                    android:id="@+id/attachment_location"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:padding="@dimen/dp_12"
+                    android:text="@string/send_location"
+                    android:textSize="@dimen/sp_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <ImageView
+                    android:id="@+id/iv_document"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/document" />
+
+                <TextView
+                    android:id="@+id/attachment_document"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:padding="@dimen/dp_12"
+                    android:text="@string/send_document"
+                    android:textSize="@dimen/sp_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <ImageView
+                    android:id="@+id/iv_gif"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/gph_ic_gif"
+                    app:tint="@color/lightGray" />
+
+                <TextView
+                    android:id="@+id/attachment_gif"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:padding="@dimen/dp_12"
+                    android:text="Send Gif"
+                    android:textSize="@dimen/sp_18" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="10">
+
+                <ImageView
+                    android:id="@+id/iv_audio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="2"
+                    android:contentDescription="@string/image"
+                    android:src="@drawable/volume" />
+
+                <TextView
+                    android:id="@+id/attachment_audio"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="8"
+                    android:padding="@dimen/dp_12"
+                    android:text="@string/send_audio"
+                    android:textSize="@dimen/sp_18" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:background="@color/white" />
+
+    </androidx.cardview.widget.CardView>
+
+</io.codetail.widget.RevealFrameLayout>

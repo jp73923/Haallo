@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="@dimen/dp_264"
+    android:layout_height="wrap_content"
+    android:layout_gravity="end"
+    android:layout_marginTop="@dimen/dp_88"
+    android:layout_marginEnd="@dimen/dp_16"
+    android:elevation="@dimen/dp_8"
+    app:cardCornerRadius="@dimen/dp_8">
+
+    <!--<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBlockUser"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/cancel_ordr"
+            android:text="@string/block_user" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUnBlockUser"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/cancel_ordr"
+            android:text="@string/unblock_user"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_1"
+            android:background="#D7D7D7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMuteNotifications"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/mute_notification"
+            android:text="@string/mute_notifications" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUnMuteNotifications"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/ic_un_mute"
+            android:text="@string/un_mute_notification"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_1"
+            android:background="#D7D7D7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReportUser"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/report_user"
+            android:text="@string/report_user" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_1"
+            android:background="#D7D7D7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDeleteChat"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/delete"
+            android:text="@string/delete_chat" />
+
+    </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvBlockUser"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/blocked_contacts"
+            android:text="@string/block_user" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUnBlockUser"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/blocked_contacts"
+            android:text="@string/unblock_user"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_1"
+            android:background="#D7D7D7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvMuteNotifications"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/notification"
+            android:text="@string/mute_notifications" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvClearChat"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/ic_baseline_delete_outline_24"
+            android:text="Clear Chat" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvUnMuteNotifications"
+            style="@style/ChatMoreOption"
+            android:drawableEnd="@drawable/notification"
+            android:text="@string/un_mute_notification"
+            android:visibility="gone" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_1"
+            android:background="#D7D7D7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvReportUser"
+            style="@style/ChatMoreOption"
+            android:text="@string/report_user" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/dp_1"
+            android:background="#D7D7D7" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvDeleteChat"
+            style="@style/ChatMoreOption"
+            android:text="@string/delete_chat" />
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

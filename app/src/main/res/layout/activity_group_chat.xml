@@ -1,0 +1,526 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ui.chat.activity.GroupChatActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlHeading"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:id="@+id/header_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_56"
+            android:background="@color/colorPrimary"
+            android:elevation="@dimen/dp_4">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_8"
+                android:padding="@dimen/dp_8"
+                android:src="@drawable/back" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivOtherUserPic"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_centerVertical="true"
+                android:layout_toEndOf="@+id/ivBack"
+                android:src="@drawable/dp_default"
+                app:civ_border_color="@color/gray"
+                app:civ_border_width="@dimen/dp_1" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/dp_8"
+                android:layout_toEndOf="@+id/ivOtherUserPic"
+                android:orientation="vertical"
+                tools:ignore="RelativeOverlap">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvHeading"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/arimo_bold"
+                    android:maxWidth="@dimen/dp_164"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_18"
+                    tools:text="User Name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLastSeen"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/arimo_regular"
+                    android:singleLine="true"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/sp_15" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:orientation="horizontal">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/searchMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/search" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivVideoCall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/video_white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivAudioCall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:padding="@dimen/dp_6"
+                    android:src="@drawable/call_white" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMore"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/menu_w" />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSearchLayout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_50"
+            android:layout_below="@+id/header_layout"
+            android:layout_centerHorizontal="true"
+            android:layout_marginLeft="@dimen/dp_10"
+            android:layout_marginTop="@dimen/dp_10"
+            android:layout_marginRight="@dimen/dp_10"
+            android:layout_marginBottom="@dimen/dp_10"
+            android:background="@drawable/search_background"
+            android:elevation="2dp"
+            android:visibility="gone">
+
+            <EditText
+                android:id="@+id/etSearchMessage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dp_50"
+                android:layout_marginStart="@dimen/dp_10"
+                android:layout_toEndOf="@+id/search"
+                android:background="@null"
+                android:fontFamily="@font/poppins_regular"
+                android:hint="Search Messages."
+                android:imeOptions="actionDone"
+                android:maxLines="1"
+                android:padding="10dp"
+                android:singleLine="true"
+                android:textAllCaps="false"
+                android:textSize="15dp" />
+
+            <ImageView
+                android:id="@+id/search"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/dp_10"
+                android:src="@drawable/search" />
+
+            <ImageView
+                android:id="@+id/ivClearSearch"
+                android:layout_width="@dimen/dp_35"
+                android:layout_height="@dimen/dp_35"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="4dp"
+                android:padding="@dimen/dp_5"
+                android:src="@drawable/cross_blue"
+                app:layout_constraintBottom_toTopOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="parent"
+                app:tint="@color/colorPrimary" />
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvDayOfMsg"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/dp_24"
+        android:layout_marginTop="@dimen/dp_8"
+        android:background="@drawable/blue_round"
+        android:elevation="5dp"
+        android:fontFamily="@font/arimo_bold"
+        android:gravity="center_horizontal"
+        android:minWidth="100dp"
+        android:text="@string/today"
+        android:textColor="@color/white"
+        android:textSize="@dimen/sp_14"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlHeading" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvChatMessage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="@dimen/dp_8"
+        android:orientation="vertical"
+        android:scrollbars="none"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toTopOf="@+id/cvMessageLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rlHeading" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cvMessageLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:elevation="@dimen/dp_8"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/llBottomLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivAttachment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:padding="@dimen/dp_8"
+                    android:src="@drawable/plus"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_8"
+                    android:layout_marginTop="@dimen/dp_8"
+                    android:layout_marginEnd="@dimen/dp_4"
+                    android:layout_marginBottom="@dimen/dp_4"
+                    app:cardCornerRadius="@dimen/dp_20"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/llButton"
+                    app:layout_constraintStart_toEndOf="@+id/ivAttachment"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <hani.momanii.supernova_emoji_library.Helper.EmojiconEditText
+                        android:id="@+id/etMessage"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="@dimen/dp_8"
+                        android:layout_toStartOf="@+id/ivCamera"
+                        android:background="@null"
+                        android:hint="@string/type_a_message"
+                        android:inputType="textCapSentences|textMultiLine"
+                        android:maxLines="3"
+                        android:padding="@dimen/dp_4"
+                        android:textColorHint="@color/grey"
+                        android:textCursorDrawable="@color/black"
+                        android:textSize="@dimen/sp_16"
+                        app:emojiconSize="@dimen/sp_20" />
+
+                    <RelativeLayout
+                        android:id="@+id/rlEmojiSetLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/dp_40"
+                        android:visibility="gone">
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvEmojiSetList"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/dp_35"
+                            android:layout_centerVertical="true"
+                            android:orientation="horizontal"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            tools:listitem="@layout/emojicon_item" />
+
+                    </RelativeLayout>
+
+                </androidx.cardview.widget.CardView>
+
+                <RelativeLayout
+                    android:id="@+id/recordingLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_48"
+                    android:layout_alignParentBottom="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginStart="@dimen/dp_5"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_marginEnd="@dimen/dp_1"
+                    android:layout_marginBottom="@dimen/dp_5"
+                    android:visibility="gone"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/rlSendRecordButton"
+                    app:layout_constraintStart_toEndOf="@+id/ivAttachment"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <RelativeLayout
+                        android:id="@+id/rlTimer"
+                        android:layout_width="48dp"
+                        android:layout_height="@dimen/dp_32"
+                        android:layout_centerVertical="true"
+                        android:layout_margin="8dp">
+
+                        <Chronometer
+                            android:id="@+id/recTimer"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:textColor="@color/black"
+                            android:textSize="12sp"
+                            android:visibility="visible" />
+
+                        <androidx.appcompat.widget.AppCompatImageView
+                            android:layout_width="6dp"
+                            android:layout_height="6dp"
+                            android:layout_below="@+id/recTimer"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/border_notification" />
+
+                    </RelativeLayout>
+
+                    <ProgressBar
+                        android:id="@+id/recProgress"
+                        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        android:layout_alignParentStart="true"
+                        android:layout_centerVertical="true"
+                        android:padding="2dp"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/ic_process_bar"
+                        android:secondaryProgress="100"
+                        android:visibility="invisible" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:layout_width="140dp"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/arrow_flow_left" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/slideToCancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:gravity="center_vertical"
+                        android:text="@string/slide_to_cancel"
+                        android:visibility="invisible" />
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:id="@+id/llButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    app:layout_constraintBottom_toBottomOf="@+id/cvMessage"
+                    app:layout_constraintEnd_toStartOf="@id/rlSendRecordButton"
+                    app:layout_constraintStart_toEndOf="@+id/cvMessage"
+                    app:layout_constraintTop_toTopOf="@+id/cvMessage">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSmily"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_4"
+                        android:src="@drawable/ic_smily_black"
+                        android:tint="@color/colorDarkGray"
+                        android:visibility="gone" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivCustomSmiley"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_4"
+                        android:src="@drawable/ic_smily_black"
+                        android:tint="@color/colorDarkGray" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivCamera"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_vertical"
+                        android:padding="@dimen/dp_4"
+                        android:src="@drawable/ic_camera_black"
+                        android:tint="@color/colorDarkGray" />
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:id="@+id/rlSendRecordButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivVoice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_8"
+                        android:src="@drawable/mic_b" />
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivSend"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/dp_8"
+                        android:src="@drawable/send"
+                        android:visibility="gone" />
+
+                </RelativeLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <com.haallo.util.AttachmentView
+                android:id="@+id/attachmentView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:visibility="gone" />
+
+            <RelativeLayout
+                android:id="@+id/rlEmojiListLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/tvEmojiType"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/dp_15"
+                    android:fontFamily="@font/poppins_medium"
+                    android:text="Smiley &amp; People"
+                    android:textColor="@color/grey" />
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvEmojiList"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/dp_150"
+                    android:layout_below="@+id/tvEmojiType"
+                    android:layout_marginStart="@dimen/dp_10"
+                    android:layout_marginTop="@dimen/dp_5"
+                    android:layout_toStartOf="@+id/cross"
+                    app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+                    app:spanCount="10" />
+
+                <ImageView
+                    android:id="@+id/cross"
+                    android:layout_width="@dimen/dp_20"
+                    android:layout_height="@dimen/dp_20"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="@dimen/dp_10"
+                    android:src="@drawable/remove_emoticon"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/rvEmojiList"
+                    android:layout_marginStart="@dimen/dp_15"
+                    android:layout_marginTop="@dimen/dp_10">
+
+                    <ImageView
+                        android:id="@+id/ivSmileyPeople"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:src="@drawable/emoji_icon" />
+
+                    <ImageView
+                        android:id="@+id/animal"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:layout_toEndOf="@+id/ivSmileyPeople"
+                        android:src="@drawable/animal_emoji" />
+
+                    <ImageView
+                        android:id="@+id/food"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:layout_toEndOf="@+id/animal"
+                        android:src="@drawable/food_emoji" />
+
+                    <ImageView
+                        android:id="@+id/technolooy"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:layout_toEndOf="@+id/food"
+                        android:src="@drawable/parking_icon" />
+
+                    <ImageView
+                        android:id="@+id/symbols"
+                        android:layout_width="@dimen/dp_25"
+                        android:layout_height="@dimen/dp_25"
+                        android:layout_marginStart="@dimen/dp_5"
+                        android:layout_toEndOf="@+id/technolooy"
+                        android:src="@drawable/maths_emoji" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

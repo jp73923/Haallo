@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootNewchat"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_56"
+        android:background="@color/colorPrimary">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/back" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_toEndOf="@+id/ivBack"
+            android:fontFamily="@font/poppins_medium"
+            android:text="@string/new_chat"
+            android:visibility="visible"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            tools:ignore="RelativeOverlap" />
+
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/etSearch"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_8"
+            android:layout_marginEnd="@dimen/dp_48"
+            android:layout_toEndOf="@+id/ivBack"
+            android:background="@null"
+            android:hint="@string/search_hint"
+            android:fontFamily="@font/poppins_medium"
+            android:visibility="gone"
+            android:textColorHint="@color/gray"
+            android:imeOptions="actionDone"
+            android:inputType="text"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_16"
+            tools:ignore="RelativeOverlap" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivSearch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_8"
+            android:padding="@dimen/dp_8"
+            android:src="@drawable/search" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlNewGroup"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/dp_64"
+        android:background="@color/white"
+        android:paddingStart="@dimen/dp_8"
+        android:paddingEnd="@dimen/dp_1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/ivGroup"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_12"
+            android:contentDescription="@string/image"
+            android:src="@drawable/group"
+            app:civ_border_color="@color/gray"
+            app:civ_border_width="@dimen/dp_1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_new_group"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_16"
+            android:layout_toEndOf="@+id/ivGroup"
+            android:text="@string/new_group"
+            android:textColor="@color/colorPrimaryDark"
+            android:textSize="@dimen/sp_20" />
+
+        <View
+            android:id="@+id/view_new_chat"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dp_1"
+            android:layout_alignParentBottom="true"
+            android:background="@color/colorDivider" />
+
+    </RelativeLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvContactList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/list_item_user" />
+
+</LinearLayout>

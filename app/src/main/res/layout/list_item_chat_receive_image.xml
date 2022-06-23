@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:minWidth="@dimen/dp_80"
+    android:paddingBottom="@dimen/dp_16">
+
+    <LinearLayout
+        android:id="@+id/llTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvTimeReceiveImage"
+            style="@style/ReceivedMessageTimeTextStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="@dimen/chat_time"
+            tools:text="02:20 Am" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/llMainReceiveImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_12"
+        android:layout_marginTop="@dimen/dp_4"
+        android:background="@drawable/chatbg_blue"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/dp_0"
+        android:paddingEnd="@dimen/dp_10"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/llTime">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvChatMsgReceiveImage"
+            android:layout_width="@dimen/dp_152"
+            android:layout_height="@dimen/dp_152"
+            android:layout_marginStart="@dimen/dp_26"
+            android:layout_marginTop="@dimen/dp_12"
+            android:layout_marginBottom="@dimen/dp_12"
+            android:elevation="@dimen/dp_8"
+            app:cardCornerRadius="@dimen/dp_8">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivChatMsgReceiveImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop" />
+
+            <com.giphy.sdk.ui.views.GPHMediaView
+                android:id="@+id/gifReceiveView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/ivStarReceiveImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/dp_16"
+        android:src="@drawable/star_inactive"
+        app:layout_constraintBottom_toBottomOf="@+id/llMainReceiveImage"
+        app:layout_constraintStart_toEndOf="@+id/llMainReceiveImage"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

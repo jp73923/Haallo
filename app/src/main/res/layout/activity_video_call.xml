@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_video_chat_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    tools:context=".ui.call.OneToOneVideoCallActivityOld">
+
+    <FrameLayout
+        android:id="@+id/flRemoteVideoViewContainer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey" />
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="@dimen/dp_88"
+        android:layout_height="@dimen/dp_104"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="@dimen/dp_48"
+        android:layout_marginEnd="@dimen/dp_24"
+        android:elevation="@dimen/dp_8"
+        app:cardCornerRadius="@dimen/dp_6">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <FrameLayout
+                android:id="@+id/flLocalVideoViewContainer"
+                android:layout_width="match_parent"
+                android:elevation="@dimen/dp_4"
+                android:layout_height="match_parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivVideoPaused"
+                android:layout_width="@dimen/dp_40"
+                android:layout_height="@dimen/dp_40"
+                android:layout_centerInParent="true"
+                android:src="@drawable/pause"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvCallStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:fontFamily="@font/arimo_bold"
+            android:text="@string/connecting"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_19" />
+
+        <Chronometer
+            android:id="@+id/chronometerCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/dp_4"
+            android:fontFamily="@font/arimo_bold"
+            android:textColor="@color/white"
+            android:textSize="@dimen/sp_19"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/dp_16"
+            android:layout_marginBottom="@dimen/dp_24"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivRotateBackCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/video_camera_backview" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivRotateFrontCamera"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/video_camera_frontview"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivPauseVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/video_hide" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivResumeVideo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/video_show"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivMute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/video_mute" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivUnMute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/video_unmute"
+                    android:visibility="gone" />
+
+            </RelativeLayout>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDisConnectCall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:src="@drawable/video_call_cut" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

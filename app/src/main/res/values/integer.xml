@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="duration_translate_top_to_bottom">500</integer>
+    <integer name="duration_light_house">100</integer>
+    <integer name="duration_tab_anim">700</integer>
+    <integer name="dialogplus_animation_default_duration">400</integer>
+</resources>

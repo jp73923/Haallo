@@ -1,0 +1,260 @@
+<resources>
+    <string name="app_name">Haallo</string>
+
+    <string name="label_settings">Settings</string>
+    <string name="error_exception">Some exception occurred</string>
+    <string name="something_went_wrong">Something went wrong</string>
+    <string name="network_error">Network Error</string>
+    <string name="connection_lost">Connection Lost</string>
+    <string name="no_internet_connection">No internet connection</string>
+    <string name="server_error">Server Error</string>
+    <string name="hello_blank_fragment">Blank Fragment</string>
+    <string name="error_something_went_wrong_please_retry">Something went wrong please retry</string>
+    <string name="session_error_please_re_login">Session Error Please Re-Login</string>
+    <string name="session_error_please_try_again">Session error please try again</string>
+    <string name="back_press_exit_line">If you want exit Please press back Button again.</string>
+    <string name="loading">Loading…</string>
+    <string name="search_hint">Search…</string>
+    <string name="missing_permissions">Missing Permissions</string>
+    <string name="you_have_to_grant_permissions">You have to grant permissions in order to use this App</string>
+    <string name="ok">OK</string>
+    <string name="no_close_the_app">NO Close The App</string>
+    <string name="select_a_language">Select a language</string>
+    <string name="register">Register</string>
+    <string name="registration">Registration</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="mobile_number_login">Mobile Number:</string>
+    <string name="password">Password:</string>
+    <string name="confirm_password">Confirm Password:</string>
+    <string name="forgot_password">Forgot Password</string>
+    <string name="forgot_password_line"><u>Forgot Password?</u></string>
+    <string name="sign_in_cancelled">Cancelled</string>
+    <string name="default_status">Hey I am using Haallo!</string>
+    <string name="enter_the_registered_mobile_number">Enter the registered Mobile Number</string>
+    <string name="log_in">Log In</string>
+    <string name="no_account">No Account?</string>
+    <string name="otp_will_be_sent_on_the_above_number">*OTP will be sent on the above number</string>
+    <string name="send">Send</string>
+    <string name="reset_password">Reset Password</string>
+    <string name="submit">Submit</string>
+    <string name="password_changed_successfully">Password changed successfully</string>
+    <string name="please_add_group_name">Please add group name</string>
+    <string name="select_participants">Select Participants</string>
+    <string name="next">Next</string>
+    <string name="create_group">Create</string>
+    <string name="group_created_successfully">Group created successfully</string>
+    <string name="group_subject">Group Subject</string>
+    <string name="my_story">My Story</string>
+    <string name="changed_successfully">Changed successfully</string>
+    <string name="media">Media</string>
+    <string name="media_cap">MEDIA</string>
+    <string name="more">More</string>
+    <string name="about">About</string>
+    <string name="phone_number">Phone number:</string>
+    <string name="document">DOCUMENTS</string>
+    <string name="document_small">Document</string>
+    <string name="are_you_sure_you_want_to_clear_all_the_chat">Are you sure you want to clear all the chat?</string>
+    <string name="yes">YES</string>
+    <string name="no">NO</string>
+    <string name="edit">Edit</string>
+    <string name="gender">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="address">Address</string>
+    <string name="otp">Enter the OTP Code sent to your Mobile number</string>
+    <string name="select_language">Select Language</string>
+    <string name="by_tapping_continue_you_agree_to_our">By tapping \"Continue\" you agree to our</string>
+    <string name="terms_and_conditions"><u>Terms and Conditions</u></string>
+    <string name="terms_and_conditions_text">Terms and Conditions</string>
+    <string name="_2019_haallo_privacy_policy">"\u00a9" 2019 Haallo Privacy Policy</string>
+    <string name="continue_text">Continue</string>
+    <string name="image">image</string>
+    <string name="please_select_a_language">Please select a language</string>
+    <string name="please_enter_mobile_number">Please enter mobile number</string>
+    <string name="please_enter_valid_mobile_number">Please enter valid mobile number</string>
+    <string name="please_enter_valid_password">Please enter valid password</string>
+    <string name="please_enter_password">Please enter password</string>
+    <string name="password_length_must_be_more_than_characters">Password length must be more than or equal to 8 characters</string>
+    <string name="please_enter_confirm_password">Please enter confirm password</string>
+    <string name="password_did_not_match">Password didn\'t match</string>
+    <string name="resend_otp">Resend OTP</string>
+    <string name="please_select_language">Please select language</string>
+    <string name="otp_verification">OTP Verification</string>
+    <string name="welcome_to_haallo">Welcome to Haallo!</string>
+    <string name="free_message_and_calls_to_haallo_users">Free messages and calls to Haallo users.</string>
+    <string name="make_messaging_fun_with_stickers">Make messaging fun with stickers!</string>
+    <string name="no_internet">No Internet connection</string>
+    <string name="please_enter_4_digit_otp">Please Enter 4 Digit OTP</string>
+    <string name="otp_send_successfully">Otp send successfully</string>
+    <string name="please_enter_name">Please enter name</string>
+    <string name="please_enter_Address">Please enter Address</string>
+    <string name="profile_creation">Profile Creation</string>
+    <string name="error_connection_please_check_internet">Please check your internet connection and retry.</string>
+    <string name="error_socket_timeout">Server taking too much time to respond. Please retry.</string>
+    <string name="select_from_gallery">Select From Gallery</string>
+    <string name="capture_photo_camera">Capture photo from camera</string>
+    <string name="select_action">Select Action</string>
+    <string name="image_is_not_selected">Image Is not selected</string>
+    <string name="permission_denied">Permission Denied</string>
+    <string name="add">ADD</string>
+    <string name="do_not_show_again">Do not show this message again</string>
+    <string name="ignore_battery_dialog_title">Ignore Battery Optimization</string>
+    <string name="ignore_battery_dialog_message">In order to make sure that all messages delivered correctly you have to
+        disable Battery Optimization.\n after clicking OK , choose %s and click on \'Don\'t optimize\'
+    </string>
+    <string name="ignore_battery_summary">In order to make sure that all messages delivered correctly you have to
+        disable Battery Optimizations
+    </string>
+    <string name="status_hint">Type a status</string>
+    <string name="status">Story</string>
+    <string name="not_contact_selected">No Contact Selected</string>
+    <string name="delete_media_from_phone">Delete Media From Phone</string>
+    <string name="send_image_and_video_from_camera">Send Image and Video from Camera</string>
+    <string name="send_image_and_video_from_gallery">Send Image and Video from Gallery</string>
+    <string name="profile_created_successfully">Profile created successfully</string>
+    <string name="retry">Retry</string>
+    <string name="need_permission_for_using_the_camera">Need permission for using the camera</string>
+    <string name="need_permission_for_using_the_gallery">Need permission for using the gallery</string>
+    <string name="need_permission_for_using_the_contact">Need permission for using the contact</string>
+    <string name="need_permission_for_using_the_location">Need permission for using the location</string>
+    <string name="need_permission_for_video_call">Need permission for video call</string>
+    <string name="need_permission_for_audio_call">Need permission for audio call</string>
+    <string name="choose_an_action">Choose an action</string>
+    <string name="gallery">Gallery</string>
+    <string name="profile_text">Enter your name and add an optional profile picture</string>
+    <string name="save">Save</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="already_have_an_account">Already have an account?</string>
+    <string name="sign_in">Sign In</string>
+    <string name="alert_for_block">Want to Block the User</string>
+    <string name="alert_for_un_block">Want to UnBlock the User</string>
+    <string name="block_warning">Are you sure you want to block?</string>
+    <string name="un_block_warning">Are you sure you want to unblock?</string>
+    <string name="block">Block</string>
+    <string name="un_block">UnBlock</string>
+    <string name="not_available">Not Available</string>
+    <string name="mute_notifications">Mute Notifications</string>
+    <string name="report_user">Report User</string>
+    <string name="delete_chat">Delete Chat</string>
+    <string name="block_user">Block User</string>
+    <string name="unblock_user">UnBlock User</string>
+    <string name="un_mute_notification">UnMute Notifications</string>
+    <string name="select_phone">Select Phone Number</string>
+    <string name="loading_please_wait">Loading Please Wait…</string>
+    <string name="mention_the_reason_to_report_user">Mention the Reason to Report User</string>
+    <string name="please_select_the_reasons_give_below_for_the_report_the_user">Please select the reasons give below for the report the user.</string>
+    <string name="report">Report</string>
+    <string name="comment">Comment</string>
+    <string name="minutes_ago">Minute ago</string>
+    <string name="hours_ago">Hour ago</string>
+    <string name="today_at">Today at</string>
+    <string name="yesterday_at">Yesterday at</string>
+    <string name="days_ago">Day ago</string>
+    <string name="at">\@</string>
+    <string name="yesterday">Yesterday</string>
+    <string name="permission_not_given">Permission not given</string>
+    <string name="downloading">Downloading</string>
+    <string name="downloading_file">Downloading File…</string>
+    <string name="type_your_message_here">Type your message here…</string>
+    <string name="slide_to_cancel">Slide to cancel</string>
+    <string name="type_a_message">Type a message</string>
+    <string name="today">Today</string>
+    <string name="audio_file">Audio File</string>
+    <string name="contacts">Contacts</string>
+    <string name="documents">Documents</string>
+    <string name="please_select_file">Please select file</string>
+    <string name="call">Call</string>
+    <string name="permission_required_to_open_gallery">Permission Required to Open Gallery</string>
+    <string name="permission_required_to_open_camera">Permission Required to Open Camera and Gallery</string>
+    <string name="pick_video">Pick Video</string>
+    <string name="pick_image">Pick Image</string>
+    <string name="complete_action_using"><![CDATA[<font color=\'#62CED9\'>Complete action using</font>]]></string>
+    <string name="take_me_back">Take me Back</string>
+    <string name="confirm">Confirm</string>
+    <string name="alert_for_deactivate">Alert for Deactivate</string>
+    <string name="alert_for_logout">Alert for Logout</string>
+    <string name="alert_for_delete_chat">Alert for Delete Chat</string>
+    <string name="account_deactivate_warning">Are you sure you want to deactivate your account, Your data will be permanently removed and can not be restored. This step is permanent.</string>
+    <string name="logout_warning">Are you sure you want to logout?</string>
+    <string name="delete_chat_warning">Are you sure you want to delete chat?</string>
+    <string name="no_recent_chat_found">No Recent Chat Found</string>
+    <string name="no_recent_call_found">No Recent Call Found</string>
+    <string name="my_chat">My Chat</string>
+    <string name="chat">Chat</string>
+    <string name="story">Story</string>
+    <string name="camera">Camera</string>
+    <string name="setting">Setting</string>
+    <string name="new_group">New group</string>
+    <string name="leave_group">Leave group</string>
+    <string name="invite">Invite</string>
+    <string name="online">Online</string>
+    <string name="contact">Contact</string>
+    <string name="pdf">Pdf</string>
+    <string name="gif">GIF</string>
+    <string name="audio">Audio</string>
+    <string name="video">Video</string>
+    <string name="photo">Photo</string>
+    <string name="new_chat">New Chat</string>
+    <string name="send_image_and_video">Send Image and Video</string>
+    <string name="send_contact">Send Contact</string>
+    <string name="send_location">Send Location</string>
+    <string name="send_document">Send Document</string>
+    <string name="send_audio">Send Audio</string>
+    <string name="agora_app_id">7b7c99ac420e4577ba2562eae092fa56</string>
+    <string name="agora_access_token">46222c22f3084bcda91eb1527073b665</string>
+    <string name="connecting">Connecting…</string>
+    <string name="ringing">Ringing</string>
+    <string name="connected">Connected</string>
+    <string name="calling">Calling</string>
+    <string name="select_this_location">Select this Location</string>
+    <string name="user_this_location">Use this location?</string>
+    <string name="change_location">Change location</string>
+    <string name="select">Select</string>
+    <string name="cannot_support_this_link">Cannot support this link</string>
+
+    <string name="dialog">DIALOG</string>
+    <string name="stop_recordd">STOP RECORD</string>
+    <string name="start_recordd">START RECORD</string>
+    <string name="started_record">RECORD STARTED</string>
+    <string name="play_recordd">Play Record</string>
+    <string name="stop_play_recordd">STOP PLAYING</string>
+    <string name="label_send">Send</string>
+    <string name="label_options">Options</string>
+
+    <string name="msg_welcome_message">Welcome to Open Video Call</string>
+
+    <string name="label_channel_name_hint">Channel name</string>
+
+    <string name="label_encryption_key_hint">Encryption key</string>
+
+    <string name="label_join">Join</string>
+
+    <string name="label_do_network_test">Test your network</string>
+
+    <string name="label_confirm">Confirm</string>
+
+    <string name="label_network_testing">Testing…</string>
+    <string name="label_network_testing_placeholder">-</string>
+    <string name="label_network_test_result">Test Result</string>
+
+    <string name="label_debug">Debug</string>
+    <string name="label_quality">Quality</string>
+    <string name="label_rtt">RTT</string>
+    <string name="label_uplink_packet_loss">Uplink Packet Loss</string>
+    <string name="label_downlink_packet_loss">Downlink Packet Loss</string>
+
+    <string name="msg_say_something">Say something…</string>
+
+    <string name="msg_connection_error">Connection error, please check the network settings or make sure channel name/access token are valid</string>
+
+    <string name="label_title_resolution">Resolution</string>
+    <string name="label_title_frame_rate">Frame Rate(fps)</string>
+
+    // DO NOT TRANSLATE
+    <string name="bit_rate_value_with_unit">%d kbps</string>
+    <string name="frame_rate_value_with_unit">%d fps</string>
+
+    <string name="msg_no_network_connection">No network connection, please check the network settings</string>
+
+
+</resources>

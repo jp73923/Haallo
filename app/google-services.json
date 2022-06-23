@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "711768112066",
+    "firebase_url": "https://hallo-de4e5-default-rtdb.firebaseio.com",
+    "project_id": "hallo-de4e5",
+    "storage_bucket": "hallo-de4e5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:711768112066:android:0646f5c10644955118f45b",
+        "android_client_info": {
+          "package_name": "com.haallo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "711768112066-5mfkmolvbf05gtoibveqid4im6ntjt00.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyChcrPtomsci_LNxe65UBN3y2nGGACct04"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "711768112066-5mfkmolvbf05gtoibveqid4im6ntjt00.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

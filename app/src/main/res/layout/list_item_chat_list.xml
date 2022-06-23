@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rootChatList"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/dp_80"
+    android:layout_margin="@dimen/dp_8"
+    android:elevation="@dimen/dp_8"
+    android:orientation="vertical"
+    app:cardCornerRadius="@dimen/dp_4">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/cvUserPic"
+            android:layout_width="@dimen/dp_48"
+            android:layout_height="@dimen/dp_48"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_16">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivUserProfile"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@drawable/logo" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivOnline"
+                android:layout_width="@dimen/dp_12"
+                android:layout_height="@dimen/dp_12"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/dp_2"
+                android:src="@drawable/green_circle"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/dp_12"
+            android:layout_toEndOf="@+id/cvUserPic"
+            android:orientation="vertical"
+            tools:ignore="RelativeOverlap">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUserName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/arimo_bold"
+                android:maxLength="24"
+                android:maxLines="1"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_17" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/cvMediaType"
+                    android:layout_width="@dimen/dp_24"
+                    android:layout_height="@dimen/dp_24"
+                    android:layout_marginEnd="@dimen/dp_8"
+                    android:elevation="@dimen/dp_8"
+                    app:cardCornerRadius="@dimen/dp_4">
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivMediaType"
+                        android:layout_width="@dimen/dp_24"
+                        android:layout_height="@dimen/dp_24" />
+
+                </androidx.cardview.widget.CardView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvLastMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:ellipsize="end"
+                    android:fontFamily="@font/arimo_bold"
+                    android:maxLength="32"
+                    android:maxLines="1"
+                    android:textColor="#333333"
+                    android:textSize="@dimen/sp_14" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true"
+            android:layout_marginEnd="@dimen/dp_16"
+            android:orientation="vertical"
+            tools:ignore="RelativeOverlap">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvUnseenMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@drawable/green_circle"
+                android:ellipsize="end"
+                android:fontFamily="@font/arimo_bold"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:padding="@dimen/dp_6"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_14"
+                android:visibility="gone" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:fontFamily="@font/arimo_bold"
+                android:maxLength="32"
+                android:maxLines="1"
+                android:textColor="#333333"
+                android:textSize="@dimen/sp_14" />
+
+        </LinearLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>

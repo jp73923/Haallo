@@ -18,11 +18,7 @@ abstract class OldBaseFragment : Fragment() {
 
     lateinit var sharedPreferenceUtil: SharedPreferenceUtil
 
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         return TextView(activity).apply {
             setText(R.string.hello_blank_fragment)
         }

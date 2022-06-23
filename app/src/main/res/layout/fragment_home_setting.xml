@@ -1,276 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/md_white"
+    android:orientation="vertical">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHeading"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/color_1F3257"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:text="@string/label_settings"
+        android:textColor="@color/md_white"
+        android:textSize="@dimen/_14sdp" />
 
     <RelativeLayout
-        android:id="@+id/relative_header"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:background="@color/colorPrimary">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_8sdp"
+        android:paddingVertical="@dimen/_6sdp">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHeading"
-            android:layout_width="wrap_content"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivUserProfile"
+            android:layout_width="@dimen/_68sdp"
+            android:layout_height="@dimen/_68sdp"
+            android:layout_marginStart="@dimen/_6sdp"
+            android:src="@drawable/outline_account_circle_24_profile" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_8"
-            android:fontFamily="@font/poppins_medium"
-            android:text="Settings"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_16"
-            android:visibility="visible"
-            tools:ignore="RelativeOverlap" />
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_toStartOf="@+id/ivEdit"
+            android:layout_toEndOf="@+id/ivUserProfile"
+            android:orientation="vertical">
 
-    </RelativeLayout>
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/label_name"
+                android:textColor="@color/md_grey800"
+                android:textColorHint="@color/md_grey800"
+                android:textSize="@dimen/_14sdp" />
 
-    <RelativeLayout
-        android:id="@+id/story_layout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_100"
-        android:layout_below="@+id/relative_header"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_10">
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvAbout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/label_status"
+                android:textColor="@color/md_grey800"
+                android:textColorHint="@color/md_grey800"
+                android:textSize="@dimen/_10sdp" />
 
-        <RelativeLayout
-            android:id="@+id/group_icon_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_5"
-            android:layout_marginTop="@dimen/dp_10">
+        </LinearLayout>
 
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/tvGroupIcon"
-                android:layout_width="@dimen/dp_100"
-                android:layout_height="@dimen/dp_80"
-                android:layout_centerInParent="true"
-                android:src="@drawable/profile_picture"
-                app:tint="@color/gray" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/story_image"
-                android:layout_width="@dimen/dp_80"
-                android:layout_height="@dimen/dp_80"
-                android:layout_centerInParent="true"
-                android:src="@drawable/camera_full_blue"
-                android:visibility="gone" />
-
-        </RelativeLayout>
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvGroupName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_25"
-            android:layout_toEndOf="@+id/group_icon_layout"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/my_story"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp_18" />
-
-    </RelativeLayout>
-
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/story_layout"
-        android:layout_marginTop="@dimen/dp_15"
-        android:background="@color/gray_light" />
-
-    <RelativeLayout
-        android:id="@+id/rlAccount"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_45"
-        android:layout_below="@+id/view"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10">
-
-        <ImageView
-            android:id="@+id/account_img"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:src="@drawable/account" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_15"
-            android:layout_toEndOf="@+id/account_img"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Account"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/sp_20" />
-
-    </RelativeLayout>
-
-    <View
-        android:id="@+id/view_account"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/rlAccount"
-        android:layout_marginTop="@dimen/dp_2"
-        android:background="@color/gray_light" />
-
-    <RelativeLayout
-        android:id="@+id/rlPrivacy"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_45"
-        android:layout_below="@+id/view_account"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10">
-
-        <ImageView
-            android:id="@+id/privacy_img"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:src="@drawable/privacy" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_15"
-            android:layout_toEndOf="@+id/privacy_img"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Privacy"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/sp_20" />
-
-    </RelativeLayout>
-
-    <View
-        android:id="@+id/view_privacy_account"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/rlPrivacy"
-        android:layout_marginTop="@dimen/dp_2"
-        android:background="@color/gray_light" />
-
-    <RelativeLayout
-        android:id="@+id/nightMode_relative"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_45"
-        android:layout_below="@+id/view_privacy_account"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10">
-
-        <ImageView
-            android:id="@+id/nightMode_img"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:src="@drawable/night_mode" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_15"
-            android:layout_toEndOf="@+id/nightMode_img"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Night Mode"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/sp_20" />
-
-        <androidx.appcompat.widget.SwitchCompat
-            android:id="@+id/facility_status"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivEdit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_setting_edit_story"
+            android:tint="@color/md_grey600" />
+
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_dp"
+        android:layout_marginVertical="@dimen/_12sdp"
+        android:background="@color/md_grey300" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvAccount"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:text="@string/label_account"
+        android:textColor="@color/md_grey600"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_dp"
+        android:layout_marginHorizontal="@dimen/_14sdp"
+        android:background="@color/md_grey300" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvPrivacy"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:text="@string/label_privacy"
+        android:textColor="@color/md_grey600"
+        android:textSize="@dimen/_12sdp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/half_dp"
+        android:layout_marginHorizontal="@dimen/_14sdp"
+        android:background="@color/md_grey300" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_14sdp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvNightMode"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toStartOf="@+id/switchCompatNightMode"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/label_night_mode"
+            android:textColor="@color/md_grey600"
+            android:textSize="@dimen/_12sdp" />
+
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switchCompatNightMode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_centerVertical="true" />
+
+        <!--
             android:button="@drawable/custom_switch_selector"
             android:checked="false"
             android:thumb="@null"
-            app:track="@null" />
+            app:track="@null"-->
 
     </RelativeLayout>
 
     <View
-        android:id="@+id/view_nightMode"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/nightMode_relative"
-        android:layout_marginTop="@dimen/dp_2"
-        android:background="@color/gray_light" />
+        android:layout_height="@dimen/half_dp"
+        android:layout_marginHorizontal="@dimen/_14sdp"
+        android:background="@color/md_grey300" />
 
-    <RelativeLayout
-        android:id="@+id/rlOthers"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvOthers"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_45"
-        android:layout_below="@+id/nightMode_relative"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="10dp">
-
-        <ImageView
-            android:id="@+id/others_img"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_baseline_support_agent_24" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_15"
-            android:layout_toEndOf="@+id/others_img"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Support"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/sp_20" />
-
-    </RelativeLayout>
+        android:layout_height="?actionBarSize"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:text="@string/label_others"
+        android:textColor="@color/md_grey600"
+        android:textSize="@dimen/_12sdp" />
 
     <View
-        android:id="@+id/view_others"
         android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/rlOthers"
-        android:layout_marginTop="@dimen/dp_2"
-        android:background="@color/gray_light" />
+        android:layout_height="@dimen/half_dp"
+        android:layout_marginHorizontal="@dimen/_14sdp"
+        android:background="@color/md_grey300" />
 
-    <RelativeLayout
-        android:id="@+id/rlLogout"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvLogout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_45"
-        android:layout_below="@+id/rlOthers"
-        android:layout_marginStart="@dimen/dp_20"
-        android:layout_marginTop="@dimen/dp_10">
+        android:layout_height="?actionBarSize"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_14sdp"
+        android:text="@string/label_logout"
+        android:textColor="@color/md_grey600"
+        android:textSize="@dimen/_12sdp" />
 
-        <ImageView
-            android:id="@+id/logout_img"
-            android:layout_width="@dimen/dp_30"
-            android:layout_height="@dimen/dp_30"
-            android:layout_centerVertical="true"
-            android:src="@drawable/logout" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_15"
-            android:layout_toEndOf="@+id/logout_img"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Logout"
-            android:textColor="@color/grey"
-            android:textSize="@dimen/sp_20" />
-
-    </RelativeLayout>
-
-    <View
-        android:id="@+id/view_logout"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/rlLogout"
-        android:layout_marginTop="@dimen/dp_2"
-        android:background="@color/gray_light" />
-
-</RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/md_white"
+    tools:context=".ui.privacysetting.PrivacySettingActivity">
+
+    <RelativeLayout
+        android:id="@+id/rlHeader"
+        android:layout_width="match_parent"
+        android:layout_height="?actionBarSize"
+        android:background="@color/color_1F3257">
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/outline_arrow_back_24" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tvHeading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_toEndOf="@+id/ivBack"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/label_last_seen"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/_14sdp" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/rlFooter"
+        android:layout_below="@+id/rlHeader"
+        android:orientation="vertical">
+
+        <RadioGroup
+            android:id="@+id/rgSetting"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbEveryone"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingHorizontal="@dimen/_14sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="@string/label_everyone"
+                android:textColor="@color/md_grey600"
+                android:textSize="@dimen/_12sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/half_dp"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:background="@color/md_grey300" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbMyContacts"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingHorizontal="@dimen/_14sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="@string/label_my_contacts"
+                android:textColor="@color/md_grey600"
+                android:textSize="@dimen/_12sdp" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/half_dp"
+                android:layout_marginHorizontal="@dimen/_14sdp"
+                android:background="@color/md_grey300" />
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/rbNobody"
+                android:layout_width="match_parent"
+                android:layout_height="?actionBarSize"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:layoutDirection="rtl"
+                android:paddingHorizontal="@dimen/_14sdp"
+                android:paddingTop="@dimen/_4sdp"
+                android:text="@string/label_nobody"
+                android:textColor="@color/md_grey600"
+                android:textSize="@dimen/_12sdp" />
+
+        </RadioGroup>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rlFooter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center">
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:clickable="false"
+            android:visibility="invisible" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnDone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/label_done"
+            android:textSize="@dimen/_10sdp"
+            android:visibility="invisible"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

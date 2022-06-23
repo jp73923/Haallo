@@ -8,6 +8,8 @@ import android.widget.EditText
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import com.haallo.base.helper.FragmentStartListener
+import com.haallo.ui.chat.firebaseDb.FirebaseDbHandler
+import com.haallo.util.SharedPreferenceUtil
 import com.haallo.util.UiUtils
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
@@ -21,6 +23,8 @@ open class BaseFragment() : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        //Not_MVVVM
+        sharedPreferenceUtil = SharedPreferenceUtil.getInstance(requireContext())
     }
 
     override fun onAttach(context: Context) {
@@ -63,5 +67,12 @@ open class BaseFragment() : Fragment() {
                         "is either null or is not FragmentStartListener or FlutterBaseActivity"
             )
         }
+    }
+
+    //Not_MVVVM
+    lateinit var sharedPreferenceUtil: SharedPreferenceUtil
+
+    val firebaseDbHandler by lazy {
+        FirebaseDbHandler(requireContext())
     }
 }

@@ -1,9 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:screenOrientation">portrait</item>
+        <item name="android:configChanges">keyboardHidden|orientation</item>
+        <item name="android:statusBarColor">@color/colorPrimaryDark</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@color/md_white</item>
+    </style>
+
+    <style name="DialogStyle" parent="Theme.Design.Light.BottomSheetDialog">
+        <item name="android:windowIsFloating">false</item>
+        <item name="android:navigationBarColor">@color/md_white</item>
+        <item name="android:statusBarColor">@color/colorFullTransparent</item>
+        <item name="android:windowSoftInputMode">adjustResize</item>
+        <item name="android:background">@color/colorFullTransparent</item>
     </style>
 
     <style name="fullscreenTheme" parent="Theme.AppCompat.Light.NoActionBar">
@@ -81,6 +97,7 @@
         <item name="android:textSize">16sp</item>
         <item name="android:gravity">center</item>
     </style>
+
     <style name="L2TextDark">
         <item name="android:textColor">@color/dark_black</item>
         <item name="android:textSize">16sp</item>

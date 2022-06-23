@@ -12,12 +12,13 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.ValueEventListener
 import com.haallo.R
 import com.haallo.base.OldBaseActivity
+import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.constant.IntentConstant
 import com.haallo.databinding.ActivityGroupInfoBinding
 import com.haallo.ui.chat.model.GroupMsgModel
 import com.haallo.ui.chat.model.GroupRecentMessageModel
 import com.haallo.ui.group.model.CreateGroupModel
-import com.haallo.ui.home.HomeActivityOld
+import com.haallo.ui.home.HomeActivity
 import com.haallo.util.findGroupDateFromTimeStamp
 import java.util.*
 
@@ -72,8 +73,9 @@ class GroupInfoActivityOld : OldBaseActivity() {
         binding.tvLeaveGroup.setOnClickListener {
             sendMsgToChat(sharedPreference.name + " left the group !", binding.tvHeading.text.toString().trim())
             updatedRecentMessage(sharedPreference.name + " left the group !", "1", binding.tvHeading.text.toString().trim())
-            startActivity(Intent(this, HomeActivityOld::class.java))
-            finishAffinity()
+
+            startActivityWithDefaultAnimation(HomeActivity.getIntent(this))
+            finish()
             /*  showToast("under development")*/
         }
     }

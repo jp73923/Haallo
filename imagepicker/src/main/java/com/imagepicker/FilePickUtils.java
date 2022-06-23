@@ -142,7 +142,7 @@ public class FilePickUtils implements LifeCycleCallBackManager {
 
         if (photoFile != null) {
             /*Uri photoURI = FileProvider.geddsdtUriForFile(activity,
-                    BuildConfig.APPLICATION_ID + ".provider",
+                    BuildConfig.APPLICATION_ID + ".file_provider",
                     photoFile);*/
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, imageUrl);//imageUrl

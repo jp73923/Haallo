@@ -42,6 +42,7 @@ import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.*
 import com.haallo.R
 import com.haallo.base.Base
+import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.constant.Constants
 import com.haallo.constant.IntentConstant
 import com.haallo.databinding.ActivityGroupChatBinding
@@ -63,7 +64,7 @@ import com.haallo.ui.chat.util.RealPathUtil
 import com.haallo.ui.group.GroupInfoActivityOld
 import com.haallo.ui.group.model.CreateGroupModel
 import com.haallo.ui.groupAudio.AudioActivity
-import com.haallo.ui.home.HomeActivityOld
+import com.haallo.ui.home.HomeActivity
 import com.haallo.util.*
 import com.imagepicker.FilePickUtils
 import com.jaiselrahman.filepicker.activity.FilePickerActivity
@@ -1326,8 +1327,8 @@ class GroupChatActivity : Base(), View.OnClickListener, GiphyDialogFragment.GifS
             closeAttachment()
         } else {
             super.onBackPressed()
-            startActivity(Intent(this, HomeActivityOld::class.java))
-            finishAffinity()
+            startActivityWithDefaultAnimation(HomeActivity.getIntent(this))
+            finish()
         }
     }
 

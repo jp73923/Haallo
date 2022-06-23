@@ -4,11 +4,15 @@
     <color name="colorPrimaryDark">#1F3257</color>
     <color name="colorAccent">#253d67</color>
 
+    <color name="color_253d67">#253d67</color>
     <color name="color_1F3257">#1F3257</color>
+    <color name="color_00BFFF">#00BFFF</color>
+    <color name="color_737373">#737373</color>
+    <color name="color_7D9AD6">#7D9AD6</color>
 
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="color_737373">#737373</color>
+
     <color name="dark_sky_blue">#00bfff</color>
     <color name="red">#FF0000</color>
     <color name="appNightModeBackground">#808080</color>

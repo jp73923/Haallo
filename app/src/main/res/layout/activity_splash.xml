@@ -3,8 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/new_splash"
-    tools:context=".ui.splashToHome.splash.SplashActivityOld">
+    tools:context=".ui.splashToHome.splash.SplashActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/new_splash" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:layout_width="wrap_content"

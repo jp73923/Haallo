@@ -9,10 +9,11 @@ import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.haallo.R
 import com.haallo.base.OldBaseActivity
+import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.constant.IntentConstant
 import com.haallo.databinding.ActivitySignInBinding
 import com.haallo.ui.chat.model.UserModel
-import com.haallo.ui.home.HomeActivityOld
+import com.haallo.ui.home.HomeActivity
 import com.haallo.ui.splashToHome.SignInToHomeViewModelOld
 import com.haallo.ui.splashToHome.forgotAndResetPassword.ForgotPasswordActivityOld
 import com.haallo.ui.splashToHome.otp.OtpActivityOld
@@ -220,10 +221,10 @@ class SignInActivityOld : OldBaseActivity(), View.OnClickListener {
                     userModel.ver = "1.0"
                     val userId = "u_${sharedPreference.userId}"
                     firebaseDbHandler.saveUser(userId, userModel)
-
-                    startActivity(Intent(this, HomeActivityOld::class.java))
-                    finishAffinity()
                     sharedPreference.halloFlag = 1
+
+                    startActivityWithDefaultAnimation(HomeActivity.getIntent(this))
+                    finish()
                 }
             }
         }

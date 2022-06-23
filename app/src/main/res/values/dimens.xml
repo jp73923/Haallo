@@ -1,5 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="divider_dp">0.2dp</dimen>
+
+    <dimen name="minus_five_dp">-5dp</dimen>
+    <dimen name="minus_four_dp">-4dp</dimen>
+    <dimen name="minus_three_dp">-3dp</dimen>
+    <dimen name="minus_two_dp">-2dp</dimen>
+    <dimen name="minus_one_dp">-1dp</dimen>
+
+    <dimen name="zero_dp">0dp</dimen>
+    <dimen name="half_dp">0.5dp</dimen>
+    <dimen name="one_dp">1dp</dimen>
+    <dimen name="one_half_dp">1.5dp</dimen>
+
     <dimen name="sp_0">0sp</dimen>
     <dimen name="sp_1">1sp</dimen>
     <dimen name="sp_2">2sp</dimen>
@@ -1031,9 +1044,5 @@
     <dimen name="r_audio_width">275dp</dimen>
     <dimen name="max_width_group_users">220dp</dimen>
     <dimen name="chat_time">14sp</dimen>
-
-
-
     <dimen name="video_indicator_bottom_margin">20dp</dimen>
-
 </resources>

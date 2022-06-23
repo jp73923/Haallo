@@ -4,8 +4,8 @@ import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import com.haallo.ui.home.call.HomeCallFragmentOld
 import com.haallo.ui.home.camera.HomeCameraFragmentOld
-import com.haallo.ui.home.chat.HomeChatFragmentOld
-import com.haallo.ui.home.setting.HomeSettingFragmentOld
+import com.haallo.ui.home.chat.HomeChatFragment
+import com.haallo.ui.home.setting.HomeSettingFragment
 import com.haallo.ui.home.status.HomeStatusFragmentOld
 
 class HomeViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
@@ -13,7 +13,7 @@ class HomeViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
     override fun getItem(position: Int): androidx.fragment.app.Fragment {
         return when (position) {
             0 -> {
-                HomeChatFragmentOld()
+                HomeChatFragment()
             }
 
             1 -> {
@@ -29,7 +29,7 @@ class HomeViewPagerAdapter(fm: FragmentManager) : FragmentPagerAdapter(fm) {
             }
 
             else -> {
-                HomeSettingFragmentOld()
+                HomeSettingFragment()
             }
         }
     }

@@ -4,27 +4,20 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="@color/md_white"
     android:orientation="vertical">
 
-    <RelativeLayout
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHeading"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_88"
-        android:background="@color/colorPrimary">
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_26"
-            android:fontFamily="@font/arimo_bold"
-            android:text="@string/app_name"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_22"
-            tools:ignore="RelativeOverlap" />
-
-    </RelativeLayout>
+        android:layout_height="?actionBarSize"
+        android:background="@color/color_1F3257"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:text="@string/app_name"
+        android:textColor="@color/md_white"
+        android:textSize="@dimen/_14sdp" />
 
     <RelativeLayout
         android:layout_width="match_parent"

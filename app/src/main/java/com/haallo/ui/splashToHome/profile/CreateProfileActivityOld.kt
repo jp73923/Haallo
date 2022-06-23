@@ -13,9 +13,10 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.haallo.R
 import com.haallo.base.OldBaseActivity
+import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.databinding.ActivityCreateProfileBinding
 import com.haallo.ui.chat.model.UserModel
-import com.haallo.ui.home.HomeActivityOld
+import com.haallo.ui.home.HomeActivity
 import com.haallo.ui.splashToHome.SignInToHomeViewModelOld
 import com.haallo.util.findRequestBody
 import com.haallo.util.getString
@@ -205,8 +206,9 @@ class CreateProfileActivityOld : OldBaseActivity(), View.OnClickListener {
 
             showToast(getString(R.string.profile_created_successfully))
             hideLoading()
-            startActivity(Intent(this, HomeActivityOld::class.java))
-            finishAffinity()
+
+            startActivityWithDefaultAnimation(HomeActivity.getIntent(this))
+            finish()
         }
 
         signInToHomeViewModel.onError.observe(this) {

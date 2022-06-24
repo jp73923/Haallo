@@ -50,7 +50,12 @@ import java.io.IOException
 import java.io.InputStream
 import java.util.*
 
-class HomeStatusFragmentOld : OldBaseFragment() {
+class HomeStatusFragment : OldBaseFragment() {
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = HomeStatusFragment()
+    }
 
     private var _binding: FragmentHomeStatusBinding? = null
     private val binding get() = _binding!!
@@ -87,7 +92,7 @@ class HomeStatusFragmentOld : OldBaseFragment() {
             intent.putExtra("image", imageUrl)
             startActivity(intent)
         }
-        binding.edit.setOnClickListener {
+        binding.tvEdit.setOnClickListener {
             val items = arrayOf(getString(R.string.pick_image), getString(R.string.camera))
             val builder = AlertDialog.Builder(this.context)
             builder.setTitle(Html.fromHtml(getString(R.string.complete_action_using)))

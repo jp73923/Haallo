@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".chat.activity.ImageDetailActivity">
+    tools:context=".ui.chat.activity.ImageDetailActivity">
 
     <RelativeLayout
         android:id="@+id/header_layout"

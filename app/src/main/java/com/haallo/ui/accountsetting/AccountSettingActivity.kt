@@ -6,6 +6,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.haallo.R
 import com.haallo.api.coroutine.APIHelper
 import com.haallo.api.coroutine.AppViewModelFactory
 import com.haallo.api.coroutine.RetrofitBuilder.GATEWAY_SERVICE
@@ -35,8 +36,14 @@ class AccountSettingActivity : OldBaseActivity() {
         binding = ActivitySettingAccountBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        listenToViewEvent()
+
         initView()
         initControl()
+    }
+
+    private fun listenToViewEvent() {
+
     }
 
     override fun initView() {
@@ -44,16 +51,16 @@ class AccountSettingActivity : OldBaseActivity() {
     }
 
     override fun initControl() {
-        binding.rlRemoveAccount.setOnClickListener {
+        binding.tvRemoveAccount.setOnClickListener {
             showDialogConfirmationsDialog()
         }
     }
 
     private fun showDialogConfirmationsDialog() {
-        val dialogBuilder = AlertDialog.Builder(this)
-        dialogBuilder.setMessage("Are you sure you want to remove you account")
+        val dialogBuilder = AlertDialog.Builder(this, R.style.AlertDialogTheme)
+        dialogBuilder.setMessage(getString(R.string.msg_are_you_sure_do_you_want_remove_your_account))
             .setCancelable(false)
-            .setPositiveButton("Yes") { dialog, _ ->
+            .setPositiveButton(getString(R.string.label_yes)) { dialog, _ ->
                 viewModel?.removeAccount(sharedPreference.accessToken, sharedPreference.mobileNumber)
                     ?.observe(this, Observer {
                         it?.let { resource ->
@@ -61,8 +68,10 @@ class AccountSettingActivity : OldBaseActivity() {
                                 Status.SUCCESS -> {
                                     val data = resource.data
                                     if (data?.isSuccessful == true) {
-                                        showToast("Successfully account deleted")
+                                        showToast(getString(R.string.msg_your_account_deleted))
+
                                         SharedPreferenceUtil.getInstance(this).deletePreferences()
+
                                         startActivity(Intent(this, SignInActivityOld::class.java))
                                         finish()
                                     }
@@ -78,11 +87,11 @@ class AccountSettingActivity : OldBaseActivity() {
                     })
                 dialog.dismiss()
             }
-            .setNegativeButton("No") { dialog, id ->
+            .setNegativeButton(getString(R.string.label_no)) { dialog, id ->
                 dialog.dismiss()
             }
         val alert = dialogBuilder.create()
-        alert.setTitle("Confirmation")
+        alert.setTitle(getString(R.string.label_confirmation))
         alert.show()
     }
 }

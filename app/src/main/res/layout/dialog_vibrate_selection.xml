@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_centerInParent="true"
+    android:layout_gravity="center"
+    android:layout_margin="@dimen/_12sdp"
+    android:background="@color/colorWindowBackground"
+    android:orientation="vertical"
+    android:paddingHorizontal="@dimen/_12sdp"
+    android:paddingVertical="@dimen/_12sdp">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:fontFamily="@font/poppins_medium"
+        android:text="@string/label_vibrate"
+        android:textColor="@color/colorText"
+        android:textSize="@dimen/_13sdp" />
+
+    <RadioGroup
+        android:id="@+id/rgVibrate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbOff"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:buttonTint="@color/colorText"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:text="@string/label_off"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_11sdp" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbShort"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:buttonTint="@color/colorText"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:text="@string/label_short"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_11sdp" />
+
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/rbLong"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:buttonTint="@color/colorText"
+            android:fontFamily="@font/poppins_medium"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:text="@string/label_long"
+            android:textColor="@color/colorText"
+            android:textSize="@dimen/_11sdp" />
+
+    </RadioGroup>
+
+</LinearLayout>

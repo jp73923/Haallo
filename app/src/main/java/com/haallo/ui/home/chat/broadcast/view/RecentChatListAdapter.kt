@@ -1,4 +1,4 @@
-package com.haallo.ui.home.chat
+package com.haallo.ui.home.chat.broadcast.view
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -11,9 +11,10 @@ import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.haallo.R
+import com.haallo.api.chat.model.RecentMessageModel
 import com.haallo.base.OldBaseActivity
 import com.haallo.ui.chat.firebaseDb.FirebaseDbHandler
-import com.haallo.ui.chat.model.RecentMsgModel
+import com.haallo.ui.chat.util.ChatDateTimeUtil
 import com.haallo.util.hide
 import com.haallo.util.show
 import com.squareup.picasso.Picasso
@@ -21,9 +22,8 @@ import de.hdodenhof.circleimageview.CircleImageView
 
 class RecentChatListAdapter(
     private val context: Context,
-    private val activityOld: OldBaseActivity,
     private val myUserId: String,
-    private val chatList: ArrayList<RecentMsgModel>,
+    private val chatList: ArrayList<RecentMessageModel>,
     private val firebaseDbHandler: FirebaseDbHandler,
     private val recentChatListListener: RecentChatListListener,
     private val recentChatListListenerGroup: RecentChatListListenerGroup
@@ -114,7 +114,7 @@ class RecentChatListAdapter(
 
             val timeStamp: Long? = chatList[position].timeStamp?.toLong()
             if (timeStamp != null) {
-                val timeAgo: String = com.haallo.ui.chat.util.ChatDateTimeUtil.getTimeAgoForChatList(activityOld, timeStamp)
+                val timeAgo: String = ChatDateTimeUtil.getTimeAgoForChatList(context, timeStamp)
                 tvTime.text = timeAgo
             }
 

@@ -173,8 +173,9 @@ dependencies {
     //Android Permission Library
     implementation 'com.nabinbhandari.android:permissions:3.8'
 
-    //Circle ImageView
+    //Circle , Rounded
     implementation 'de.hdodenhof:circleimageview:3.1.0'
+    implementation 'com.makeramen:roundedimageview:2.3.0'
 
     //Masked EditText
     implementation 'ru.egslava:MaskedEditText:1.0.5'

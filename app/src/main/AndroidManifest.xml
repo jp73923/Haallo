@@ -98,7 +98,27 @@
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name=".ui.home.setting.NotificationSettingActivity"
+            android:name=".ui.othersetting.OtherSettingActivity"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".ui.othersetting.storyprivacy.StoryPrivacyActivity"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".ui.othersetting.notification.NotificationSettingActivity"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".ui.othersetting.allcontact.AllContactSettingActivity"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".ui.othersetting.wallpapersetting.WallpaperSettingActivity"
+            android:screenOrientation="nosensor" />
+
+        <activity
+            android:name=".ui.othersetting.help.HelpActivity"
             android:screenOrientation="nosensor" />
 
         <activity

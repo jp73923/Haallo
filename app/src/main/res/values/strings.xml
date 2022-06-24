@@ -6,6 +6,7 @@
     <string name="label_camera">Camera</string>
     <string name="label_gallery">Gallery</string>
     <string name="label_call">Call</string>
+    <string name="label_calls">Calls</string>
     <string name="label_settings">Settings</string>
 
     <string name="label_username">Username</string>
@@ -30,10 +31,43 @@
     <string name="label_add_about">Add About</string>
     <string name="label_last_seen">Last Seen</string>
     <string name="label_blocked_contacts">Blocked Contacts</string>
+    <string name="label_all_contacts">All Contacts</string>
 
     <string name="label_everyone">Everyone</string>
     <string name="label_my_contacts">My Contacts</string>
     <string name="label_nobody">Nobody</string>
+    <string name="label_remove_account">Remove Account</string>
+    <string name="label_confirmation">Confirmation</string>
+
+    <string name="label_yes">Yes</string>
+    <string name="label_no">No</string>
+
+    <string name="label_story_privacy">Story Privacy</string>
+    <string name="label_wallpaper">Wallpaper</string>
+    <string name="label_help">Help</string>
+
+    <string name="label_upload_from_gallery">Upload from gallery</string>
+    <string name="label_capture_with_camera">Capture with camera</string>
+    <string name="label_remove_wallpaper">Remove Wallpaper</string>
+    <string name="label_conversation_tones">Conversation tones</string>
+    <string name="label_message_notification">Message notifications</string>
+    <string name="label_default_ringtone">Default ringtone</string>
+    <string name="label_vibrate">Vibrate</string>
+    <string name="label_default">Default</string>
+    <string name="label_group_notification">Group notifications</string>
+    <string name="label_call_notification">Call notifications</string>
+    <string name="label_notification_tone">Notification tone</string>
+
+    <string name="label_off">Off</string>
+    <string name="label_short">Short</string>
+    <string name="label_long">Long</string>
+    <string name="label_edit">Edit</string>
+    <string name="label_my_story">My Story</string>
+    <string name="label_add_to_my_story">Add to my story</string>
+
+    <string name="label_broadcast">Broadcast</string>
+    <string name="label_starred">Starred</string>
+    <string name="label_archived">Archived</string>
 
     <string name="max_length_name">14</string>
     <string name="max_length_about">140</string>
@@ -53,7 +87,18 @@
     <string name="msg_can_not_create_destination_folder">Can not create destination folder.</string>
     <string name="msg_can_not_create_destination_file">Can not create destination file.</string>
 
+    <string name="msg_are_you_sure_do_you_want_remove_your_account">Are you sure, Do you want to remove you account?</string>
+    <string name="msg_your_account_deleted">Your account deleted successfully…</string>
+
+    <string name="msg_are_you_sure_do_you_want_remove_wallpaper">Are you sure, Do you want to remove chat wallpaper?</string>
+    <string name="msg_chat_wallpaper_set_successfully">Chat wallpaper set successfully…</string>
+    <string name="msg_chat_wallpaper_removed">Chat wallpaper removed successfully…</string>
+    <string name="msg_conversation_tones">Play sounds for incoming and outgoing messages</string>
+
     <string name="error_in_finding_file_path">Error in finding file path</string>
+
+    <string name="help_text_1001">Live chat requires a support team that\'s ready to answer questions, but it also requires to tool to help you chat with customers from your site. There\s a ton of options, from live chat tools built into support center apps, to standalone chat tools that can integrate with your favourite support apps.</string>
+    <string name="help_text_1002">Just need a chat tool, for a simple way to customize a chat box, add it to your site, and start interacting with your customers in real time? These apps are the best tools for just that. They\'re focused on chat, so they\'ll include the best features for talking to customers live and then they\'ll integrate with the help desk and other apps you already use.</string>
 
     <string name="crop_image_activity_title">Crop</string>
     <string name="crop_image_menu_rotate_left">Rotate counter clockwise</string>

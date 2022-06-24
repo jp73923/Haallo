@@ -4,6 +4,10 @@
     <color name="colorPrimaryDark">#1F3257</color>
     <color name="colorAccent">#253d67</color>
 
+    <color name="colorWindowBackground">#FFFFFF</color>
+    <color name="colorText">#000000</color>
+    <color name="colorIconTint">#000000</color>
+
     <color name="color_253d67">#253d67</color>
     <color name="color_1F3257">#1F3257</color>
     <color name="color_00BFFF">#00BFFF</color>

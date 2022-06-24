@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_white"
     tools:context=".ui.privacysetting.PrivacySettingActivity">
 
     <RelativeLayout
@@ -53,13 +52,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/_12sdp"
+                android:buttonTint="@color/colorText"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
                 android:layoutDirection="rtl"
                 android:paddingHorizontal="@dimen/_14sdp"
                 android:paddingTop="@dimen/_4sdp"
                 android:text="@string/label_everyone"
-                android:textColor="@color/md_grey600"
+                android:textColor="@color/colorText"
                 android:textSize="@dimen/_12sdp" />
 
             <View
@@ -73,13 +73,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/_12sdp"
+                android:buttonTint="@color/colorText"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
                 android:layoutDirection="rtl"
                 android:paddingHorizontal="@dimen/_14sdp"
                 android:paddingTop="@dimen/_4sdp"
                 android:text="@string/label_my_contacts"
-                android:textColor="@color/md_grey600"
+                android:textColor="@color/colorText"
                 android:textSize="@dimen/_12sdp" />
 
             <View
@@ -93,13 +94,14 @@
                 android:layout_width="match_parent"
                 android:layout_height="?actionBarSize"
                 android:layout_marginStart="@dimen/_12sdp"
+                android:buttonTint="@color/colorText"
                 android:fontFamily="@font/poppins_regular"
                 android:gravity="center_vertical"
                 android:layoutDirection="rtl"
                 android:paddingHorizontal="@dimen/_14sdp"
                 android:paddingTop="@dimen/_4sdp"
                 android:text="@string/label_nobody"
-                android:textColor="@color/md_grey600"
+                android:textColor="@color/colorText"
                 android:textSize="@dimen/_12sdp" />
 
         </RadioGroup>
@@ -111,7 +113,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:gravity="center">
+        android:layout_marginHorizontal="@dimen/_16sdp"
+        android:layout_marginVertical="@dimen/_10sdp">
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -119,17 +122,17 @@
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:clickable="false"
+            android:indeterminateTint="@color/colorIconTint"
             android:visibility="invisible" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnDone"
-            android:layout_width="wrap_content"
+            android:id="@+id/btnSave"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:text="@string/label_done"
-            android:textSize="@dimen/_10sdp"
-            android:visibility="invisible"
-            tools:visibility="visible" />
+            android:paddingVertical="@dimen/_8sdp"
+            android:text="@string/label_save"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/_10sdp" />
 
     </RelativeLayout>
 

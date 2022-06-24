@@ -3,13 +3,16 @@ package com.haallo.application
 import android.annotation.SuppressLint
 import android.content.Context
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.content.ContextCompat
 import androidx.multidex.MultiDex
 import com.androidnetworking.AndroidNetworking
 import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.haallo.BuildConfig
+import com.haallo.R
 import com.haallo.base.ActivityManager
 import com.haallo.di.BaseAppComponent
 import com.haallo.di.BaseUiApp
+import com.haallo.util.SharedPreferenceUtil
 import timber.log.Timber
 
 @SuppressLint("Registered")
@@ -20,16 +23,26 @@ open class HaalloApplication : BaseUiApp() {
 
         @SuppressLint("StaticFieldLeak")
         lateinit var context: Context
+
+        fun updateNightMode(context: Context) {
+            val sharedPreference = SharedPreferenceUtil.getInstance(context)
+            if (sharedPreference.nightTheme) {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            } else {
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
     }
 
     override fun onCreate() {
         super.onCreate()
         context = this
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        updateNightMode(this)
 
         ActivityManager.getInstance().init(this)
         AndroidNetworking.initialize(applicationContext)
+
         setupLog()
     }
 

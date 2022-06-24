@@ -28,7 +28,7 @@ class EditProfilePhotoBottomSheet : BaseBottomSheetDialogFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setStyle(STYLE_NORMAL, R.style.DialogStyle)
+        setStyle(STYLE_NORMAL, R.style.BottomSheetTheme)
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {

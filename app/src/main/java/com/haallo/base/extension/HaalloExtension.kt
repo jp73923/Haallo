@@ -2,6 +2,7 @@ package com.haallo.base.extension
 
 import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.graphics.*
 import android.media.MediaMetadataRetriever
 import android.net.Uri
@@ -279,4 +280,12 @@ fun openGoogleMapWithProvidedLatLng(context: Context, latitude: String?, longitu
 fun EditText.setMultiLineCapSentencesAndDoneAction() {
     imeOptions = EditorInfo.IME_ACTION_DONE
     setRawInputType(InputType.TYPE_TEXT_FLAG_CAP_SENTENCES or InputType.TYPE_TEXT_FLAG_MULTI_LINE)
+}
+
+fun getScreenWidth(): Int {
+    return Resources.getSystem().displayMetrics.widthPixels
+}
+
+fun getScreenHeight(): Int {
+    return Resources.getSystem().displayMetrics.heightPixels
 }

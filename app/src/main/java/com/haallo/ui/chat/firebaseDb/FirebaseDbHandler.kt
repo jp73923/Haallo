@@ -4,10 +4,11 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
+import com.haallo.api.chat.model.RecentMessageModel
+import com.haallo.constant.IntentConstant
 import com.haallo.ui.call.CallModel
 import com.haallo.ui.chat.activity.GroupChatActivity
 import com.haallo.ui.chat.model.*
-import com.haallo.constant.IntentConstant
 import com.haallo.ui.group.model.CreateGroupModel
 import com.haallo.util.SharedPreferenceUtil
 import com.haallo.util.showLog
@@ -109,12 +110,10 @@ class FirebaseDbHandler(val context: Context) {
         fun onProfilePicFound(profilePic: String)
     }
 
-    fun getRecentMessages(
-        userId: String,
-        recentMsgList: MutableLiveData<ArrayList<RecentMsgModel>>
-    ) {
+    fun getRecentMessages(userId: String, recentMsgList: MutableLiveData<ArrayList<RecentMessageModel>>) {
         val recentMsg = recentMsgList.value ?: ArrayList()
         FirebaseDatabase.getInstance().getReference("RecentMessage").child(userId).addChildEventListener(object : ChildEventListener {
+
             override fun onCancelled(p0: DatabaseError) {
 
             }
@@ -124,7 +123,7 @@ class FirebaseDbHandler(val context: Context) {
             }
 
             override fun onChildChanged(dataSnapshot: DataSnapshot, p1: String?) {
-                val msg = dataSnapshot.getValue(RecentMsgModel::class.java)
+                val msg = dataSnapshot.getValue(RecentMessageModel::class.java)
                 for (i in 0 until recentMsg.size) {
                     if (recentMsg[i].id == msg?.id) {
                         recentMsg[i] = msg!!
@@ -135,19 +134,18 @@ class FirebaseDbHandler(val context: Context) {
 
             override fun onChildAdded(dataSnapshot: DataSnapshot, p1: String?) {
                 try {
-                    val value: RecentMsgModel? =
-                        dataSnapshot.getValue(RecentMsgModel::class.java)
+                    val value: RecentMessageModel? = dataSnapshot.getValue(RecentMessageModel::class.java)
                     if (value != null) {
                         recentMsg.add(value)
                     }
                     recentMsgList.value = recentMsg
                 } catch (e: Exception) {
-
+                    e.printStackTrace()
                 }
             }
 
             override fun onChildRemoved(dataSnapshot: DataSnapshot) {
-                val msg = dataSnapshot.getValue(RecentMsgModel::class.java)
+                val msg = dataSnapshot.getValue(RecentMessageModel::class.java)
                 try {
                     for (i in 0 until recentMsg.size) {
                         if (recentMsg[i].id == msg?.id) {
@@ -156,13 +154,11 @@ class FirebaseDbHandler(val context: Context) {
                     }
                     recentMsgList.value = recentMsg
                 } catch (e: Exception) {
-
+                    e.printStackTrace()
                 }
             }
-        }
-        )
+        })
     }
-
 
     fun getRecentCall(
         userId: String?,

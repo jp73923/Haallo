@@ -20,15 +20,21 @@ class ImageCropActivity : BaseActivity(), CropImageView.OnCropImageCompleteListe
     companion object {
         const val REQUEST_CODE_CROP_IMAGE = 10001
         const val INTENT_EXTRA_FILE_PATH = "INTENT_EXTRA_FILE_PATH"
-        fun getIntent(context: Context, filePath: String): Intent {
+        private const val INTENT_EXTRA_ASPECT_RATIO_X = "INTENT_EXTRA_ASPECT_RATIO_X"
+        private const val INTENT_EXTRA_ASPECT_RATIO_Y = "INTENT_EXTRA_ASPECT_RATIO_Y"
+        fun getIntent(context: Context, filePath: String, aspectRatioX: Int = 1, aspectRatioY: Int = 1): Intent {
             val intent = Intent(context, ImageCropActivity::class.java)
             intent.putExtra(INTENT_EXTRA_FILE_PATH, filePath)
+            intent.putExtra(INTENT_EXTRA_ASPECT_RATIO_X, aspectRatioX)
+            intent.putExtra(INTENT_EXTRA_ASPECT_RATIO_Y, aspectRatioY)
             return intent
         }
     }
 
     private lateinit var binding: ActivityCropImageBinding
     private var selectedFilePath = ""
+    private var aspectRatioX: Int = 1
+    private var aspectRatioY: Int = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -67,6 +73,12 @@ class ImageCropActivity : BaseActivity(), CropImageView.OnCropImageCompleteListe
             val filePath = it.getStringExtra(INTENT_EXTRA_FILE_PATH)
             if (!filePath.isNullOrEmpty()) {
                 selectedFilePath = filePath
+                val aspectRatioX = it.getIntExtra(INTENT_EXTRA_ASPECT_RATIO_X, -1)
+                val aspectRatioY = it.getIntExtra(INTENT_EXTRA_ASPECT_RATIO_Y, -1)
+                if (aspectRatioX != -1 && aspectRatioX > 0 && aspectRatioY != -1 && aspectRatioY > 0) {
+                    this.aspectRatioX = aspectRatioX
+                    this.aspectRatioY = aspectRatioY
+                }
                 loadPhoto()
             } else {
                 onBackPressed()
@@ -78,7 +90,7 @@ class ImageCropActivity : BaseActivity(), CropImageView.OnCropImageCompleteListe
         binding.apply {
             cropImageView.clearAspectRatio()
             cropImageView.resetCropRect()
-            cropImageView.setAspectRatio(1, 1)
+            cropImageView.setAspectRatio(aspectRatioX, aspectRatioY)
             val file = File(selectedFilePath)
             cropImageView.setImageUriAsync(Uri.fromFile(file))
         }

@@ -11,7 +11,12 @@ import com.haallo.databinding.FragmentHomeCallBinding
 import com.haallo.ui.call.CallModel
 import com.haallo.util.SharedPreferenceUtil
 
-class HomeCallFragmentOld : OldBaseFragment(), View.OnClickListener {
+class HomeCallFragment : OldBaseFragment(), View.OnClickListener {
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = HomeCallFragment()
+    }
 
     private var _binding: FragmentHomeCallBinding? = null
     private val binding get() = _binding!!

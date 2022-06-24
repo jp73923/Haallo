@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_white"
     tools:context=".ui.privacysetting.PrivacySettingActivity">
 
     <RelativeLayout
@@ -49,7 +48,7 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="@dimen/_14sdp"
             android:text="@string/label_last_seen"
-            android:textColor="@color/md_grey600"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/_12sdp" />
 
         <View
@@ -66,7 +65,7 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="@dimen/_14sdp"
             android:text="@string/label_profile_photo"
-            android:textColor="@color/md_grey600"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/_12sdp" />
 
         <View
@@ -83,7 +82,7 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="@dimen/_14sdp"
             android:text="@string/label_blocked_contacts"
-            android:textColor="@color/md_grey600"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/_12sdp" />
 
         <View
@@ -100,7 +99,7 @@
             android:gravity="center_vertical"
             android:paddingHorizontal="@dimen/_14sdp"
             android:text="@string/label_about"
-            android:textColor="@color/md_grey600"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/_12sdp" />
 
     </LinearLayout>

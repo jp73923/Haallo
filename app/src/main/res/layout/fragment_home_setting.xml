@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/md_white"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.AppCompatTextView
@@ -46,8 +46,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="@string/label_name"
-                android:textColor="@color/md_grey800"
-                android:textColorHint="@color/md_grey800"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
                 android:textSize="@dimen/_14sdp" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -56,8 +56,8 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:hint="@string/label_status"
-                android:textColor="@color/md_grey800"
-                android:textColorHint="@color/md_grey800"
+                android:textColor="@color/colorText"
+                android:textColorHint="@color/colorText"
                 android:textSize="@dimen/_10sdp" />
 
         </LinearLayout>
@@ -69,7 +69,7 @@
             android:layout_alignParentEnd="true"
             android:padding="@dimen/_8sdp"
             android:src="@drawable/ic_setting_edit_story"
-            android:tint="@color/md_grey600" />
+            android:tint="@color/colorIconTint" />
 
     </RelativeLayout>
 
@@ -87,7 +87,7 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/_14sdp"
         android:text="@string/label_account"
-        android:textColor="@color/md_grey600"
+        android:textColor="@color/colorText"
         android:textSize="@dimen/_12sdp" />
 
     <View
@@ -104,7 +104,7 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/_14sdp"
         android:text="@string/label_privacy"
-        android:textColor="@color/md_grey600"
+        android:textColor="@color/colorText"
         android:textSize="@dimen/_12sdp" />
 
     <View
@@ -127,7 +127,7 @@
             android:layout_toStartOf="@+id/switchCompatNightMode"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/label_night_mode"
-            android:textColor="@color/md_grey600"
+            android:textColor="@color/colorText"
             android:textSize="@dimen/_12sdp" />
 
         <androidx.appcompat.widget.SwitchCompat
@@ -135,7 +135,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true" />
+            android:layout_centerVertical="true"
+            app:thumbTint="@color/colorIconTint"
+            app:trackTint="@color/md_grey400" />
 
         <!--
             android:button="@drawable/custom_switch_selector"
@@ -159,7 +161,7 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/_14sdp"
         android:text="@string/label_others"
-        android:textColor="@color/md_grey600"
+        android:textColor="@color/colorText"
         android:textSize="@dimen/_12sdp" />
 
     <View
@@ -176,7 +178,7 @@
         android:gravity="center_vertical"
         android:paddingHorizontal="@dimen/_14sdp"
         android:text="@string/label_logout"
-        android:textColor="@color/md_grey600"
+        android:textColor="@color/colorText"
         android:textSize="@dimen/_12sdp" />
 
 </LinearLayout>

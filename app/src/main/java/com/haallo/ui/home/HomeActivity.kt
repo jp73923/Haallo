@@ -24,17 +24,19 @@ class HomeActivity : BaseActivity() {
     }
 
     private lateinit var binding: ActivityHomeBinding
+//    private lateinit var tabManager: HomeTabManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
+//        tabManager = HomeTabManager(this, savedInstanceState)
 
-        listenToViewEvents(this)
+        listenToViewEvent(this)
     }
 
-    private fun listenToViewEvents(context: Context) {
+    private fun listenToViewEvent(context: Context) {
         binding.llChat.throttleClicks().subscribeAndObserveOnMainThread {
             binding.viewPager.setCurrentItem(0, true)
         }.autoDispose()
@@ -135,4 +137,15 @@ class HomeActivity : BaseActivity() {
             firebaseDbHandler.setLastSeenStatus(myUserId, currentTime.toString())
         }
     }
+
+//    override fun onBackPressed() {
+//        if (!tabManager.onBackPressed()) {
+//            if (tabManager.activatedTab != HaalloTabBarView.TAB_CHAT) {
+//                tabManager.selectTab(HaalloTabBarView.TAB_CHAT, true)
+//                return
+//            } else {
+//                finish()
+//            }
+//        }
+//    }
 }

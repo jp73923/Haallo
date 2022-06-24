@@ -7,7 +7,12 @@ import android.view.ViewGroup
 import com.haallo.base.OldBaseFragment
 import com.haallo.databinding.FragmentHomeCameraBinding
 
-class HomeCameraFragmentOld : OldBaseFragment(), View.OnClickListener {
+class HomeCameraFragment : OldBaseFragment(), View.OnClickListener {
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = HomeCameraFragment()
+    }
 
     private var _binding: FragmentHomeCameraBinding? = null
     private val binding get() = _binding!!

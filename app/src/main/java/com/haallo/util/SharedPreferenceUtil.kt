@@ -5,19 +5,16 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.util.Log
 
-class SharedPreferenceUtil
-private constructor(val context: Context) {
+class SharedPreferenceUtil private constructor(val context: Context) {
     val TAG = SharedPreferenceUtil::class.java.simpleName
 
-    private val sharedPreferences: SharedPreferences =
-        context.getSharedPreferences("abcde", Context.MODE_PRIVATE)
+    private val sharedPreferences: SharedPreferences = context.getSharedPreferences("haallo_pref", Context.MODE_PRIVATE)
     /* private val persistableSharedPreferences: SharedPreferences = context.getSharedPreferences(Constant.PERSISTABLE_PREFRENCE_NAME, Context.MODE_PRIVATE)*/
 
     private val editor: SharedPreferences.Editor = sharedPreferences.edit()
     /* private val persistableEditor: SharedPreferences.Editor = persistableSharedPreferences.edit()*/
 
     companion object {
-
         @SuppressLint("StaticFieldLeak")
         private var instance: SharedPreferenceUtil? = null
 
@@ -94,7 +91,7 @@ private constructor(val context: Context) {
         set(value) = sharedPreferences.set("splashProgress", value)
 
     var userId: String
-        get() = sharedPreferences["userId", ""]?:""
+        get() = sharedPreferences["userId", ""] ?: ""
         set(value) = sharedPreferences.set("userId", value)
 
     var isFirstTime: Int

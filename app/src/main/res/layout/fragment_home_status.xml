@@ -1,120 +1,121 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <RelativeLayout
-        android:id="@+id/relative_header"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tvHeading"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:background="@color/colorPrimary">
+        android:layout_height="?actionBarSize"
+        android:background="@color/color_1F3257"
+        android:fontFamily="@font/poppins_regular"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/_12sdp"
+        android:text="@string/label_story"
+        android:textColor="@color/md_white"
+        android:textSize="@dimen/_14sdp" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_8"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/status"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_16"
-            android:visibility="visible"
-            tools:ignore="RelativeOverlap" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/story_layout"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/relative_header"
-        android:layout_marginStart="@dimen/dp_10"
-        android:layout_marginTop="@dimen/dp_5"
-        android:layout_marginEnd="@dimen/dp_10"
-        android:layout_marginBottom="@dimen/dp_10">
+        android:layout_height="match_parent">
 
-        <RelativeLayout
-            android:id="@+id/group_icon_layout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_10"
-            android:layout_marginTop="@dimen/dp_20">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/ivGroupIcon"
-                android:layout_width="@dimen/dp_100"
-                android:layout_height="@dimen/dp_100"
-                android:layout_centerInParent="true"
-                android:src="@drawable/profile_picture"
-                app:tint="@color/gray" />
-
-            <de.hdodenhof.circleimageview.CircleImageView
-                android:id="@+id/ivStoryImage"
-                android:layout_width="@dimen/dp_80"
-                android:layout_height="@dimen/dp_80"
-                android:layout_centerInParent="true"
-                android:src="@drawable/camera_full_blue"
-                android:visibility="gone" />
-
-            <xute.storyview.StoryView
-                android:id="@+id/storyView"
-                android:layout_width="wrap_content"
+            <RelativeLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerInParent="true"
-                android:visibility="gone"
-                app:spaceBetweenImageAndIndicator="1dp"
-                app:storyImageRadius="8dp"
-                app:storyItemIndicatorWidth="1dp" />
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_marginTop="@dimen/_12sdp">
 
-        </RelativeLayout>
+                <FrameLayout
+                    android:id="@+id/rlStatusImage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content">
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/group_name"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_marginTop="@dimen/dp_40"
-            android:layout_toEndOf="@+id/group_icon_layout"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/my_story"
-            android:textColor="@color/black"
-            android:textSize="@dimen/sp_18" />
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/ivGroupIcon"
+                        android:layout_width="@dimen/_68sdp"
+                        android:layout_height="@dimen/_68sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/outline_account_circle_24_profile" />
 
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/time"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/group_name"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_toEndOf="@+id/group_icon_layout"
-            android:fontFamily="@font/poppins_regular"
-            android:text="Add to my story"
-            android:textSize="@dimen/sp_15" />
+                    <de.hdodenhof.circleimageview.CircleImageView
+                        android:id="@+id/ivStoryImage"
+                        android:layout_width="@dimen/_68sdp"
+                        android:layout_height="@dimen/_68sdp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/camera_full_blue"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
 
-        <TextView
-            android:id="@+id/edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dp_8"
-            android:drawableStart="@drawable/camera_full_blue"
-            android:drawablePadding="@dimen/dp_5"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/edit"
-            android:textColor="@color/dark_sky_blue"
-            android:textSize="@dimen/sp_15" />
+                    <xute.storyview.StoryView
+                        android:id="@+id/storyView"
+                        android:layout_width="@dimen/_68sdp"
+                        android:layout_height="@dimen/_68sdp"
+                        android:layout_gravity="center"
+                        android:visibility="gone"
+                        app:spaceBetweenImageAndIndicator="@dimen/_1sdp"
+                        app:storyImageRadius="@dimen/_8sdp"
+                        app:storyItemIndicatorWidth="@dimen/_1sdp"
+                        tools:visibility="visible" />
 
-    </RelativeLayout>
+                </FrameLayout>
 
-    <View
-        android:id="@+id/view"
-        android:layout_width="match_parent"
-        android:layout_height="0.5dp"
-        android:layout_below="@+id/story_layout"
-        android:background="@color/lightGray" />
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/_12sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_toStartOf="@+id/tvEdit"
+                    android:layout_toEndOf="@+id/rlStatusImage"
+                    android:orientation="vertical">
 
-</RelativeLayout>
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/group_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_medium"
+                        android:text="@string/label_my_story"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/_13sdp" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="@font/poppins_regular"
+                        android:text="@string/label_add_to_my_story"
+                        android:textColor="@color/colorText"
+                        android:textSize="@dimen/_10sdp" />
+
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvEdit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_12sdp"
+                    android:drawableStart="@drawable/baseline_photo_camera_24"
+                    android:drawablePadding="@dimen/_6sdp"
+                    android:fontFamily="@font/poppins_regular"
+                    android:gravity="center_vertical"
+                    android:text="@string/label_edit"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/_10sdp"
+                    android:textStyle="bold"
+                    app:drawableTint="@color/colorIconTint" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>

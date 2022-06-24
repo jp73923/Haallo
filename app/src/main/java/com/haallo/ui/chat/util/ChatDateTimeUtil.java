@@ -1,6 +1,7 @@
 package com.haallo.ui.chat.util;
 
 import android.app.Activity;
+import android.content.Context;
 import android.util.Log;
 
 import com.haallo.R;
@@ -253,7 +254,7 @@ public class ChatDateTimeUtil {
         return fullDateFormat.format(timestampDate) + SEPARATOR + activity.getResources().getString(R.string.at) + SEPARATOR + timeFormat.format(timestampDate);
     }
 
-    public static String getTimeAgoForChatList(Activity activity, long timestamp) {
+    public static String getTimeAgoForChatList(Context context, long timestamp) {
         SimpleDateFormat fullDateFormat = new SimpleDateFormat("yyyy/MM/dd", Locale.ENGLISH);
         SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm a", Locale.ENGLISH);
 
@@ -274,7 +275,7 @@ public class ChatDateTimeUtil {
         } else if (secondsAgo < week) {
             int daysAgo = (int) (secondsAgo / day);
             if (daysAgo == 1) {
-                return activity.getResources().getString(R.string.yesterday_at);
+                return context.getResources().getString(R.string.yesterday_at);
             }
         } else {
             return fullDateFormat.format(timestampDate);

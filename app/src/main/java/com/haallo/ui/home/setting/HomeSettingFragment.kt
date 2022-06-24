@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.haallo.R
+import com.haallo.application.HaalloApplication
 import com.haallo.base.BaseFragment
 import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.base.extension.subscribeAndObserveOnMainThread
@@ -13,12 +14,20 @@ import com.haallo.base.extension.throttleClicks
 import com.haallo.databinding.FragmentHomeSettingBinding
 import com.haallo.ui.accountsetting.AccountSettingActivity
 import com.haallo.ui.editprofile.EditProfileActivity
+import com.haallo.ui.editprofile.MyProfilePhotoPreviewActivity
+import com.haallo.ui.othersetting.OtherSettingActivity
 import com.haallo.ui.privacysetting.PrivacySettingActivity
 import com.haallo.ui.splashToHome.splash.SplashActivity
 import com.haallo.ui.support.SupportActivity
 import com.haallo.util.SharedPreferenceUtil
+import com.jakewharton.rxbinding3.widget.checkedChanges
 
 class HomeSettingFragment : BaseFragment() {
+
+    companion object {
+        @JvmStatic
+        fun newInstance() = HomeSettingFragment()
+    }
 
     private var _binding: FragmentHomeSettingBinding? = null
     private val binding get() = _binding!!
@@ -34,6 +43,12 @@ class HomeSettingFragment : BaseFragment() {
     }
 
     private fun listenToViewEvent() {
+        binding.switchCompatNightMode.isChecked = sharedPreferenceUtil.nightTheme
+
+        binding.ivUserProfile.throttleClicks().subscribeAndObserveOnMainThread {
+            startActivityWithDefaultAnimation(MyProfilePhotoPreviewActivity.getIntent(requireContext()))
+        }.autoDispose()
+
         binding.ivEdit.throttleClicks().subscribeAndObserveOnMainThread {
             startActivityWithDefaultAnimation(EditProfileActivity.getIntent(requireContext()))
         }.autoDispose()
@@ -46,12 +61,13 @@ class HomeSettingFragment : BaseFragment() {
             startActivityWithDefaultAnimation(PrivacySettingActivity.getIntent(requireContext()))
         }.autoDispose()
 
-        binding.tvNightMode.throttleClicks().subscribeAndObserveOnMainThread {
-
+        binding.switchCompatNightMode.checkedChanges().skipInitialValue().subscribeAndObserveOnMainThread {
+            sharedPreferenceUtil.nightTheme = it
+            HaalloApplication.updateNightMode(requireContext())
         }.autoDispose()
 
         binding.tvOthers.throttleClicks().subscribeAndObserveOnMainThread {
-            startActivityWithDefaultAnimation(SupportActivity.getIntent(requireContext()))
+            startActivityWithDefaultAnimation(OtherSettingActivity.getIntent(requireContext()))
         }.autoDispose()
 
         binding.tvLogout.throttleClicks().subscribeAndObserveOnMainThread {

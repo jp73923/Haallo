@@ -1,5 +1,6 @@
 package com.haallo.ui.splashToHome.forgotAndResetPassword
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
@@ -16,6 +17,12 @@ import com.haallo.util.isValidMobileNumber
 import com.haallo.util.showToast
 
 class ForgotPasswordActivityOld : OldBaseActivity(), View.OnClickListener {
+
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return Intent(context, ForgotPasswordActivityOld::class.java)
+        }
+    }
 
     private lateinit var binding: ActivityForgotPasswordBinding
 

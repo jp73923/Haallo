@@ -9,7 +9,7 @@ import com.haallo.R
 import com.haallo.base.OldBaseActivity
 import com.haallo.databinding.ActivityResetPasswordBinding
 import com.haallo.ui.splashToHome.SignInToHomeViewModelOld
-import com.haallo.ui.splashToHome.signIn.SignInActivityOld
+import com.haallo.ui.signin.SignInActivity
 import com.haallo.util.getString
 import com.haallo.util.isValidPassword
 import com.haallo.util.showToast
@@ -66,7 +66,7 @@ class ResetPasswordActivityOld : OldBaseActivity(), View.OnClickListener {
         signInToHomeViewModel.resetPasswordResponse.observe(this) {
             hideLoading()
             showToast(getString(R.string.password_changed_successfully))
-            startActivity(Intent(this, SignInActivityOld::class.java))
+            startActivity(Intent(this, SignInActivity::class.java))
             finishAffinity()
         }
 

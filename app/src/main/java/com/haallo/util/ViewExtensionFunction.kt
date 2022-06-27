@@ -31,13 +31,12 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.google.android.gms.maps.model.LatLng
-import com.google.firebase.FirebaseApp
 import com.google.firebase.messaging.FirebaseMessaging
 import com.haallo.R
+import com.haallo.constant.Constants
 import com.haallo.ui.chat.util.RealPathUtil.getRealPathFromURI_API11to18
 import com.haallo.ui.chat.util.RealPathUtil.getRealPathFromURI_API19
 import com.haallo.ui.chat.util.RealPathUtil.getRealPathFromURI_BelowAPI11
-import com.haallo.constant.Constants
 import com.nabinbhandari.android.permissions.PermissionHandler
 import com.nabinbhandari.android.permissions.Permissions
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
@@ -122,7 +121,6 @@ fun findScreenWidth(window: Window): Int {
     window.windowManager.defaultDisplay.getMetrics(disPlayMetric)
     return disPlayMetric.widthPixels
 }
-
 
 
 fun findRequestBody(string: String): RequestBody {
@@ -264,6 +262,7 @@ fun findTimeFromTimeStamp(timeStamp: Long): String {
     cal.timeInMillis = timeStamp
     return DateFormat.format("h:mm a", cal).toString()
 }
+
 fun findTimeFromTimeStamp12hour(timeStamp: Long?): String {
     val cal = Calendar.getInstance(Locale.getDefault())
     cal.timeInMillis = timeStamp!!
@@ -294,7 +293,6 @@ fun findGroupDateFromTimeStamp(timeStamp: Long): String {
     cal.timeInMillis = timeStamp
     return DateFormat.format("dd MMM yyyy hh:mm", cal).toString()
 }
-
 
 
 //Find Time In Miles
@@ -515,6 +513,7 @@ fun enableDeviceLocation(context: Context) {
         }
     alertDialog.show()
 }
+
 fun bitmapToFile(bitmap: Bitmap, context: Context?): Uri {
     // Get the context wrapper
     val wrapper = ContextWrapper(context)
@@ -536,9 +535,8 @@ fun bitmapToFile(bitmap: Bitmap, context: Context?): Uri {
     // Return the saved bitmap uri
     return Uri.parse(file.absolutePath)
 }
+
 fun storeFirebaseToken(context: Context) {
-
-
     FirebaseMessaging.getInstance().token.addOnCompleteListener {
         if (it.isComplete) {
             var firebaseToken = it.result.toString()
@@ -547,7 +545,8 @@ fun storeFirebaseToken(context: Context) {
         }
     }
 }
-fun Context.getResource(name:String): Drawable? {
-    val resID = resources.getIdentifier(name , "drawable", this.packageName)
+
+fun Context.getResource(name: String): Drawable? {
+    val resID = resources.getIdentifier(name, "drawable", this.packageName)
     return getDrawable(resID)
 }

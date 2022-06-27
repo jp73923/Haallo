@@ -5,7 +5,7 @@ import android.content.Intent
 import android.util.Log
 import android.view.View
 import com.haallo.base.OldBaseActivity
-import com.haallo.ui.splashToHome.signIn.SignInActivityOld
+import com.haallo.ui.signin.SignInActivity
 import retrofit2.HttpException
 import java.net.ConnectException
 import java.net.SocketTimeoutException
@@ -39,7 +39,7 @@ object ErrorUtil {
                             sharedPreferenceUtil.userGender = ""
                             sharedPreferenceUtil.splashProgress = 0
                             sharedPreferenceUtil.userId = "0"
-                            context.startActivity(Intent(context, SignInActivityOld::class.java))
+                            context.startActivity(Intent(context, SignInActivity::class.java))
                             context.finishAffinity()
                         }
                         else -> {

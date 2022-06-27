@@ -103,7 +103,7 @@ class SharedPreferenceUtil private constructor(val context: Context) {
         set(value) = sharedPreferences.set("selectedLanguage", value)
 
     var deviceToken: String
-        get() = sharedPreferences["deviceToken", "dsjfk"]!!
+        get() = sharedPreferences["deviceToken", ""]!!
         set(value) = sharedPreferences.set("deviceToken", value)
 
     operator fun SharedPreferences.set(key: String, value: Any?) {

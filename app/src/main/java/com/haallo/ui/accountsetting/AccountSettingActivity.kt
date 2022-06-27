@@ -14,7 +14,7 @@ import com.haallo.api.coroutine.Status
 import com.haallo.base.OldBaseActivity
 import com.haallo.databinding.ActivitySettingAccountBinding
 import com.haallo.ui.home.setting.SettingViewModel
-import com.haallo.ui.splashToHome.signIn.SignInActivityOld
+import com.haallo.ui.signin.SignInActivity
 import com.haallo.util.SharedPreferenceUtil
 import com.haallo.util.showToast
 
@@ -72,7 +72,7 @@ class AccountSettingActivity : OldBaseActivity() {
 
                                         SharedPreferenceUtil.getInstance(this).deletePreferences()
 
-                                        startActivity(Intent(this, SignInActivityOld::class.java))
+                                        startActivity(Intent(this, SignInActivity::class.java))
                                         finish()
                                     }
                                 }

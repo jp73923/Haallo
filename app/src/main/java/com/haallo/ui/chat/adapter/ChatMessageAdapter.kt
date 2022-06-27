@@ -147,8 +147,8 @@ class ChatMessageAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
             EnumUtils.EnumChatMessage.ScreenShot.viewType -> {
-                val screenshotvIEW: View = LayoutInflater.from(parent.context).inflate(R.layout.screenshot_item, parent, false)
-                ScreenshotHolder(screenshotvIEW)
+                val screenshotView: View = LayoutInflater.from(parent.context).inflate(R.layout.screenshot_item, parent, false)
+                ScreenshotHolder(screenshotView)
             }
             EnumUtils.EnumChatMessage.EmojiSender.viewType -> {
                 val emojiSender: View = LayoutInflater.from(parent.context).inflate(R.layout.list_item_chat_send_emojis, parent, false)

@@ -46,6 +46,9 @@
     <string name="label_wallpaper">Wallpaper</string>
     <string name="label_help">Help</string>
 
+    <string name="label_login">Login</string>
+    <string name="label_register">Register</string>
+
     <string name="label_upload_from_gallery">Upload from gallery</string>
     <string name="label_capture_with_camera">Capture with camera</string>
     <string name="label_remove_wallpaper">Remove Wallpaper</string>
@@ -67,7 +70,14 @@
 
     <string name="label_broadcast">Broadcast</string>
     <string name="label_starred">Starred</string>
+    <string name="label_starred_messages">Starred messages</string>
+    <string name="label_message">Message</string>
     <string name="label_archived">Archived</string>
+
+    <string name="label_mobile_no">Mobile No</string>
+    <string name="label_password">Password</string>
+
+    <string name="label_don_t_have_an_account">Don\'t have an account?</string>
 
     <string name="max_length_name">14</string>
     <string name="max_length_about">140</string>
@@ -80,6 +90,7 @@
     <string name="msg_some_permission_denied">Some permissions were denied</string>
     <string name="msg_permission_denied">Permission denied</string>
 
+    <string name="msg_please_allow_all_required_permission">Please allow all required permissions to continue.</string>
     <string name="msg_please_allow_storage_permission">Please allow storage permission to select photo.</string>
     <string name="msg_please_allow_camera_permission">Please allow camera permission to capture photo.</string>
     <string name="msg_allow_permission_from_settings">Allow storage permission from device Settings -> Apps -> Haallo -> Permissions.</string>
@@ -96,6 +107,14 @@
     <string name="msg_conversation_tones">Play sounds for incoming and outgoing messages</string>
 
     <string name="error_in_finding_file_path">Error in finding file path</string>
+
+    <string name="error_enter_mobile_number">Please enter mobile number</string>
+    <string name="error_enter_valid_mobile_number">Please enter valid mobile number</string>
+    <string name="error_enter_password">Please enter password</string>
+    <string name="error_enter_valid_password">Please enter valid password</string>
+    <string name="error_password_length_must_be_more_than_characters">Password length must be more than or equal to 8 characters</string>
+    <string name="error_please_enter_confirm_password">Please enter confirm password</string>
+    <string name="error_password_did_not_match">Password didn\'t match</string>
 
     <string name="help_text_1001">Live chat requires a support team that\'s ready to answer questions, but it also requires to tool to help you chat with customers from your site. There\s a ton of options, from live chat tools built into support center apps, to standalone chat tools that can integrate with your favourite support apps.</string>
     <string name="help_text_1002">Just need a chat tool, for a simple way to customize a chat box, add it to your site, and start interacting with your customers in real time? These apps are the best tools for just that. They\'re focused on chat, so they\'ll include the best features for talking to customers live and then they\'ll integrate with the help desk and other apps you already use.</string>

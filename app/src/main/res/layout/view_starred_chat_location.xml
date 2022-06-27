@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/ivUserProfile"
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_centerVertical="true"
+                tools:src="@drawable/logo" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_8sdp"
+                android:layout_toStartOf="@+id/tvChatDateTime"
+                android:layout_toEndOf="@+id/ivUserProfile"
+                android:orientation="vertical">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUsernameFrom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/_11sdp"
+                    tools:text="You" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivFromToArrow"
+                    android:layout_width="@dimen/_18sdp"
+                    android:layout_height="@dimen/_18sdp"
+                    android:src="@drawable/outline_arrow_drop_down_24"
+                    android:tint="@color/colorIconTint" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/tvUsernameTo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/poppins_medium"
+                    android:paddingHorizontal="@dimen/_4sdp"
+                    android:textColor="@color/colorText"
+                    android:textSize="@dimen/_10sdp"
+                    tools:text="Erhan Almaz" />
+
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvChatDateTime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/_10sdp"
+                tools:text="14 hours ago" />
+
+        </RelativeLayout>
+
+        <!--
+        https://stackoverflow.com/questions/50674829/how-to-display-location-message-in-chat-window-same-like-whatsapp-in-android-pro/50674957#50674957
+        -->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="@dimen/_120sdp"
+            android:layout_height="@dimen/_90sdp"
+            android:layout_margin="@dimen/_4sdp"
+            app:cardBackgroundColor="@color/md_grey100"
+            app:cardCornerRadius="@dimen/_8sdp"
+            app:cardElevation="@dimen/_2sdp">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="@dimen/_2sdp"
+                app:cardBackgroundColor="@color/md_white"
+                app:cardCornerRadius="@dimen/_6sdp"
+                app:cardElevation="@dimen/zero_dp">
+
+                <com.google.android.gms.maps.MapView
+                    android:id="@+id/mapView"
+                    android:name="com.google.android.apps.maps"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    map:cameraZoom="13"
+                    map:liteMode="true"
+                    map:mapType="normal"
+                    map:uiMapToolbar="false" />
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

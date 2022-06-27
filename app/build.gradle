@@ -203,6 +203,10 @@ dependencies {
     //Screenshot detection
     implementation 'com.akexorcist:screenshot-detection:1.0.2'
 
+    //download manager library
+    implementation "androidx.tonyodev.fetch2:xfetch2:3.1.1"
+    implementation 'com.github.abdularis:androidbuttonprogress:1.0.2'
+
     //Multi Contact Picker
     implementation project(':multicontactpicker')
 

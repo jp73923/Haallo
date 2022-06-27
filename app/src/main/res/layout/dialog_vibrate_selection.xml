@@ -23,7 +23,7 @@
         android:id="@+id/rgVibrate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:paddingHorizontal="@dimen/_10sdp"
         android:orientation="vertical">
 
         <androidx.appcompat.widget.AppCompatRadioButton

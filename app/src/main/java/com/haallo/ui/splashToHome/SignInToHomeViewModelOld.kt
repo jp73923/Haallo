@@ -1,23 +1,23 @@
 package com.haallo.ui.splashToHome
 
 import androidx.lifecycle.MutableLiveData
+import com.haallo.api.authentication.model.SignInResponse
+import com.haallo.api.authentication.model.SignUpResponse
 import com.haallo.base.OldBaseViewModel
 import com.haallo.ui.splashToHome.forgotAndResetPassword.ForgotPasswordResponse
 import com.haallo.ui.splashToHome.forgotAndResetPassword.ResetPasswordResponse
 import com.haallo.ui.splashToHome.otp.OtpVerifyResponse
 import com.haallo.ui.splashToHome.otp.ResendOtpResponse
 import com.haallo.ui.splashToHome.profile.CreateProfileResponse
-import com.haallo.ui.splashToHome.registration.RegistrationResponse
-import com.haallo.ui.splashToHome.signIn.SignInResponse
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import okhttp3.RequestBody
 import okhttp3.MultipartBody
+import okhttp3.RequestBody
 
 class SignInToHomeViewModelOld : OldBaseViewModel() {
 
-    var registrationResponse = MutableLiveData<RegistrationResponse>()
+    var signUpResponse = MutableLiveData<SignUpResponse>()
     var otpVerifyResponse = MutableLiveData<OtpVerifyResponse>()
     var resendOtpResponse = MutableLiveData<ResendOtpResponse>()
     var createProfileResponse = MutableLiveData<CreateProfileResponse>()
@@ -34,7 +34,7 @@ class SignInToHomeViewModelOld : OldBaseViewModel() {
         countryCode: String,
         deviceToken: String
     ) {
-        val disposable: Disposable = apiInterface.registration(
+        val disposable: Disposable = apiInterface.signUp(
             country_code = countryCode,
             mobile = mobile,
             password = password,
@@ -45,8 +45,8 @@ class SignInToHomeViewModelOld : OldBaseViewModel() {
     }
 
     //Registration Success
-    private fun onRegistrationSuccess(it: RegistrationResponse) {
-        registrationResponse.value = it
+    private fun onRegistrationSuccess(it: SignUpResponse) {
+        signUpResponse.value = it
     }
 
     //Verify Otp Api

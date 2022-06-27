@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.haallo.R
 import com.haallo.base.OldBaseActivity
 import com.haallo.databinding.ActivityChooseLanguageBinding
-import com.haallo.ui.splashToHome.registration.RegistrationActivityOld
+import com.haallo.ui.signup.SignUpActivity
 import com.haallo.util.showToast
 
 class ChooseLanguageActivityOld : OldBaseActivity(), View.OnClickListener {
@@ -59,7 +59,7 @@ class ChooseLanguageActivityOld : OldBaseActivity(), View.OnClickListener {
     //Language Api
     private fun languageApi() {
         sharedPreference.selectedLanguage = binding.spinnerLanguage.selectedItem.toString()
-        startActivity(Intent(this, RegistrationActivityOld::class.java))
+        startActivity(Intent(this, SignUpActivity::class.java))
         finish()
     }
 

@@ -15,7 +15,7 @@ import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.databinding.ActivitySplashBinding
 import com.haallo.service.FetchContactsService
 import com.haallo.ui.home.HomeActivity
-import com.haallo.ui.splashToHome.registration.RegistrationActivityOld
+import com.haallo.ui.signup.SignUpActivity
 import com.haallo.ui.splashToHome.welcome.WelcomeActivityOld
 import com.haallo.util.AppSignatureHelper
 import com.haallo.util.DetachableClickListener
@@ -54,7 +54,7 @@ class SplashActivity : BaseActivity() {
             if (sharedPreference.halloFlag == 1) {
                 startHomeActivity()
             } else {
-                startActivity(Intent(this, RegistrationActivityOld::class.java))
+                startActivity(Intent(this, SignUpActivity::class.java))
                 finish()
             }
         } else {

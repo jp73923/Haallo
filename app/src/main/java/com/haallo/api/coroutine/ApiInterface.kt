@@ -1,19 +1,19 @@
 package com.haallo.api.coroutine
 
+import com.haallo.api.authentication.model.SignInResponse
+import com.haallo.api.authentication.model.SignUpResponse
+import com.haallo.constant.NetworkConstants
 import com.haallo.ui.chat.newChat.MatchContactResponse
 import com.haallo.ui.chat.response.ChatNotificationResponse
 import com.haallo.ui.chat.response.GetFileToUrlResponse
 import com.haallo.ui.chat.response.MuteUnMuteStatusResponse
 import com.haallo.ui.chat.response.ReportUserResponse
-import com.haallo.constant.NetworkConstants
 import com.haallo.ui.home.setting.LogoutResponse
 import com.haallo.ui.splashToHome.forgotAndResetPassword.ForgotPasswordResponse
 import com.haallo.ui.splashToHome.forgotAndResetPassword.ResetPasswordResponse
-import com.haallo.ui.splashToHome.otp.ResendOtpResponse
 import com.haallo.ui.splashToHome.otp.OtpVerifyResponse
+import com.haallo.ui.splashToHome.otp.ResendOtpResponse
 import com.haallo.ui.splashToHome.profile.CreateProfileResponse
-import com.haallo.ui.splashToHome.registration.RegistrationResponse
-import com.haallo.ui.splashToHome.signIn.SignInResponse
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -21,15 +21,23 @@ import retrofit2.http.*
 
 interface ApiInterface {
 
-    //Registration Api
     @FormUrlEncoded
-    @POST(NetworkConstants.REGISTER)
-    fun registration(
+    @POST(NetworkConstants.SIGN_IN)
+    fun signIn(
+        @Field("mobile") mobile: String,
+        @Field("password") password: String,
+        @Field("device_token") device_token: String,
+        @Field("device_type") device_type: String = "1"
+    ): Observable<SignInResponse>
+
+    @FormUrlEncoded
+    @POST(NetworkConstants.SIGN_UP)
+    fun signUp(
         @Field("country_code") country_code: String,
         @Field("mobile") mobile: String,
         @Field("password") password: String,
         @Field("device_token") device_token: String
-    ): Observable<RegistrationResponse>
+    ): Observable<SignUpResponse>
 
     //Resend Api
     @FormUrlEncoded
@@ -60,15 +68,6 @@ interface ApiInterface {
         @Part image: MultipartBody.Part? = null
     ): Observable<CreateProfileResponse>
 
-    //Login Api
-    @FormUrlEncoded
-    @POST(NetworkConstants.LOGIN)
-    fun signIn(
-        @Field("mobile") mobile: String,
-        @Field("password") password: String,
-        @Field("device_token") device_token: String,
-        @Field("device_type") device_type: String = "1"
-    ): Observable<SignInResponse>
 
     //Forgot Password Api
     @FormUrlEncoded
@@ -157,7 +156,6 @@ interface ApiInterface {
     ): Observable<ChatNotificationResponse>
 
 
-
     @FormUrlEncoded
     @POST(NetworkConstants.VIDEO_CALL_NOTIFICATION)
     fun audioCallNotification(
@@ -177,8 +175,6 @@ interface ApiInterface {
         @Field("user_id") user_id: String,
         @Field("report") report: String,
     ): Observable<ChatNotificationResponse>
-
-
 
 
     /*//Get Group List Response

@@ -66,6 +66,11 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
+            android:name=".ui.starredchat.StarredChatActivity"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
             android:name=".ui.imagecrop.ImageCropActivity"
             android:screenOrientation="nosensor" />
 
@@ -237,7 +242,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.signIn.SignInActivityOld"
+            android:name=".ui.signin.SignInActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
@@ -252,7 +257,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.registration.RegistrationActivityOld"
+            android:name=".ui.signup.SignUpActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 

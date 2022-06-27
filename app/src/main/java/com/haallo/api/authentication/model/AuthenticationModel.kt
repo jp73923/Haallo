@@ -84,7 +84,7 @@ data class HaalloUser(
 
     @field: SerializedName("following_status")
     var followingStatus: Int? = null,
-) : Parcelable {}
+) : Parcelable
 
 data class LoggedInUser(
     val loggedInUser: HaalloUser,
@@ -144,6 +144,114 @@ data class ResultSignUp(
     val isRegister: String,
     val is_block: Any,
     val mobile: String?,
+    val otp: String,
+    val otp_verify_status: Any,
+    val profile_status: String,
+    val updated_at: String,
+    val user_name: Any,
+    val user_type: Any,
+    val verification_token: Any
+)
+
+data class OtpVerifyResponse(
+    val id: Int,
+    val email: String,
+    val user_name: String,
+    val image: String,
+    val country_code: Int,
+    val gender: String,
+    val mobile: Int,
+    val otp: Int,
+    val address: String,
+    val device_type: String,
+    val verification_token: String,
+    val device_token: String,
+    val otp_verify_status: Int,
+    val profile_status: Int,
+    val access_token: String,
+    val user_type: String,
+    val isRegister: Int,
+    val is_block: String,
+    val created_at: String,
+    val updated_at: String,
+    val deleted_at: String
+)
+
+data class ResendOtpResponse(
+    val id: Int,
+    val email: String,
+    val user_name: String,
+    val image: String,
+    val country_code: Int,
+    val gender: String,
+    val mobile: Int,
+    val otp: Int,
+    val address: String,
+    val device_type: String,
+    val verification_token: String,
+    val device_token: String,
+    val otp_verify_status: String,
+    val profile_status: Int,
+    val access_token: String,
+    val user_type: String,
+    val isRegister: Int,
+    val is_block: String,
+    val created_at: String,
+    val updated_at: String,
+    val deleted_at: String
+)
+
+data class ForgotPasswordResponse(
+    val message: String,
+    val result: ResultForgotPassword
+)
+
+data class ResultForgotPassword(
+    val access_token: String?,
+    val address: Any,
+    val country_code: String?,
+    val created_at: String,
+    val deleted_at: Any,
+    val device_token: String,
+    val device_type: String,
+    val email: Any,
+    val gender: Any,
+    val id: Int,
+    val image: String,
+    val isRegister: String,
+    val is_block: Int,
+    val is_online: Int,
+    val mobile: String?,
+    val otp: Int,
+    val otp_verify_status: Any,
+    val profile_status: String,
+    val updated_at: String,
+    val user_name: Any,
+    val user_type: Any,
+    val verification_token: Any
+)
+
+data class ResetPasswordResponse(
+    val message: String,
+    val result: ResultResetPassword
+)
+
+data class ResultResetPassword(
+    val access_token: String,
+    val address: Any,
+    val country_code: String,
+    val created_at: String,
+    val deleted_at: Any,
+    val device_token: String,
+    val device_type: String,
+    val email: Any,
+    val gender: Any,
+    val id: Int,
+    val image: String,
+    val isRegister: String,
+    val is_block: Int,
+    val is_online: Int,
+    val mobile: String,
     val otp: String,
     val otp_verify_status: Any,
     val profile_status: String,

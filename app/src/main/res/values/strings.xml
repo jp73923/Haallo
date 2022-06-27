@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Haallo</string>
 
+    <string name="google_maps_api_key">AIzaSyDfNQtoDkZ9yAGgHmeCRWr7xQ7yxMVzc3U</string>
+
     <string name="label_chat">Chat</string>
     <string name="label_story">Story</string>
     <string name="label_camera">Camera</string>
@@ -76,7 +78,8 @@
 
     <string name="label_mobile_no">Mobile No</string>
     <string name="label_password">Password</string>
-
+    <string name="label_select_gender">Select Gender</string>
+    <string name="label_address_not_found">Address not found</string>
     <string name="label_don_t_have_an_account">Don\'t have an account?</string>
 
     <string name="max_length_name">14</string>
@@ -93,6 +96,7 @@
     <string name="msg_please_allow_all_required_permission">Please allow all required permissions to continue.</string>
     <string name="msg_please_allow_storage_permission">Please allow storage permission to select photo.</string>
     <string name="msg_please_allow_camera_permission">Please allow camera permission to capture photo.</string>
+    <string name="msg_please_allow_location_permission">Please allow location permission to detect your current location.</string>
     <string name="msg_allow_permission_from_settings">Allow storage permission from device Settings -> Apps -> Haallo -> Permissions.</string>
 
     <string name="msg_can_not_create_destination_folder">Can not create destination folder.</string>
@@ -105,6 +109,12 @@
     <string name="msg_chat_wallpaper_set_successfully">Chat wallpaper set successfully…</string>
     <string name="msg_chat_wallpaper_removed">Chat wallpaper removed successfully…</string>
     <string name="msg_conversation_tones">Play sounds for incoming and outgoing messages</string>
+
+    <string name="msg_gps_settings">GPS is settings</string>
+    <string name="msg_gps_settings_confirmation">GPS is not enabled. Do you want to go to settings menu?</string>
+    <string name="msg_getting_current_location_please_wait">Getting your current location, please wait for a moment</string>
+    <string name="msg_getting_current_location_failed">Getting your current location failed</string>
+    <string name="msg_profile_updated_successfully">Profile updated successfully</string>
 
     <string name="error_in_finding_file_path">Error in finding file path</string>
 
@@ -157,7 +167,7 @@
     <string name="forgot_password_line"><u>Forgot Password?</u></string>
     <string name="sign_in_cancelled">Cancelled</string>
     <string name="default_status">Hey I am using Haallo!</string>
-    <string name="enter_the_registered_mobile_number">Enter the registered Mobile Number</string>
+    <string name="enter_registered_mobile_number">Enter registered mobile number</string>
     <string name="log_in">Log In</string>
     <string name="no_account">No Account?</string>
     <string name="otp_will_be_sent_on_the_above_number">*OTP will be sent on the above number</string>

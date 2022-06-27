@@ -10,12 +10,10 @@ import com.haallo.base.BaseActivity
 import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.base.extension.subscribeAndObserveOnMainThread
 import com.haallo.base.extension.throttleClicks
-import com.haallo.constant.IntentConstant
 import com.haallo.databinding.ActivitySignUpBinding
+import com.haallo.ui.otpverify.OtpVerifyActivity
 import com.haallo.ui.signin.SignInActivity
 import com.haallo.ui.signup.viewmodel.SignUpViewModel
-import com.haallo.ui.splashToHome.chooseLanguage.ChooseLanguageActivityOld
-import com.haallo.ui.splashToHome.otp.OtpActivityOld
 import com.haallo.util.*
 
 class SignUpActivity : BaseActivity() {
@@ -44,8 +42,7 @@ class SignUpActivity : BaseActivity() {
         storeFirebaseToken(this)
 
         binding.ivBack.throttleClicks().subscribeAndObserveOnMainThread {
-            startActivity(Intent(this, ChooseLanguageActivityOld::class.java))
-            finish()
+            onBackPressed()
         }.autoDispose()
 
         binding.btnRegister.throttleClicks().subscribeAndObserveOnMainThread {
@@ -76,10 +73,7 @@ class SignUpActivity : BaseActivity() {
             if (it.result.id != null) {
                 sharedPreference.userId = it.result.id.toString()
             }
-            startActivity(
-                Intent(this, OtpActivityOld::class.java)
-                    .putExtra(IntentConstant.IS_FROM, IntentConstant.REGISTRATION)
-            )
+            startActivityWithDefaultAnimation(OtpVerifyActivity.getIntent(this))
 
             //Set Default Value for The Seen Status
             if (it.result.id != null) {

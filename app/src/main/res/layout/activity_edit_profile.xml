@@ -216,11 +216,11 @@
             android:visibility="invisible" />
 
         <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnSave"
+            android:id="@+id/btnDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingVertical="@dimen/_8sdp"
-            android:text="@string/label_save"
+            android:text="@string/label_done"
             android:textColor="@color/md_white"
             android:textSize="@dimen/_10sdp"
             android:visibility="invisible"

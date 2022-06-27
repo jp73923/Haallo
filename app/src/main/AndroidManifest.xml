@@ -43,7 +43,7 @@
         android:usesCleartextTraffic="true">
 
         <activity
-            android:name=".ui.splashToHome.splash.SplashActivity"
+            android:name=".ui.splash.SplashActivity"
             android:exported="true"
             android:screenOrientation="nosensor"
             android:theme="@style/fullscreenTheme"
@@ -232,12 +232,12 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
 
         <activity
-            android:name=".ui.splashToHome.forgotAndResetPassword.ForgotPasswordActivityOld"
+            android:name=".ui.forgotpassword.ForgotPasswordActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.forgotAndResetPassword.ResetPasswordActivityOld"
+            android:name=".ui.resetpassword.ResetPasswordActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
@@ -247,12 +247,17 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.profile.CreateProfileActivityOld"
+            android:name=".ui.createprofile.CreateProfileActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.otp.OtpActivityOld"
+            android:name=".ui.forgotpasswordotpverify.ForgotPasswordOtpVerifyActivity"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="stateHidden|adjustPan" />
+
+        <activity
+            android:name=".ui.otpverify.OtpVerifyActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
@@ -262,17 +267,17 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.registration.TermsAndConditionActivityOld"
+            android:name=".ui.termsandconditions.TermsAndConditionActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.chooseLanguage.ChooseLanguageActivityOld"
+            android:name=".ui.chooselanguage.ChooseLanguageActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.splashToHome.welcome.WelcomeActivityOld"
+            android:name=".ui.welcome.WelcomeActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
@@ -336,7 +341,7 @@
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_api_key" />
+            android:value="@string/google_maps_api_key" />
 
     </application>
 

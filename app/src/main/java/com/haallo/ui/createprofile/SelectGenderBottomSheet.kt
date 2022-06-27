@@ -1,4 +1,4 @@
-package com.haallo.ui.editprofile
+package com.haallo.ui.createprofile
 
 import android.graphics.Color
 import android.graphics.PorterDuff
@@ -10,22 +10,22 @@ import android.widget.FrameLayout
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.haallo.R
-import com.haallo.api.profile.model.EditProfilePhotoState
 import com.haallo.base.BaseBottomSheetDialogFragment
 import com.haallo.base.extension.subscribeAndObserveOnMainThread
 import com.haallo.base.extension.throttleClicks
-import com.haallo.databinding.BottomSheetEditProfilePhotoBinding
+import com.haallo.databinding.BottomSheetSelectGenderBinding
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
+import java.util.*
 
-class EditProfilePhotoBottomSheet(
-    private val isShowClear: Boolean = false
+class SelectGenderBottomSheet(
+    private val selectedGender: String
 ) : BaseBottomSheetDialogFragment() {
 
-    private val editProfilePhotoClickSubject: PublishSubject<EditProfilePhotoState> = PublishSubject.create()
-    val editProfilePhotoClick: Observable<EditProfilePhotoState> = editProfilePhotoClickSubject.hide()
+    private val selectGenderClickSubject: PublishSubject<String> = PublishSubject.create()
+    val editProfilePhotoClick: Observable<String> = selectGenderClickSubject.hide()
 
-    private var _binding: BottomSheetEditProfilePhotoBinding? = null
+    private var _binding: BottomSheetSelectGenderBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,8 +34,8 @@ class EditProfilePhotoBottomSheet(
     }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        val view = inflater.inflate(R.layout.bottom_sheet_edit_profile_photo, container, false)
-        _binding = BottomSheetEditProfilePhotoBinding.bind(view)
+        val view = inflater.inflate(R.layout.bottom_sheet_select_gender, container, false)
+        _binding = BottomSheetSelectGenderBinding.bind(view)
         return view
     }
 
@@ -74,28 +74,34 @@ class EditProfilePhotoBottomSheet(
     }
 
     private fun listenToEvent() {
-        if (isShowClear) {
-            binding.ivClose.visibility = View.VISIBLE
-            binding.ivDelete.visibility = View.GONE
+        if (selectedGender.isNotEmpty()) {
+            when {
+                selectedGender.lowercase(Locale.getDefault()).equals(getString(R.string.male), true) -> {
+                    binding.rbMale.isChecked = true
+                }
+                selectedGender.lowercase(Locale.getDefault()).equals(getString(R.string.female), true) -> {
+                    binding.rbFemale.isChecked = true
+                }
+                else -> {
+                    binding.rbMale.isChecked = true
+                }
+            }
         } else {
-            binding.ivClose.visibility = View.GONE
-            binding.ivDelete.visibility = View.VISIBLE
+            binding.rbMale.isChecked = true
         }
 
         binding.ivClose.throttleClicks().subscribeAndObserveOnMainThread {
             dismissBottomSheet()
         }.autoDispose()
 
-        binding.ivDelete.throttleClicks().subscribeAndObserveOnMainThread {
-            editProfilePhotoClickSubject.onNext(EditProfilePhotoState.DeletePhoto)
+        binding.rbMale.throttleClicks().subscribeAndObserveOnMainThread {
+            binding.rbMale.isChecked = true
+            selectGenderClickSubject.onNext(getString(R.string.male))
         }.autoDispose()
 
-        binding.llCamera.throttleClicks().subscribeAndObserveOnMainThread {
-            editProfilePhotoClickSubject.onNext(EditProfilePhotoState.OpenCamera)
-        }.autoDispose()
-
-        binding.llGallery.throttleClicks().subscribeAndObserveOnMainThread {
-            editProfilePhotoClickSubject.onNext(EditProfilePhotoState.OpenGallery)
+        binding.rbFemale.throttleClicks().subscribeAndObserveOnMainThread {
+            binding.rbFemale.isChecked = true
+            selectGenderClickSubject.onNext(getString(R.string.female))
         }.autoDispose()
     }
 

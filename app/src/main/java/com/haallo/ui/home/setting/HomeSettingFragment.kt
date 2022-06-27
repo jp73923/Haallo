@@ -17,7 +17,7 @@ import com.haallo.ui.editprofile.EditProfileActivity
 import com.haallo.ui.editprofile.MyProfilePhotoPreviewActivity
 import com.haallo.ui.othersetting.OtherSettingActivity
 import com.haallo.ui.privacysetting.PrivacySettingActivity
-import com.haallo.ui.splashToHome.splash.SplashActivity
+import com.haallo.ui.splash.SplashActivity
 import com.haallo.ui.support.SupportActivity
 import com.haallo.util.SharedPreferenceUtil
 import com.jakewharton.rxbinding3.widget.checkedChanges

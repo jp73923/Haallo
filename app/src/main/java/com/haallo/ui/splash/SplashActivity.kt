@@ -1,4 +1,4 @@
-package com.haallo.ui.splashToHome.splash
+package com.haallo.ui.splash
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -16,7 +16,7 @@ import com.haallo.databinding.ActivitySplashBinding
 import com.haallo.service.FetchContactsService
 import com.haallo.ui.home.HomeActivity
 import com.haallo.ui.signup.SignUpActivity
-import com.haallo.ui.splashToHome.welcome.WelcomeActivityOld
+import com.haallo.ui.welcome.WelcomeActivity
 import com.haallo.util.AppSignatureHelper
 import com.haallo.util.DetachableClickListener
 import com.haallo.util.PermissionsUtil
@@ -45,16 +45,16 @@ class SplashActivity : BaseActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initView()
+        listenToViewEvent()
     }
 
     //All UI Changes From Here
-    private fun initView() {
+    private fun listenToViewEvent() {
         if (sharedPreference.isFirstTime == 1) {
             if (sharedPreference.halloFlag == 1) {
                 startHomeActivity()
             } else {
-                startActivity(Intent(this, SignUpActivity::class.java))
+                startActivityWithDefaultAnimation(SignUpActivity.getIntent(this))
                 finish()
             }
         } else {
@@ -148,7 +148,7 @@ class SplashActivity : BaseActivity() {
             if (sharedPreference.halloFlag == 1) {
                 startHomeActivity()
             } else {
-                startActivity(Intent(this, WelcomeActivityOld::class.java))
+                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
                 finish()
             }
         }, 2700)
@@ -167,15 +167,12 @@ class SplashActivity : BaseActivity() {
             25 -> {
                 progress25()
             }
-
             50 -> {
                 progress50()
             }
-
             75 -> {
                 progress75()
             }
-
             100 -> {
                 progress100()
             }
@@ -205,7 +202,7 @@ class SplashActivity : BaseActivity() {
             if (sharedPreference.halloFlag == 1) {
                 startHomeActivity()
             } else {
-                startActivity(Intent(this, WelcomeActivityOld::class.java))
+                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
                 finish()
             }
         }, 1700)
@@ -227,7 +224,7 @@ class SplashActivity : BaseActivity() {
             if (sharedPreference.halloFlag == 1) {
                 startHomeActivity()
             } else {
-                startActivity(Intent(this, WelcomeActivityOld::class.java))
+                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
                 finish()
             }
         }, 1200)
@@ -244,7 +241,7 @@ class SplashActivity : BaseActivity() {
             if (sharedPreference.halloFlag == 1) {
                 startHomeActivity()
             } else {
-                startActivity(Intent(this, WelcomeActivityOld::class.java))
+                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
                 finish()
             }
         }, 700)
@@ -255,7 +252,7 @@ class SplashActivity : BaseActivity() {
         if (sharedPreference.halloFlag == 1) {
             startHomeActivity()
         } else {
-            startActivity(Intent(this, WelcomeActivityOld::class.java))
+            startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
             finish()
         }
     }

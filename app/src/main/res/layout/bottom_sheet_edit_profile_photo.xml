@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorWindowBackground"
@@ -17,21 +18,39 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_11sdp"
-            android:layout_toStartOf="@+id/ivDelete"
+            android:layout_toStartOf="@+id/llTemp"
             android:fontFamily="@font/poppins_medium"
             android:text="@string/label_profile_photo"
             android:textColor="@color/colorText"
             android:textSize="@dimen/_13sdp" />
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivDelete"
+        <LinearLayout
+            android:id="@+id/llTemp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"
             android:layout_centerVertical="true"
-            android:padding="@dimen/_10sdp"
-            android:tint="@color/colorIconTint"
-            android:src="@drawable/baseline_delete_24" />
+            android:orientation="horizontal">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/baseline_delete_24"
+                android:tint="@color/colorIconTint" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivClose"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp"
+                android:src="@drawable/outline_close_24"
+                android:tint="@color/colorIconTint"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+        </LinearLayout>
 
     </RelativeLayout>
 

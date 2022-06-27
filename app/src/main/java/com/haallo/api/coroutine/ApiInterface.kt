@@ -1,7 +1,8 @@
 package com.haallo.api.coroutine
 
-import com.haallo.api.authentication.model.SignInResponse
-import com.haallo.api.authentication.model.SignUpResponse
+import com.haallo.api.authentication.model.*
+import com.haallo.api.profile.model.CreateProfileResponse
+import com.haallo.api.profile.model.UpdateProfileResponse
 import com.haallo.constant.NetworkConstants
 import com.haallo.ui.chat.newChat.MatchContactResponse
 import com.haallo.ui.chat.response.ChatNotificationResponse
@@ -9,11 +10,6 @@ import com.haallo.ui.chat.response.GetFileToUrlResponse
 import com.haallo.ui.chat.response.MuteUnMuteStatusResponse
 import com.haallo.ui.chat.response.ReportUserResponse
 import com.haallo.ui.home.setting.LogoutResponse
-import com.haallo.ui.splashToHome.forgotAndResetPassword.ForgotPasswordResponse
-import com.haallo.ui.splashToHome.forgotAndResetPassword.ResetPasswordResponse
-import com.haallo.ui.splashToHome.otp.OtpVerifyResponse
-import com.haallo.ui.splashToHome.otp.ResendOtpResponse
-import com.haallo.ui.splashToHome.profile.CreateProfileResponse
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -39,7 +35,14 @@ interface ApiInterface {
         @Field("device_token") device_token: String
     ): Observable<SignUpResponse>
 
-    //Resend Api
+    @FormUrlEncoded
+    @POST(NetworkConstants.VERIFY_OTP)
+    fun otpVerify(
+        @Header("accessToken") accessToken: String,
+        @Field("mobile") mobile: String,
+        @Field("otp") otp: String
+    ): Observable<OtpVerifyResponse>
+
     @FormUrlEncoded
     @POST(NetworkConstants.RESEND_OTP)
     fun resendOtp(
@@ -47,18 +50,9 @@ interface ApiInterface {
         @Field("mobile") mobile: String
     ): Observable<ResendOtpResponse>
 
-    //Verify OTP
-    @FormUrlEncoded
-    @POST(NetworkConstants.VERIFY_OTP)
-    fun verifyOtp(
-        @Header("accessToken") accessToken: String,
-        @Field("mobile") mobile: String,
-        @Field("otp") otp: String
-    ): Observable<OtpVerifyResponse>
-
     //Create Profile
     @Multipart
-    @POST(NetworkConstants.PROFILE_CREATION)
+    @POST(NetworkConstants.CREATE_PROFILE)
     fun createProfile(
         @Header("accessToken") accessToken: String,
         @Part("user_name") user_name: RequestBody,
@@ -68,6 +62,15 @@ interface ApiInterface {
         @Part image: MultipartBody.Part? = null
     ): Observable<CreateProfileResponse>
 
+    //update Profile
+    @Multipart
+    @POST(NetworkConstants.UPDATE_PROFILE)
+    fun updateProfile(
+        @Header("accessToken") accessToken: String,
+        @Part("name") name: RequestBody,
+        @Part("about") about: RequestBody,
+        @Part image: MultipartBody.Part? = null
+    ): Observable<UpdateProfileResponse>
 
     //Forgot Password Api
     @FormUrlEncoded

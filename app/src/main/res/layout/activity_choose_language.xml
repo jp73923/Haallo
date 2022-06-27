@@ -9,7 +9,7 @@
     android:orientation="vertical"
     android:paddingStart="@dimen/dp_40"
     android:paddingEnd="@dimen/dp_40"
-    tools:context=".ui.splashToHome.chooseLanguage.ChooseLanguageActivityOld">
+    tools:context=".ui.chooselanguage.ChooseLanguageActivity">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/ivLogo"

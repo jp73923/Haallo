@@ -1,4 +1,4 @@
-package com.haallo.ui.splashToHome.otp
+package com.haallo.ui.forgotpasswordotpverify
 
 import android.content.BroadcastReceiver
 import android.content.Context
@@ -8,121 +8,105 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
 import android.text.TextWatcher
-import android.util.Log
 import android.view.KeyEvent
 import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.gms.auth.api.phone.SmsRetriever
 import com.google.android.gms.common.api.CommonStatusCodes
 import com.google.android.gms.common.api.Status
 import com.haallo.R
-import com.haallo.base.OldBaseActivity
-import com.haallo.constant.IntentConstant
-import com.haallo.databinding.ActivityOtpBinding
-import com.haallo.ui.splashToHome.SignInToHomeViewModelOld
-import com.haallo.ui.splashToHome.forgotAndResetPassword.ResetPasswordActivityOld
-import com.haallo.ui.splashToHome.profile.CreateProfileActivityOld
+import com.haallo.base.BaseActivity
+import com.haallo.base.extension.startActivityWithDefaultAnimation
+import com.haallo.base.extension.subscribeAndObserveOnMainThread
+import com.haallo.base.extension.throttleClicks
+import com.haallo.databinding.ActivityForgotPasswordOtpVerifyBinding
+import com.haallo.ui.forgotpasswordotpverify.viewmodel.ForgotPasswordOTPVerifyViewModel
+import com.haallo.ui.resetpassword.ResetPasswordActivity
 import com.haallo.util.dismissKeyboard
 import com.haallo.util.getString
 import com.haallo.util.openKeyboard
 import com.haallo.util.showToast
+import timber.log.Timber
 
-class OtpActivityOld : OldBaseActivity(), View.OnClickListener, TextWatcher, View.OnKeyListener {
+class ForgotPasswordOtpVerifyActivity : BaseActivity(), TextWatcher, View.OnKeyListener {
 
-    private lateinit var binding: ActivityOtpBinding
-    private lateinit var signInToHomeViewModel: SignInToHomeViewModelOld
-    private var isFrom: String? = ""
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return Intent(context, ForgotPasswordOtpVerifyActivity::class.java)
+        }
+    }
+
+    private lateinit var binding: ActivityForgotPasswordOtpVerifyBinding
+    private lateinit var forgotPasswordOTPVerifyViewModel: ForgotPasswordOTPVerifyViewModel
     private var accessToken: String = ""
     private var mobile: String = ""
     private var mBroadcastReceiver: BroadcastReceiver? = null
-    private var isFromLogin: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityOtpBinding.inflate(layoutInflater)
+        binding = ActivityForgotPasswordOtpVerifyBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initView()
-        initControl()
+        listenToViewEvent()
     }
 
-    override fun initView() {
-        signInToHomeViewModel = ViewModelProvider(this).get(SignInToHomeViewModelOld::class.java)
-        checkTheme()
-        getDataFromSharedPreferences()
-        getDataFromIntent()
-        observer()
-        hitResentOtp()
-        setHeading()
-        startSmsRetriever()
-        otpAddTextChangedListener()
-        otpSetOnKeyListener()
-    }
+    private fun listenToViewEvent() {
+        forgotPasswordOTPVerifyViewModel = ViewModelProvider(this).get(ForgotPasswordOTPVerifyViewModel::class.java)
 
-    //Check App Theme
-    private fun checkTheme() {
-        if (sharedPreference.nightTheme) {
-            binding.rootLayoutOtp.setBackgroundColor(ContextCompat.getColor(this, R.color.appNightModeBackground))
-        } else if (!sharedPreference.nightTheme) {
-            binding.rootLayoutOtp.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-        }
-    }
-
-    //Find Data From the SharedPreferences
-    private fun getDataFromSharedPreferences() {
         accessToken = sharedPreference.accessToken
         mobile = sharedPreference.mobileNumber
-    }
 
-    //Get Data From Intent
-    private fun getDataFromIntent() {
-        isFrom = intent.getStringExtra(IntentConstant.IS_FROM)
+        binding.ivBack.throttleClicks().subscribeAndObserveOnMainThread {
+            onBackPressed()
+        }.autoDispose()
+
+        binding.tvResend.throttleClicks().subscribeAndObserveOnMainThread {
+            resendOtpApi()
+            binding.etOtp1.setText("")
+            binding.etOtp2.setText("")
+            binding.etOtp3.setText("")
+            binding.etOtp4.setText("")
+            binding.etOtp1.requestFocus()
+            openKeyboard(this)
+        }.autoDispose()
+
+        binding.btnSubmit.throttleClicks().subscribeAndObserveOnMainThread {
+            if (isInputValid())
+                otpVerifyAPI()
+        }.autoDispose()
+
+        binding.etOtp1.addTextChangedListener(this)
+        binding.etOtp2.addTextChangedListener(this)
+        binding.etOtp3.addTextChangedListener(this)
+        binding.etOtp4.addTextChangedListener(this)
+
+        binding.etOtp1.setOnKeyListener(this)
+        binding.etOtp2.setOnKeyListener(this)
+        binding.etOtp3.setOnKeyListener(this)
+        binding.etOtp4.setOnKeyListener(this)
+
+        observer()
+        startSmsRetriever()
     }
 
     //Observer
     private fun observer() {
-        signInToHomeViewModel.resendOtpResponse.observe(this) {
+        forgotPasswordOTPVerifyViewModel.resendOtpResponse.observe(this) {
             hideLoading()
             showToast(getString(R.string.otp_send_successfully))
         }
 
-        signInToHomeViewModel.otpVerifyResponse.observe(this) {
+        forgotPasswordOTPVerifyViewModel.otpVerifyResponse.observe(this) {
             hideLoading()
-            when (isFrom) {
-                IntentConstant.REGISTRATION -> {
-                    startActivity(Intent(this, CreateProfileActivityOld::class.java))
-                    finish()
-                }
-
-                IntentConstant.SIGN_IN -> {
-                    startActivity(Intent(this, CreateProfileActivityOld::class.java))
-                    finish()
-                }
-
-                IntentConstant.FORGOT_PASSWORD -> {
-                    startActivity(Intent(this, ResetPasswordActivityOld::class.java))
-                    finish()
-                }
-            }
+            startActivityWithDefaultAnimation(ResetPasswordActivity.getIntent(this))
+            finish()
         }
 
-        signInToHomeViewModel.onError.observe(this) {
+        forgotPasswordOTPVerifyViewModel.onError.observe(this) {
             hideLoading()
-            showError(this, binding.rootLayoutOtp, it)
+            showError(this, binding.root, it)
         }
-    }
-
-    //Hit Resend Otp Api If From is From Login Activity
-    private fun hitResentOtp() {
-        if (isFromLogin)
-            resendOtpApi()
-    }
-
-    //Set Heading Text
-    private fun setHeading() {
-        binding.tvHeading.text = getString(R.string.otp_verification)
     }
 
     //Start SMS Retriever
@@ -131,17 +115,18 @@ class OtpActivityOld : OldBaseActivity(), View.OnClickListener, TextWatcher, Vie
         // Get an instance of SmsRetrieverClient, used to start listening for a matching
         // SMS message.
         val client = SmsRetriever.getClient(this)
-
         // Starts SmsRetriever, which waits for ONE matching SMS message until timeout
         // (5 minutes). The matching SMS message will be sent via a Broadcast Intent with
         // action SmsRetriever#SMS_RETRIEVED_ACTION.
         val task = client.startSmsRetriever()
         // Listen for success/failure of the start Task. If in a background thread, this
         // can be made blocking using Tasks.await(task, [timeout]);
-        task.addOnSuccessListener { Log.e("SMSRE", "success") }
-
-        task.addOnFailureListener { Log.e("SMSRE", "failed") }
-
+        task.addOnSuccessListener {
+            Timber.tag("<><><> SMS").e("success")
+        }
+        task.addOnFailureListener {
+            Timber.tag("<><><> SMS").e("failed")
+        }
     }
 
     //Register a Receiver for OTP Receive
@@ -162,7 +147,7 @@ class OtpActivityOld : OldBaseActivity(), View.OnClickListener, TextWatcher, Vie
                             val message = extras.get(SmsRetriever.EXTRA_SMS_MESSAGE) as String
                             // Extract one-time code from the message and complete verification
                             // by sending the code back to your server for SMS authenticity.
-                            Log.e("OTP check", "message : $message")
+                            Timber.tag("<><><> OTP check").e(message)
 
                             val otp = message.substring(4, 8)
                             binding.etOtp1.setText(otp[0].toString())
@@ -193,27 +178,9 @@ class OtpActivityOld : OldBaseActivity(), View.OnClickListener, TextWatcher, Vie
         }
     }
 
-    //Add Changed Listener
-    private fun otpAddTextChangedListener() {
-        binding.etOtp1.addTextChangedListener(this)
-        binding.etOtp2.addTextChangedListener(this)
-        binding.etOtp3.addTextChangedListener(this)
-        binding.etOtp4.addTextChangedListener(this)
-        binding.etOtp5.addTextChangedListener(this)
-    }
-
     //Text Changed Function
     override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-    }
-
-    //Set Onclick Listener
-    private fun otpSetOnKeyListener() {
-        binding.etOtp1.setOnKeyListener(this)
-        binding.etOtp2.setOnKeyListener(this)
-        binding.etOtp3.setOnKeyListener(this)
-        binding.etOtp4.setOnKeyListener(this)
-        binding.etOtp5.setOnKeyListener(this)
     }
 
     //Otp Box OnClick Event Function
@@ -234,52 +201,16 @@ class OtpActivityOld : OldBaseActivity(), View.OnClickListener, TextWatcher, Vie
                 R.id.etOtp4 -> {
                     binding.etOtp4.setText("")
                     binding.etOtp3.requestFocus()
-
-                }
-                R.id.etOtp5 -> {
-                    binding.etOtp5.setText("")
-                    binding.etOtp4.requestFocus()
                 }
             }
         }
         return false
     }
 
-    //All Control Defines Here
-    override fun initControl() {
-        binding.btnBack.setOnClickListener(this)
-        binding.tvResend.setOnClickListener(this)
-        binding.btnSubmit.setOnClickListener(this)
-    }
-
-    //OnClick Listener Function
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btnBack -> {
-                onBackPressed()
-            }
-
-            R.id.tvResend -> {
-                resendOtpApi()
-                binding.etOtp1.setText("")
-                binding.etOtp2.setText("")
-                binding.etOtp3.setText("")
-                binding.etOtp4.setText("")
-                binding.etOtp1.requestFocus()
-                openKeyboard(this)
-            }
-
-            R.id.btnSubmit -> {
-                if (isInputValid())
-                    otpVerifyAPI()
-            }
-        }
-    }
-
     //Resend Otp Api
     private fun resendOtpApi() {
         showLoading()
-        signInToHomeViewModel.resendOtpApi(accessToken = accessToken, mobile = mobile)
+        forgotPasswordOTPVerifyViewModel.resendOtpApi(accessToken = accessToken, mobile = mobile)
     }
 
     //Input Validation Function
@@ -315,7 +246,6 @@ class OtpActivityOld : OldBaseActivity(), View.OnClickListener, TextWatcher, Vie
         }
         if (binding.etOtp4.isFocused) {
             if (binding.etOtp4.text.toString().length == 1) {
-                binding.etOtp5.requestFocus()
                 if (!TextUtils.isEmpty(binding.etOtp4.text.toString())) {
                     dismissKeyboard(this)
                 }
@@ -328,7 +258,7 @@ class OtpActivityOld : OldBaseActivity(), View.OnClickListener, TextWatcher, Vie
     private fun otpVerifyAPI() {
         showLoading()
         val otp = binding.etOtp1.getString() + binding.etOtp2.getString() + binding.etOtp3.getString() + binding.etOtp4.getString()
-        signInToHomeViewModel.verifyOtpApi(accessToken = accessToken, mobile = mobile, otp = otp)
+        forgotPasswordOTPVerifyViewModel.verifyOtpApi(accessToken = accessToken, mobile = mobile, otp = otp)
     }
 
     //Before Text Changed Function

@@ -1,36 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootLayoutTermsCondition"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical"
-    tools:context=".ui.splashToHome.registration.TermsAndConditionActivityOld">
+    tools:context=".ui.termsandconditions.TermsAndConditionActivity">
 
     <RelativeLayout
+        android:id="@+id/rlHeader"
         android:layout_width="match_parent"
         android:layout_height="?actionBarSize"
-        android:background="@color/colorPrimary">
+        android:background="@color/color_1F3257">
 
-        <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/btnBack"
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_8"
-            android:background="@android:color/transparent"
-            android:padding="@dimen/dp_8"
-            android:src="@drawable/back" />
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/outline_arrow_back_24" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvHeading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_64"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_20" />
+            android:layout_marginStart="@dimen/_12sdp"
+            android:layout_toEndOf="@+id/ivBack"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/terms_and_conditions_text"
+            android:textColor="@color/md_white"
+            android:textSize="@dimen/_14sdp" />
 
     </RelativeLayout>
 

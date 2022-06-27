@@ -1,23 +1,30 @@
-package com.haallo.ui.splashToHome.splash
+package com.haallo.ui.resetpassword
 
+import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
-import androidx.core.content.ContextCompat
 import androidx.lifecycle.ViewModelProvider
 import com.haallo.R
-import com.haallo.base.OldBaseActivity
+import com.haallo.base.BaseActivity
+import com.haallo.base.extension.subscribeAndObserveOnMainThread
+import com.haallo.base.extension.throttleClicks
 import com.haallo.databinding.ActivityResetPasswordBinding
-import com.haallo.ui.splashToHome.SignInToHomeViewModelOld
+import com.haallo.ui.resetpassword.viewmodel.ResetPasswordViewModel
 import com.haallo.ui.signin.SignInActivity
 import com.haallo.util.getString
 import com.haallo.util.isValidPassword
 import com.haallo.util.showToast
 
-class ResetPasswordActivityOld : OldBaseActivity(), View.OnClickListener {
+class ResetPasswordActivity : BaseActivity() {
+
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return Intent(context, ResetPasswordActivity::class.java)
+        }
+    }
 
     private lateinit var binding: ActivityResetPasswordBinding
-    private lateinit var signInToHomeViewModel: SignInToHomeViewModelOld
+    private lateinit var resetPasswordViewModel: ResetPasswordViewModel
     private var accessToken: String = ""
     private var mobile: String = ""
 
@@ -27,73 +34,39 @@ class ResetPasswordActivityOld : OldBaseActivity(), View.OnClickListener {
         binding = ActivityResetPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initView()
-        initControl()
+        listenToViewEvent()
     }
 
-    override fun initView() {
-        signInToHomeViewModel = ViewModelProvider(this).get(SignInToHomeViewModelOld::class.java)
-        checkTheme()
-        getDataFromSharedPreferences()
-        setHeading()
-        observer()
-    }
-
-    //Check App Theme
-    private fun checkTheme() {
-        if (sharedPreference.nightTheme) {
-            binding.rootLayoutResetPassword.setBackgroundColor(
-                ContextCompat.getColor(this, R.color.appNightModeBackground)
-            )
-        } else if (!sharedPreference.nightTheme) {
-            binding.rootLayoutResetPassword.setBackgroundColor(ContextCompat.getColor(this, R.color.white))
-        }
-    }
-
-    //Find Data From the SharedPreferences
-    private fun getDataFromSharedPreferences() {
+    private fun listenToViewEvent() {
+        resetPasswordViewModel = ViewModelProvider(this).get(ResetPasswordViewModel::class.java)
         accessToken = sharedPreference.accessToken
         mobile = sharedPreference.mobileNumber
-    }
 
-    //Set Heading
-    private fun setHeading() {
-        binding.tvHeading.text = getString(R.string.reset_password)
+        binding.ivBack.throttleClicks().subscribeAndObserveOnMainThread {
+            onBackPressed()
+        }.autoDispose()
+
+        binding.btnSubmit.throttleClicks().subscribeAndObserveOnMainThread {
+            if (isInputValid()) {
+                resetPasswordApi()
+            }
+        }.autoDispose()
+
+        observer()
     }
 
     //Observer
     private fun observer() {
-        signInToHomeViewModel.resetPasswordResponse.observe(this) {
+        resetPasswordViewModel.resetPasswordResponse.observe(this) {
             hideLoading()
             showToast(getString(R.string.password_changed_successfully))
             startActivity(Intent(this, SignInActivity::class.java))
             finishAffinity()
         }
 
-        signInToHomeViewModel.onError.observe(this) {
+        resetPasswordViewModel.onError.observe(this) {
             hideLoading()
-            showError(this, binding.rootLayoutResetPassword, it)
-        }
-    }
-
-    //All Control Defines Here
-    override fun initControl() {
-        binding.btnBack.setOnClickListener(this)
-        binding.btnSubmit.setOnClickListener(this)
-    }
-
-    //OnClick Listener Function
-    override fun onClick(v: View) {
-        when (v.id) {
-            R.id.btnBack -> {
-                onBackPressed()
-            }
-
-            R.id.btnSubmit -> {
-                if (isInputValid()) {
-                    resetPasswordApi()
-                }
-            }
+            showError(this, binding.root, it)
         }
     }
 
@@ -128,9 +101,6 @@ class ResetPasswordActivityOld : OldBaseActivity(), View.OnClickListener {
     //Reset Password Api
     private fun resetPasswordApi() {
         showLoading()
-        signInToHomeViewModel.resetPasswordApi(
-            mobile = mobile,
-            password = binding.etPassword.getString()
-        )
+        resetPasswordViewModel.resetPasswordApi(mobile, binding.etPassword.getString())
     }
 }

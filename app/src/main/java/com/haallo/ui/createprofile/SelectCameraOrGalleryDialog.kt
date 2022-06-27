@@ -1,4 +1,4 @@
-package com.haallo.ui.splashToHome.profile
+package com.haallo.ui.createprofile
 
 import android.app.Dialog
 import android.content.Context

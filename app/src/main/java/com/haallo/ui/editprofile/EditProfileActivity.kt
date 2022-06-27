@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import androidx.lifecycle.ViewModelProvider
 import br.com.onimur.handlepathoz.HandlePathOz
 import br.com.onimur.handlepathoz.HandlePathOzListener
 import br.com.onimur.handlepathoz.model.PathOz
@@ -15,10 +16,18 @@ import com.haallo.api.profile.model.EditProfilePhotoState
 import com.haallo.base.BaseActivity
 import com.haallo.base.extension.*
 import com.haallo.databinding.ActivityEditProfileBinding
+import com.haallo.ui.chat.model.UserModel
+import com.haallo.ui.editprofile.viewmodel.EditProfileViewModel
 import com.haallo.ui.imagecrop.ImageCropActivity
 import com.haallo.util.FileUtils
+import com.haallo.util.findRequestBody
+import com.haallo.util.getString
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
+import okhttp3.MediaType.Companion.toMediaTypeOrNull
+import okhttp3.MultipartBody
+import okhttp3.RequestBody.Companion.asRequestBody
+import java.io.File
 
 class EditProfileActivity : BaseActivity() {
 
@@ -30,9 +39,11 @@ class EditProfileActivity : BaseActivity() {
 
     private lateinit var binding: ActivityEditProfileBinding
 
+    private lateinit var editProfileViewModel: EditProfileViewModel
+
     private lateinit var handlePathOz: HandlePathOz
     private var captureImagePath = ""
-    private var selectedImagePath: String = ""
+    private var profilePic: MultipartBody.Part? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,10 +52,13 @@ class EditProfileActivity : BaseActivity() {
         setContentView(binding.root)
 
         listenToViewEvent()
+        observer()
+        loadProfile()
     }
 
     private fun listenToViewEvent() {
         handlePathOz = HandlePathOz(this, listener)
+        editProfileViewModel = ViewModelProvider(this).get(EditProfileViewModel::class.java)
 
         binding.ivBack.throttleClicks().subscribeAndObserveOnMainThread {
             onBackPressed()
@@ -66,24 +80,17 @@ class EditProfileActivity : BaseActivity() {
             openEditAboutBottomSheet()
         }.autoDispose()
 
-        binding.btnSave.throttleClicks().subscribeAndObserveOnMainThread {
-
+        binding.btnDone.throttleClicks().subscribeAndObserveOnMainThread {
+            updateProfile()
         }.autoDispose()
-    }
-
-    override fun onResume() {
-        super.onResume()
-        loadProfile()
     }
 
     private fun loadProfile() {
         binding.tvName.text = sharedPreference.name
         binding.tvAbout.text = sharedPreference.about
 
-        selectedImagePath = sharedPreference.profilePic
-
         Glide.with(this)
-            .load(selectedImagePath)
+            .load(sharedPreference.profilePic)
             .circleCrop()
             .placeholder(R.drawable.outline_account_circle_24_profile)
             .into(binding.ivUserProfile)
@@ -97,7 +104,7 @@ class EditProfileActivity : BaseActivity() {
 
             binding.rlFooter.visibility = View.VISIBLE
             binding.progressBar.visibility = View.INVISIBLE
-            binding.btnSave.visibility = View.VISIBLE
+            binding.btnDone.visibility = View.VISIBLE
         }.autoDispose()
         bottomReportSheet.show(supportFragmentManager, EditNameBottomSheet::class.java.name)
     }
@@ -110,7 +117,7 @@ class EditProfileActivity : BaseActivity() {
 
             binding.rlFooter.visibility = View.VISIBLE
             binding.progressBar.visibility = View.INVISIBLE
-            binding.btnSave.visibility = View.VISIBLE
+            binding.btnDone.visibility = View.VISIBLE
         }.autoDispose()
         bottomReportSheet.show(supportFragmentManager, EditAboutBottomSheet::class.java.name)
     }
@@ -184,12 +191,19 @@ class EditProfileActivity : BaseActivity() {
                         if (it.hasExtra(ImageCropActivity.INTENT_EXTRA_FILE_PATH)) {
                             val croppedImageFilePath = it.getStringExtra(ImageCropActivity.INTENT_EXTRA_FILE_PATH)
                             if (!croppedImageFilePath.isNullOrEmpty()) {
-                                sharedPreference.profilePic = croppedImageFilePath
+
                                 Glide.with(this@EditProfileActivity)
                                     .load(croppedImageFilePath)
                                     .circleCrop()
                                     .placeholder(R.drawable.outline_account_circle_24_profile)
                                     .into(binding.ivUserProfile)
+
+                                val croppedImageFile = File(croppedImageFilePath)
+                                profilePic = MultipartBody.Part.createFormData(
+                                    "image",
+                                    System.currentTimeMillis().toString().plus(croppedImageFile.extension),
+                                    croppedImageFile.asRequestBody("image/*".toMediaTypeOrNull())
+                                )
                             }
                         }
                     }
@@ -211,6 +225,63 @@ class EditProfileActivity : BaseActivity() {
                     )
                 }
             }
+        }
+    }
+
+    //Update Profile Api
+    private fun updateProfile() {
+        showLoading()
+        editProfileViewModel.updateProfile(
+            accessToken = sharedPreference.accessToken,
+            name = findRequestBody(binding.tvName.getString()),
+            about = findRequestBody(binding.tvAbout.getString()),
+            image = profilePic
+        )
+    }
+
+    //Observer
+    private fun observer() {
+        // Profile response
+        editProfileViewModel.updateProfileResponse.observe(this) {
+            if ((it.result.name != null) && (it.result.name != "")) {
+                sharedPreference.name = it.result.name
+            }
+
+            if ((it.result.about != null) && (it.result.about != "")) {
+                sharedPreference.about = it.result.about
+            }
+
+            if ((it.result.image != null) && (it.result.image != "")) {
+                sharedPreference.profilePic = it.result.image
+            }
+
+            sharedPreference.halloFlag = 1
+
+            val userModel = UserModel()
+            userModel.countryCode = sharedPreference.countryCode
+            userModel.name = sharedPreference.name
+            userModel.uid = sharedPreference.userId
+            userModel.phone = sharedPreference.mobileNumber
+            userModel.photo = sharedPreference.profilePic
+            userModel.status = "Hey I am using Haallo!!"
+            userModel.userName = sharedPreference.userName
+            userModel.ver = "1.0"
+            val userId = "u_${sharedPreference.userId}"
+            firebaseDbHandler.saveUser(userId, userModel)
+
+            showToast(getString(R.string.msg_profile_updated_successfully))
+            hideLoading()
+
+            binding.rlFooter.visibility = View.INVISIBLE
+            binding.progressBar.visibility = View.INVISIBLE
+            binding.btnDone.visibility = View.INVISIBLE
+
+            loadProfile()
+        }
+
+        editProfileViewModel.onError.observe(this) {
+            hideLoading()
+            showError(this, binding.root, it)
         }
     }
 }

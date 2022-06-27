@@ -11,15 +11,14 @@ import com.haallo.base.BaseActivity
 import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.base.extension.subscribeAndObserveOnMainThread
 import com.haallo.base.extension.throttleClicks
-import com.haallo.constant.IntentConstant
 import com.haallo.databinding.ActivitySignInBinding
 import com.haallo.ui.chat.model.UserModel
+import com.haallo.ui.forgotpassword.ForgotPasswordActivity
 import com.haallo.ui.home.HomeActivity
+import com.haallo.ui.otpverify.OtpVerifyActivity
 import com.haallo.ui.signin.viewmodel.SignInViewModel
-import com.haallo.ui.splashToHome.forgotAndResetPassword.ForgotPasswordActivityOld
-import com.haallo.ui.splashToHome.otp.OtpActivityOld
-import com.haallo.ui.splashToHome.profile.CreateProfileActivityOld
 import com.haallo.ui.signup.SignUpActivity
+import com.haallo.ui.createprofile.CreateProfileActivity
 import com.haallo.util.*
 import com.tbruyelle.rxpermissions2.Permission
 import com.tbruyelle.rxpermissions2.RxPermissions
@@ -53,7 +52,7 @@ class SignInActivity : BaseActivity() {
         }.autoDispose()
 
         binding.tvForgotPassword.throttleClicks().subscribeAndObserveOnMainThread {
-            startActivityWithDefaultAnimation(ForgotPasswordActivityOld.getIntent(this))
+            startActivityWithDefaultAnimation(ForgotPasswordActivity.getIntent(this))
         }.autoDispose()
 
         binding.btnLogin.throttleClicks().subscribeAndObserveOnMainThread {
@@ -200,12 +199,10 @@ class SignInActivity : BaseActivity() {
 
             when {
                 it.result.otp_verify_status == 0 -> {
-                    startActivity(
-                        Intent(this, OtpActivityOld::class.java).putExtra(IntentConstant.IS_FROM, IntentConstant.SIGN_IN)
-                    )
+                    startActivityWithDefaultAnimation(OtpVerifyActivity.getIntent(this))
                 }
                 it.result.profile_status == 0 -> {
-                    startActivity(Intent(this, CreateProfileActivityOld::class.java))
+                    startActivityWithDefaultAnimation(CreateProfileActivity.getIntent(this))
                 }
                 it.result.profile_status == 1 -> {
                     val userModel = UserModel()

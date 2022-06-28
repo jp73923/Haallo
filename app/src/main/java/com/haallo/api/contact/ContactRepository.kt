@@ -6,6 +6,7 @@ import com.haallo.database.db.HaalloDatabase
 import com.haallo.database.entity.ContactEntity
 import io.reactivex.Single
 import org.jetbrains.anko.doAsync
+import timber.log.Timber
 
 class ContactRepository {
 
@@ -39,7 +40,7 @@ class ContactRepository {
                                         val indexColNumber = phoneCursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER)
                                         val phoneNumber = phoneCursor.getString(indexColNumber).replace("\\s".toRegex(), "")
                                         val phoneContact = ContactEntity(
-                                            name = name,
+                                            name = name ?: "",
                                             phoneNo = phoneNumber
                                         )
                                         phoneContactArrayList.add(phoneContact)

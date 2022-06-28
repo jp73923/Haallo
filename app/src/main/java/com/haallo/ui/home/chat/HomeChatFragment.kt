@@ -96,6 +96,7 @@ class HomeChatFragment : BaseFragment(), RecentChatListAdapter.RecentChatListLis
     }
 
     private fun loadRecentChatList(context: Context) {
+        binding.tvNoRecentChat.visibility = View.VISIBLE
         val recentChatList: MutableLiveData<ArrayList<RecentMessageModel>> = MutableLiveData()
         firebaseDbHandler.getRecentMessages(otherUserIdWithU, recentChatList)
         recentChatList.observe(this.requireActivity()) {

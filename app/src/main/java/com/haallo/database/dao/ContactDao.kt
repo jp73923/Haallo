@@ -15,11 +15,11 @@ interface ContactDao {
     fun insertContact(contactEntity: ContactEntity): Single<Long>
 
     @Insert
-    fun insertContactList(contactList: List<ContactEntity>):Single<List<Long>>
+    fun insertContactList(contactList: List<ContactEntity>): List<Long>
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
-    fun updateContact(contactEntity: ContactEntity):Single<Int>
+    fun updateContact(contactEntity: ContactEntity): Single<Int>
 
     @Query("Delete From ContactTable")
-    fun emptyContactTable(): Single<Int>
+    fun emptyContactTable(): Int
 }

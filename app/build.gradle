@@ -208,6 +208,9 @@ dependencies {
     implementation "androidx.tonyodev.fetch2:xfetch2:3.1.1"
     implementation 'com.github.abdularis:androidbuttonprogress:1.0.2'
 
+    //Detect Phone Number
+    implementation 'com.googlecode.libphonenumber:libphonenumber:8.12.32'
+
     //Multi Contact Picker
     implementation project(':multicontactpicker')
 

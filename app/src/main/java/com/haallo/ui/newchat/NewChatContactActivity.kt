@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.MutableLiveData
+import com.google.i18n.phonenumbers.PhoneNumberUtil
 import com.haallo.api.fbrtdb.model.FirebaseUser
 import com.haallo.application.HaalloApplication
 import com.haallo.base.BaseActivity
@@ -14,12 +15,13 @@ import com.haallo.constant.IntentConstant
 import com.haallo.database.entity.ContactEntity
 import com.haallo.databinding.ActivityNewChatContactBinding
 import com.haallo.ui.chat.activity.ChatActivity
-import com.haallo.ui.newchat.view.NewChatContactAdapter
 import com.haallo.ui.chat.newChat.ContactModel
-import com.haallo.ui.newgroup.NewGroupContactActivity
+import com.haallo.ui.newchat.view.NewChatContactAdapter
 import com.haallo.ui.newchat.viewmodel.NewChatViewModel
+import com.haallo.ui.newgroup.NewGroupContactActivity
 import com.jakewharton.rxbinding3.widget.textChanges
 import io.reactivex.android.schedulers.AndroidSchedulers
+import org.jetbrains.anko.doAsync
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -51,7 +53,7 @@ class NewChatContactActivity : BaseActivity(), NewChatContactAdapter.NewChatCont
         setContentView(binding.root)
 
         listenToViewEvent()
-        listenToViewModel()
+        listenToViewModel(this)
     }
 
     private fun listenToViewEvent() {
@@ -89,11 +91,11 @@ class NewChatContactActivity : BaseActivity(), NewChatContactAdapter.NewChatCont
             }.autoDispose()
     }
 
-    private fun listenToViewModel() {
+    private fun listenToViewModel(context: Context) {
         newChatViewModel.newChatState.subscribeAndObserveOnMainThread {
             when (it) {
                 is NewChatViewModel.NewChatViewState.GetAllPhoneContactList -> {
-                    getAllFirebaseUserList(it.phoneContactArrayList)
+                    getAllFirebaseUserList(context, it.phoneContactArrayList)
                 }
                 is NewChatViewModel.NewChatViewState.ErrorMessage -> {
                     showLongToast(it.errorMessage)
@@ -112,86 +114,127 @@ class NewChatContactActivity : BaseActivity(), NewChatContactAdapter.NewChatCont
         newChatViewModel.getAllPhoneContacts()
     }
 
-    private fun getAllFirebaseUserList(phoneContactArrayList: List<ContactEntity>) {
+    private fun getAllFirebaseUserList(context: Context, phoneContactArrayList: List<ContactEntity>) {
         val firebaseUserLiveData: MutableLiveData<ArrayList<FirebaseUser>> = MutableLiveData()
         firebaseUserLiveData.observe(this) {
-            prepareMatchingContactList(phoneContactArrayList, it)
+            prepareMatchingContactList(context, phoneContactArrayList, it)
         }
         firebaseDbHandler.getAllContactFromFirebase(firebaseUserLiveData)
     }
 
-    private fun prepareMatchingContactList(phoneContactArrayList: List<ContactEntity>, firebaseUserArrayList: ArrayList<FirebaseUser>) {
-        contactModelArrayList = ArrayList()
+    private fun prepareMatchingContactList(context: Context, phoneContactArrayList: List<ContactEntity>, firebaseUserArrayList: ArrayList<FirebaseUser>) {
+        doAsync {
+            contactModelArrayList = ArrayList()
 
-        val myUserId = "u_${sharedPreference.userId}"
+            val myUserId = "u_${sharedPreference.userId}"
+            val mobileNumber = sharedPreference.mobileNumber
 
-        for (phoneContact in phoneContactArrayList) {
-            for (firebaseUser in firebaseUserArrayList) {
+            for (phoneContact in phoneContactArrayList) {
+                for (firebaseUser in firebaseUserArrayList) {
 
-                if (firebaseUser.uid.toString() == myUserId) {
-                    continue
-                }
+                    if (firebaseUser.uid.toString() == myUserId) {
+                        continue
+                    }
 
-                var contactModel: ContactModel? = null
+                    try {
+                        val devicePhoneNo = if (phoneContact.phoneNo.contains("+")) {
+                            PhoneNumberUtil.getInstance().parse(phoneContact.phoneNo, "").nationalNumber.toString()
+                        } else {
+                            phoneContact.phoneNo
+                        }
+                        val firebasePhoneNo = if (firebaseUser.phone.contains("+")) {
+                            PhoneNumberUtil.getInstance().parse(firebaseUser.phone, "").nationalNumber.toString()
+                        } else {
+                            firebaseUser.phone
+                        }
+                        if (devicePhoneNo == mobileNumber) {
+                            continue
+                        }
+                        if (firebasePhoneNo == mobileNumber) {
+                            continue
+                        }
+                    } catch (e: Exception) {
+                        e.printStackTrace()
+                    }
 
-                if (phoneContact.phoneNo.contains("+")) {
-                    if (firebaseUser.phone.contains("+")) {
-                        if (phoneContact.phoneNo == firebaseUser.phone) {
-                            contactModel = ContactModel(
-                                id = firebaseUser.uid.toString(),
-                                number = firebaseUser.phone,
-                                name = phoneContact.name,
-                                pic = firebaseUser.photo,
-                                isSelected = false
-                            )
+                    var contactModel: ContactModel? = null
+                    if (phoneContact.phoneNo.contains("+")) {
+                        if (firebaseUser.phone.contains("+")) {
+                            try {
+                                val devicePhoneNo = PhoneNumberUtil.getInstance().parse(phoneContact.phoneNo, "").nationalNumber.toString()
+                                val firebasePhoneNo = PhoneNumberUtil.getInstance().parse(firebaseUser.phone, "").nationalNumber.toString()
+                                if (devicePhoneNo == firebasePhoneNo) {
+                                    contactModel = ContactModel(
+                                        id = firebaseUser.uid.toString(),
+                                        number = firebaseUser.phone,
+                                        name = phoneContact.name,
+                                        pic = firebaseUser.photo,
+                                        isSelected = false
+                                    )
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        } else {
+                            try {
+                                val devicePhoneNo = PhoneNumberUtil.getInstance().parse(phoneContact.phoneNo, "").nationalNumber.toString()
+                                if (devicePhoneNo == firebaseUser.phone) {
+                                    contactModel = ContactModel(
+                                        id = firebaseUser.uid.toString(),
+                                        number = firebaseUser.phone,
+                                        name = phoneContact.name,
+                                        pic = firebaseUser.photo,
+                                        isSelected = false
+                                    )
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
                         }
                     } else {
-                        if (phoneContact.phoneNo == (firebaseUser.countryCode + firebaseUser.phone)) {
-                            contactModel = ContactModel(
-                                id = firebaseUser.uid.toString(),
-                                number = firebaseUser.phone,
-                                name = phoneContact.name,
-                                pic = firebaseUser.photo,
-                                isSelected = false
-                            )
+                        if (firebaseUser.phone.contains("+")) {
+                            try {
+                                val firebasePhoneNo = PhoneNumberUtil.getInstance().parse(firebaseUser.phone, "").nationalNumber.toString()
+                                if (firebasePhoneNo == phoneContact.phoneNo) {
+                                    contactModel = ContactModel(
+                                        id = firebaseUser.uid.toString(),
+                                        number = firebaseUser.phone,
+                                        name = phoneContact.name,
+                                        pic = firebaseUser.photo,
+                                        isSelected = false
+                                    )
+                                }
+                            } catch (e: Exception) {
+                                e.printStackTrace()
+                            }
+                        } else {
+                            if (phoneContact.phoneNo == firebaseUser.phone) {
+                                contactModel = ContactModel(
+                                    id = firebaseUser.uid.toString(),
+                                    number = firebaseUser.phone,
+                                    name = phoneContact.name,
+                                    pic = firebaseUser.photo,
+                                    isSelected = false
+                                )
+                            }
                         }
                     }
-                } else {
-                    if (firebaseUser.phone.contains("+")) {
-                        if (phoneContact.phoneNo == (firebaseUser.countryCode + firebaseUser.phone)) {
-                            contactModel = ContactModel(
-                                id = firebaseUser.uid.toString(),
-                                number = firebaseUser.phone,
-                                name = phoneContact.name,
-                                pic = firebaseUser.photo,
-                                isSelected = false
-                            )
-                        }
-                    } else {
-                        if (phoneContact.phoneNo == firebaseUser.phone) {
-                            contactModel = ContactModel(
-                                id = firebaseUser.uid.toString(),
-                                number = firebaseUser.phone,
-                                name = phoneContact.name,
-                                pic = firebaseUser.photo,
-                                isSelected = false
-                            )
-                        }
-                    }
-                }
 
-                if (contactModel != null) {
-                    contactModelArrayList.add(contactModel)
+                    if (contactModel != null) {
+                        contactModelArrayList.add(contactModel)
+                    }
                 }
             }
+
+            runOnUiThread {
+                hideLoading()
+
+                contactModelArrayList = removeDuplicates(contactModelArrayList)
+
+                newChatContactAdapter = NewChatContactAdapter(context, contactModelArrayList, this@NewChatContactActivity)
+                binding.rvContactList.adapter = newChatContactAdapter
+            }
         }
-
-        hideLoading()
-
-        contactModelArrayList = removeDuplicates(contactModelArrayList)
-
-        newChatContactAdapter = NewChatContactAdapter(this, contactModelArrayList, this)
-        binding.rvContactList.adapter = newChatContactAdapter
     }
 
     private fun removeDuplicates(currentContactArrayList: ArrayList<ContactModel>): ArrayList<ContactModel> {

@@ -84,7 +84,7 @@ class HomeActivity : BaseActivity() {
             }
         })
 
-        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) == PackageManager.PERMISSION_GRANTED) {
             homeViewModel.fetchPhoneContacts(this)
         }
     }

@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "711768112066-itdnp5qsuv78h99e7pnh0vtrjf4nias6.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.haallo",
+            "certificate_hash": "91efce10e99dbc4e380be097c753e6015399f192"
+          }
+        },
+        {
           "client_id": "711768112066-5mfkmolvbf05gtoibveqid4im6ntjt00.apps.googleusercontent.com",
           "client_type": 3
         }

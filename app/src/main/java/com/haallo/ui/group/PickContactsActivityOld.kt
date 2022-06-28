@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import com.haallo.api.fbrtdb.model.FirebaseUser
 import com.haallo.base.OldBaseActivity
 import com.haallo.constant.IntentConstant
 import com.haallo.database.db.MyRoomDatabase
@@ -17,7 +18,6 @@ import com.haallo.databinding.ActivityPickContactsBinding
 import com.haallo.service.FetchContactsService
 import com.haallo.ui.chat.ChatViewModelOld
 import com.haallo.ui.chat.activity.ChatActivity
-import com.haallo.ui.chat.model.UserModel
 import com.haallo.ui.group.model.ContactPickModel
 import com.haallo.util.hide
 import com.haallo.util.show
@@ -30,15 +30,12 @@ class PickContactsActivityOld : OldBaseActivity() {
 
     private lateinit var chatViewModel: ChatViewModelOld
     private var allContactAdapter: PickContactAdapter? = null
-    private val firebaseUser: MutableLiveData<ArrayList<UserModel?>> = MutableLiveData()
+    private val firebaseUser: MutableLiveData<ArrayList<FirebaseUser>> = MutableLiveData()
     private var allContact: List<ContactPickModel> = ArrayList()
     private var isSearchBoxOpen: Boolean = false
     private var allUser: ArrayList<ContactPickModel> = ArrayList()
     private val dummyAllUser: ArrayList<ContactPickModel> = ArrayList()
-    private var mobileList: List<String> = arrayListOf<String>()
-
-    private val rootDb: DatabaseReference = FirebaseDatabase.getInstance().reference
-    private val userDb: DatabaseReference = rootDb.child("users")
+    private var mobileList: List<String> = arrayListOf()
 
     var hashmap: HashMap<Int, ContactPickModel> = HashMap()
     var arrayList: ArrayList<ContactPickModel> = ArrayList()
@@ -55,7 +52,7 @@ class PickContactsActivityOld : OldBaseActivity() {
 
     //All UI Changes From Here
     override fun initView() {
-        chatViewModel = ViewModelProvider(this).get(com.haallo.ui.chat.ChatViewModelOld::class.java)
+        chatViewModel = ViewModelProvider(this).get(ChatViewModelOld::class.java)
 //        userDb.addValueEventListener(object : ValueEventListener{
 //            override fun onDataChange(snapshot: DataSnapshot) {
 //                for (snap in snapshot.children){
@@ -128,10 +125,7 @@ class PickContactsActivityOld : OldBaseActivity() {
                 mobileList = it.map { it.phone_number }.toList()
                 chatViewModel.matchContactApi(sharedPreference.accessToken, mobileList)
 
-                allContact =
-                    it.map { contact -> ContactPickModel(contact.phone_number, contact.name, "") }
-                        .toList()
-
+                allContact = it.map { contact -> ContactPickModel(contact.phone_number, contact.name, "") }.toList()
                 firebaseDbHandler.getAllContactFromFirebase(firebaseUser)
 
                 this.firebaseUser.observe(this) { bean ->
@@ -142,7 +136,7 @@ class PickContactsActivityOld : OldBaseActivity() {
                         for (j in 0 until bean.size) {
                             val myUserId = "u_${sharedPreference.userId}"
                             showLog(allContact[i].number)
-                            if (bean[j]!!.uid != myUserId)
+                            if (bean[j]!!.uid.toString() != myUserId)
                                 if (allContact[i].number != sharedPreference.countryCode + sharedPreference.mobileNumber) {
 
                                     if (allContact[i].number == bean[j]!!.countryCode + bean[j]!!.phone) {
@@ -151,7 +145,7 @@ class PickContactsActivityOld : OldBaseActivity() {
                                             bean[j]?.phone ?: "",
                                             allContact[i].name ?: "",
                                             bean[j]?.photo ?: "",
-                                            bean[j]?.uid ?: "",
+                                            bean[j]?.uid.toString(),
                                             false,
                                             true
                                         )

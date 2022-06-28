@@ -2,6 +2,8 @@ package com.haallo.di
 
 import android.app.Application
 import android.content.Context
+import com.haallo.api.fbrtdb.FBRTDBModule
+import com.haallo.api.phonecontact.PhoneContactModule
 import com.haallo.api.viewmodelmodule.HaalloViewModelProvider
 import com.haallo.application.Haallo
 import com.haallo.base.network.NetworkModule
@@ -33,6 +35,8 @@ class HaalloAppModule(val app: Application) {
         NetworkModule::class,
         PrefsModule::class,
         HaalloViewModelProvider::class,
+        PhoneContactModule::class,
+        FBRTDBModule::class,
     ]
 )
 

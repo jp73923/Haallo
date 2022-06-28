@@ -2,6 +2,7 @@ package com.haallo.di
 
 import android.app.Application
 import com.haallo.ui.home.HomeActivity
+import com.haallo.ui.newchat.NewChatActivity
 
 /**
  *
@@ -24,6 +25,7 @@ abstract class BaseUiApp : Application() {
 interface BaseAppComponent {
     fun inject(app: Application)
     fun inject(homeActivity: HomeActivity)
+    fun inject(newChatActivity: NewChatActivity)
 }
 
 /**

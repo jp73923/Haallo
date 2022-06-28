@@ -1,64 +1,54 @@
 package com.haallo.ui.chat.newChat
 
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.AppCompatTextView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.haallo.R
-import com.haallo.util.hide
-import com.haallo.util.show
-import com.squareup.picasso.Picasso
 import de.hdodenhof.circleimageview.CircleImageView
 
 class AllContactAdapter(
-    private val user: ArrayList<ContactModel>,
-    private var allContactListener: AllContactListener
-) : RecyclerView.Adapter<AllContactAdapter.ViewHolder>() {
+    private val context: Context,
+    private val contactModelArrayList: ArrayList<ContactModel>,
+    private var allContactAdapterCallback: AllContactAdapterCallback
+) : RecyclerView.Adapter<AllContactAdapter.AdapterVH>() {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view: View = LayoutInflater.from(parent.context).inflate(R.layout.list_item_user, parent, false)
-        return ViewHolder(view)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AdapterVH {
+        val view = LayoutInflater.from(parent.context).inflate(R.layout.view_matching_chat_contact, parent, false)
+        return AdapterVH(view)
     }
 
     override fun getItemCount(): Int {
-        return user.size
+        return contactModelArrayList.size
     }
 
-    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.apply {
-            if (user[position].name != "") {
-                tvUserName.text = user[position].name
-            }
-            tvInvite.hide()
-            if (user[position].isOnHallo) {
-                if (user[position].pic != "") {
-                    Picasso.get().load(user[position].pic).into(ivUserPic)
-                }
-                rootContact.setOnClickListener {
-                    allContactListener.itemClick(
-                        user[position].id,
-                        user[position].name,
-                        user[position].pic,
-                        user[position].number
-                    )
-                }
-            } else {
-                tvInvite.show()
-                ivUserPic.setImageResource(R.drawable.logo_haallo)
+    override fun onBindViewHolder(holder: AdapterVH, position: Int) {
+        val contactModel = contactModelArrayList[position]
+        holder.tvUserName.text = contactModel.name
+
+        Glide.with(context)
+            .load(contactModel.pic)
+            .placeholder(R.drawable.logo_haallo)
+            .error(R.drawable.logo_haallo)
+            .into(holder.ivUserProfileImage)
+    }
+
+    inner class AdapterVH(view: View) : RecyclerView.ViewHolder(view) {
+
+        val ivUserProfileImage = view.findViewById(R.id.ivUserProfileImage) as CircleImageView
+        val tvUserName = view.findViewById(R.id.tvUserName) as AppCompatTextView
+
+        init {
+            view.setOnClickListener {
+                allContactAdapterCallback.adapterCallbackItemClick(contactModelArrayList[adapterPosition])
             }
         }
     }
 
-    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val rootContact = view.findViewById(R.id.rootContact) as ConstraintLayout
-        val ivUserPic = view.findViewById(R.id.ivUserPic) as CircleImageView
-        val tvUserName = view.findViewById(R.id.tvUserName) as AppCompatTextView
-        val tvInvite = view.findViewById(R.id.tvInvite) as AppCompatTextView
-    }
-
-    interface AllContactListener {
-        fun itemClick(otherUserId: String, otherUserName: String, otherUserPic: String, number: String)
+    interface AllContactAdapterCallback {
+        fun adapterCallbackItemClick(contactModel: ContactModel)
     }
 }

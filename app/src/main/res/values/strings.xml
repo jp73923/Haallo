@@ -97,6 +97,7 @@
     <string name="msg_please_allow_storage_permission">Please allow storage permission to select photo.</string>
     <string name="msg_please_allow_camera_permission">Please allow camera permission to capture photo.</string>
     <string name="msg_please_allow_location_permission">Please allow location permission to detect your current location.</string>
+    <string name="msg_please_allow_contact_permission_new_group">Please allow contact permission to create new group.</string>
     <string name="msg_allow_permission_from_settings">Allow storage permission from device Settings -> Apps -> Haallo -> Permissions.</string>
 
     <string name="msg_can_not_create_destination_folder">Can not create destination folder.</string>
@@ -115,6 +116,9 @@
     <string name="msg_getting_current_location_please_wait">Getting your current location, please wait for a moment</string>
     <string name="msg_getting_current_location_failed">Getting your current location failed</string>
     <string name="msg_profile_updated_successfully">Profile updated successfully</string>
+
+    <string name="msg_chat_removed">Chat removed!</string>
+    <string name="msg_no_records_found">No records found</string>
 
     <string name="error_in_finding_file_path">Error in finding file path</string>
 
@@ -160,9 +164,9 @@
     <string name="register">Register</string>
     <string name="registration">Registration</string>
     <string name="mobile_number">Mobile Number</string>
-    <string name="mobile_number_login">Mobile Number:</string>
-    <string name="password">Password:</string>
-    <string name="confirm_password">Confirm Password:</string>
+    <string name="mobile_number_login">Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm Password</string>
     <string name="forgot_password">Forgot Password</string>
     <string name="forgot_password_line"><u>Forgot Password?</u></string>
     <string name="sign_in_cancelled">Cancelled</string>

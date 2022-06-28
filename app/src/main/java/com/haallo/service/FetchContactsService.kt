@@ -9,9 +9,7 @@ import com.haallo.database.entity.ContactEntity
 
 class FetchContactsService : JobIntentService() {
 
-
     companion object {
-        private const val TAG = "FetchContactsService"
         private const val JOB_ID = 1212     //Unique job ID for this service.
         private var isUpdateContacts: Boolean = false
 
@@ -43,16 +41,12 @@ class FetchContactsService : JobIntentService() {
             )?.use { cursor ->
 
                 val indexColId = cursor.getColumnIndexOrThrow(ContactsContract.Contacts._ID)
-                val indexColName =
-                    cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY)
-                val indexColHasPhoneNumber =
-                    cursor.getColumnIndexOrThrow(ContactsContract.Contacts.HAS_PHONE_NUMBER)
-
+                val indexColName = cursor.getColumnIndexOrThrow(ContactsContract.Contacts.DISPLAY_NAME_PRIMARY)
+                val indexColHasPhoneNumber = cursor.getColumnIndexOrThrow(ContactsContract.Contacts.HAS_PHONE_NUMBER)
                 while (cursor.moveToNext()) {
                     try {
                         val id = cursor.getString(indexColId)
                         val name = cursor.getString(indexColName)
-
                         if (cursor.getInt(indexColHasPhoneNumber) > 0) {
                             query(
                                 ContactsContract.CommonDataKinds.Phone.CONTENT_URI,
@@ -61,13 +55,9 @@ class FetchContactsService : JobIntentService() {
                                 arrayOf(id),
                                 null
                             )?.use { phoneCursor ->
-
                                 if (phoneCursor.moveToFirst()) {
-                                    val indexColNumber =
-                                        phoneCursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER)
-                                    val phoneNumber = phoneCursor.getString(indexColNumber)
-                                        .replace("\\s".toRegex(), "")
-
+                                    val indexColNumber = phoneCursor.getColumnIndexOrThrow(ContactsContract.CommonDataKinds.Phone.NUMBER)
+                                    val phoneNumber = phoneCursor.getString(indexColNumber).replace("\\s".toRegex(), "")
                                     val contactEntity = ContactEntity(
                                         name = name,
                                         phone_number = phoneNumber
@@ -83,9 +73,7 @@ class FetchContactsService : JobIntentService() {
                 }
             }
         }
-
         /// Log.e("Total Contacts", "${contactDetailsList.size}")
-
         return contactDetailsList
     }
 }

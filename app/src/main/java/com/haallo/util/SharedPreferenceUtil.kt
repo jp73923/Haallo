@@ -26,14 +26,6 @@ class SharedPreferenceUtil private constructor(val context: Context) {
         }
     }
 
-    var halloFlag: Int
-        get() = sharedPreferences["halloFlag", -1]!!
-        set(value) = sharedPreferences.set("halloFlag", value)
-
-    var screenWidth: Int
-        get() = sharedPreferences["screenWidth", 0]!!
-        set(value) = sharedPreferences.set("screenWidth", value)
-
     var homeLogin: Int
         get() = sharedPreferences["homeLogin", 0]!!
         set(value) = sharedPreferences.set("homeLogin", value)
@@ -138,7 +130,11 @@ class SharedPreferenceUtil private constructor(val context: Context) {
     }
 
     fun deletePreferences() {
-        editor.clear()
+        sharedPreferences.all.forEach {
+            if (!it.key.equals("selectedLanguage") && !it.key.equals("nightTheme")) {
+                editor.remove(it.key).clear()
+            }
+        }
         editor.apply()
     }
 }

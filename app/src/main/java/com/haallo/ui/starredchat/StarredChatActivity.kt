@@ -1,5 +1,7 @@
 package com.haallo.ui.starredchat
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import com.haallo.base.BaseActivity
 import com.haallo.base.extension.subscribeAndObserveOnMainThread
@@ -7,6 +9,12 @@ import com.haallo.base.extension.throttleClicks
 import com.haallo.databinding.ActivityStarredChatBinding
 
 class StarredChatActivity : BaseActivity() {
+
+    companion object {
+        fun getIntent(context: Context): Intent {
+            return Intent(context, StarredChatActivity::class.java)
+        }
+    }
 
     private lateinit var binding: ActivityStarredChatBinding
 
@@ -21,7 +29,7 @@ class StarredChatActivity : BaseActivity() {
 
     private fun listenToViewEvent() {
         binding.ivBack.throttleClicks().subscribeAndObserveOnMainThread {
-
+            onBackPressed()
         }.autoDispose()
 
         binding.ivSearch.throttleClicks().subscribeAndObserveOnMainThread {

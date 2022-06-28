@@ -7,12 +7,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.ViewModelProvider
 import com.haallo.R
+import com.haallo.api.fbrtdb.model.FirebaseUser
 import com.haallo.base.BaseActivity
 import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.base.extension.subscribeAndObserveOnMainThread
 import com.haallo.base.extension.throttleClicks
 import com.haallo.databinding.ActivitySignInBinding
-import com.haallo.ui.chat.model.UserModel
 import com.haallo.ui.forgotpassword.ForgotPasswordActivity
 import com.haallo.ui.home.HomeActivity
 import com.haallo.ui.otpverify.OtpVerifyActivity
@@ -28,6 +28,12 @@ class SignInActivity : BaseActivity() {
     companion object {
         fun getIntent(context: Context): Intent {
             return Intent(context, SignInActivity::class.java)
+        }
+
+        fun getIntentWithClear(context: Context): Intent {
+            val intent = Intent(context, SignInActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            return intent
         }
     }
 
@@ -46,6 +52,7 @@ class SignInActivity : BaseActivity() {
 
     private fun listenToViewEvent() {
         signInViewModel = ViewModelProvider(this).get(SignInViewModel::class.java)
+        storeFirebaseToken(this)
 
         binding.ivBack.throttleClicks().subscribeAndObserveOnMainThread {
             onBackPressed()
@@ -205,18 +212,17 @@ class SignInActivity : BaseActivity() {
                     startActivityWithDefaultAnimation(CreateProfileActivity.getIntent(this))
                 }
                 it.result.profile_status == 1 -> {
-                    val userModel = UserModel()
-                    userModel.countryCode = sharedPreference.countryCode
-                    userModel.name = sharedPreference.name
-                    userModel.uid = sharedPreference.userId
-                    userModel.phone = sharedPreference.mobileNumber
-                    userModel.photo = sharedPreference.profilePic
-                    userModel.status = "Hey I am using Haallo!!"
-                    userModel.userName = sharedPreference.userName
-                    userModel.ver = "1.0"
+                    val firebaseUser = FirebaseUser()
+                    firebaseUser.countryCode = sharedPreference.countryCode
+                    firebaseUser.name = sharedPreference.name
+                    firebaseUser.uid = sharedPreference.userId.toLong()
+                    firebaseUser.phone = sharedPreference.mobileNumber
+                    firebaseUser.photo = sharedPreference.profilePic
+                    firebaseUser.status = "Hey I am using Haallo!!"
+                    firebaseUser.userName = sharedPreference.userName
+                    firebaseUser.ver = "1.0"
                     val userId = "u_${sharedPreference.userId}"
-                    firebaseDbHandler.saveUser(userId, userModel)
-                    sharedPreference.halloFlag = 1
+                    firebaseDbHandler.saveUser(userId, firebaseUser)
 
                     startActivityWithDefaultAnimation(HomeActivity.getIntent(this))
                     finish()

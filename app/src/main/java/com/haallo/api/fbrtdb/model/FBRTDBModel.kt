@@ -1,12 +1,12 @@
-package com.haallo.ui.chat.model
+package com.haallo.api.fbrtdb.model
 
-data class UserModel(
+data class FirebaseUser(
     var countryCode: String = "",
     var name: String = "",
     var phone: String = "",
     var photo: String = "",
     var status: String = "",
-    var uid: String = "",
+    var uid: Long = 0,
     var userName: String = "",
     var ver: String = ""
 )

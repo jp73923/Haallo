@@ -5,13 +5,14 @@ import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
 import com.haallo.api.chat.model.RecentMessageModel
+import com.haallo.api.fbrtdb.model.FirebaseUser
 import com.haallo.constant.IntentConstant
 import com.haallo.ui.call.CallModel
 import com.haallo.ui.chat.activity.GroupChatActivity
 import com.haallo.ui.chat.model.*
 import com.haallo.ui.group.model.CreateGroupModel
 import com.haallo.util.SharedPreferenceUtil
-import com.haallo.util.showLog
+import timber.log.Timber
 import java.util.*
 
 class FirebaseDbHandler(val context: Context) {
@@ -24,7 +25,7 @@ class FirebaseDbHandler(val context: Context) {
         FirebaseDatabase.getInstance().getReference("RecentMessage")
     }
 
-    private val userRef by lazy {
+    private val firebaseUserRef by lazy {
         FirebaseDatabase.getInstance().getReference("users")
     }
     val groupRef by lazy {
@@ -73,7 +74,7 @@ class FirebaseDbHandler(val context: Context) {
     }
 
     fun getUserName(userId: String, nameListener: NameListener) {
-        userRef.child(userId).addValueEventListener(object : ValueEventListener {
+        firebaseUserRef.child(userId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.hasChild("firstName") && dataSnapshot.hasChild("lastName")) {
                     val firstName: String = dataSnapshot.child("firstName").value.toString()
@@ -93,7 +94,7 @@ class FirebaseDbHandler(val context: Context) {
     }
 
     fun getUserProfilePic(userId: String, profilePicListener: ProfilePicListener) {
-        userRef.child(userId).addValueEventListener(object : ValueEventListener {
+        firebaseUserRef.child(userId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 if (dataSnapshot.hasChild("profileImage")) {
                     profilePicListener.onProfilePicFound(dataSnapshot.child("profileImage").value.toString())
@@ -214,18 +215,21 @@ class FirebaseDbHandler(val context: Context) {
         )
     }
 
-    fun getAllContactFromFirebase(firebaseUser: MutableLiveData<ArrayList<UserModel?>>) {
-        val userList: ArrayList<UserModel?> = ArrayList()
-        userRef.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                snapshot.children.forEach {
-                    userList.add(it.getValue(UserModel::class.java))
+    fun getAllContactFromFirebase(firebaseUserLiveData: MutableLiveData<ArrayList<FirebaseUser>>) {
+        val firebaseUserArrayList = ArrayList<FirebaseUser>()
+        firebaseUserRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                dataSnapshot.children.forEach { childDataSnapshot ->
+                    childDataSnapshot.getValue(FirebaseUser::class.java)?.let {
+                        firebaseUserArrayList.add(it)
+                    }
                 }
-                firebaseUser.value = userList
+                firebaseUserLiveData.value = firebaseUserArrayList
             }
 
             override fun onCancelled(p0: DatabaseError) {
-                showLog("onCanell")
+                Timber.tag("<><><>").e(p0.message)
+                firebaseUserLiveData.value = firebaseUserArrayList
             }
         })
     }
@@ -376,8 +380,8 @@ class FirebaseDbHandler(val context: Context) {
         }
     }
 
-    fun saveUser(userId: String, userModel: UserModel) {
-        userRef.child(userId).setValue(userModel)
+    fun saveUser(userId: String, firebaseUser: FirebaseUser) {
+        firebaseUserRef.child(userId).setValue(firebaseUser)
     }
 
     fun updateMessage(msg: ChatMsgModel) {

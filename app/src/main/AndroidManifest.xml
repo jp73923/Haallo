@@ -71,6 +71,11 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
+            android:name=".ui.archivedchat.ArchivedChatActivity"
+            android:screenOrientation="nosensor"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
             android:name=".ui.imagecrop.ImageCropActivity"
             android:screenOrientation="nosensor" />
 
@@ -207,7 +212,7 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.chat.newChat.NewChatActivityOld"
+            android:name=".ui.newchat.NewChatActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 

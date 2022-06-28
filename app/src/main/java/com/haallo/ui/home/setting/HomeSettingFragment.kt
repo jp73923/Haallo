@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.app.AppCompatDelegate
 import com.bumptech.glide.Glide
 import com.haallo.R
 import com.haallo.application.HaalloApplication
@@ -17,10 +18,11 @@ import com.haallo.ui.editprofile.EditProfileActivity
 import com.haallo.ui.editprofile.MyProfilePhotoPreviewActivity
 import com.haallo.ui.othersetting.OtherSettingActivity
 import com.haallo.ui.privacysetting.PrivacySettingActivity
-import com.haallo.ui.splash.SplashActivity
-import com.haallo.ui.support.SupportActivity
+import com.haallo.ui.signin.SignInActivity
 import com.haallo.util.SharedPreferenceUtil
 import com.jakewharton.rxbinding3.widget.checkedChanges
+import io.reactivex.Observable
+import java.util.concurrent.TimeUnit
 
 class HomeSettingFragment : BaseFragment() {
 
@@ -72,7 +74,12 @@ class HomeSettingFragment : BaseFragment() {
 
         binding.tvLogout.throttleClicks().subscribeAndObserveOnMainThread {
             SharedPreferenceUtil.getInstance(requireActivity()).deletePreferences()
-            startActivityWithDefaultAnimation(SplashActivity.getIntent(requireContext()))
+            sharedPreferenceUtil.nightTheme = false
+            HaalloApplication.updateNightMode(requireContext())
+
+//            Observable.timer(1500, TimeUnit.MILLISECONDS).subscribeAndObserveOnMainThread {
+                startActivityWithDefaultAnimation(SignInActivity.getIntentWithClear(requireContext()))
+//            }.autoDispose()
         }.autoDispose()
     }
 

@@ -26,7 +26,6 @@ object ErrorUtil {
                         401 -> {
                             context as OldBaseActivity
                             val sharedPreferenceUtil = SharedPreferenceUtil.getInstance(context)
-                            sharedPreferenceUtil.screenWidth = 0
                             sharedPreferenceUtil.homeLogin = 0
                             sharedPreferenceUtil.mobileNumber = ""
                             sharedPreferenceUtil.countryCode = ""

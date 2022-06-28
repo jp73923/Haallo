@@ -4,11 +4,15 @@ import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Context
 import android.os.Bundle
+import android.view.View
 import android.widget.EditText
 import androidx.annotation.CallSuper
 import androidx.fragment.app.Fragment
 import com.haallo.base.helper.FragmentStartListener
+import com.haallo.ui.chat.dialog.CustomProgressDialog
 import com.haallo.ui.chat.firebaseDb.FirebaseDbHandler
+import com.haallo.util.ErrorUtil
+import com.haallo.util.ProgressDialogUtil
 import com.haallo.util.SharedPreferenceUtil
 import com.haallo.util.UiUtils
 import io.reactivex.disposables.CompositeDisposable
@@ -72,7 +76,24 @@ open class BaseFragment() : Fragment() {
     //Not_MVVVM
     lateinit var sharedPreferenceUtil: SharedPreferenceUtil
 
+    fun hideLoading() {
+        ProgressDialogUtil.getInstance().hideProgress()
+    }
+
+    fun showLoading() {
+        hideLoading()
+        ProgressDialogUtil.getInstance().showProgress(requireContext(), false)
+    }
+
+    fun showError(context: Context?, view: View?, throwable: Throwable) {
+        ErrorUtil.handlerGeneralError(context, view, throwable)
+    }
+
     val firebaseDbHandler by lazy {
         FirebaseDbHandler(requireContext())
+    }
+
+    val progressDialog: CustomProgressDialog by lazy {
+        CustomProgressDialog(requireContext(), "Please wait...")
     }
 }

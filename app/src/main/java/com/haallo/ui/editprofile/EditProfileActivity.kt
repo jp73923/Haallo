@@ -12,11 +12,11 @@ import br.com.onimur.handlepathoz.HandlePathOzListener
 import br.com.onimur.handlepathoz.model.PathOz
 import com.bumptech.glide.Glide
 import com.haallo.R
+import com.haallo.api.fbrtdb.model.FirebaseUser
 import com.haallo.api.profile.model.EditProfilePhotoState
 import com.haallo.base.BaseActivity
 import com.haallo.base.extension.*
 import com.haallo.databinding.ActivityEditProfileBinding
-import com.haallo.ui.chat.model.UserModel
 import com.haallo.ui.editprofile.viewmodel.EditProfileViewModel
 import com.haallo.ui.imagecrop.ImageCropActivity
 import com.haallo.util.FileUtils
@@ -255,19 +255,17 @@ class EditProfileActivity : BaseActivity() {
                 sharedPreference.profilePic = it.result.image
             }
 
-            sharedPreference.halloFlag = 1
-
-            val userModel = UserModel()
-            userModel.countryCode = sharedPreference.countryCode
-            userModel.name = sharedPreference.name
-            userModel.uid = sharedPreference.userId
-            userModel.phone = sharedPreference.mobileNumber
-            userModel.photo = sharedPreference.profilePic
-            userModel.status = "Hey I am using Haallo!!"
-            userModel.userName = sharedPreference.userName
-            userModel.ver = "1.0"
+            val firebaseUser = FirebaseUser()
+            firebaseUser.countryCode = sharedPreference.countryCode
+            firebaseUser.name = sharedPreference.name
+            firebaseUser.uid = sharedPreference.userId.toLong()
+            firebaseUser.phone = sharedPreference.mobileNumber
+            firebaseUser.photo = sharedPreference.profilePic
+            firebaseUser.status = "Hey I am using Haallo!!"
+            firebaseUser.userName = sharedPreference.userName
+            firebaseUser.ver = "1.0"
             val userId = "u_${sharedPreference.userId}"
-            firebaseDbHandler.saveUser(userId, userModel)
+            firebaseDbHandler.saveUser(userId, firebaseUser)
 
             showToast(getString(R.string.msg_profile_updated_successfully))
             hideLoading()

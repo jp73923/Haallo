@@ -20,7 +20,6 @@ import com.haallo.ui.welcome.WelcomeActivity
 import com.haallo.util.AppSignatureHelper
 import com.haallo.util.DetachableClickListener
 import com.haallo.util.PermissionsUtil
-import com.haallo.util.findScreenWidth
 
 @SuppressLint("CustomSplashScreen")
 class SplashActivity : BaseActivity() {
@@ -51,16 +50,10 @@ class SplashActivity : BaseActivity() {
     //All UI Changes From Here
     private fun listenToViewEvent() {
         if (sharedPreference.isFirstTime == 1) {
-            if (sharedPreference.halloFlag == 1) {
-                startHomeActivity()
-            } else {
-                startActivityWithDefaultAnimation(SignUpActivity.getIntent(this))
-                finish()
-            }
+            startNextActivity()
         } else {
             sharedPreference.isFirstTime = 1
             checkAppPermission()
-            sharedPreference.screenWidth = findScreenWidth(window)
             hashKey()
         }
     }
@@ -145,12 +138,7 @@ class SplashActivity : BaseActivity() {
         }, 2500)
 
         handler.postDelayed({
-            if (sharedPreference.halloFlag == 1) {
-                startHomeActivity()
-            } else {
-                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
-                finish()
-            }
+            startNextActivity()
         }, 2700)
     }
 
@@ -177,7 +165,6 @@ class SplashActivity : BaseActivity() {
                 progress100()
             }
         }
-
         super.onRestart()
     }
 
@@ -199,12 +186,7 @@ class SplashActivity : BaseActivity() {
         }, 1500)
 
         handler.postDelayed({
-            if (sharedPreference.halloFlag == 1) {
-                startHomeActivity()
-            } else {
-                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
-                finish()
-            }
+            startNextActivity()
         }, 1700)
     }
 
@@ -221,12 +203,7 @@ class SplashActivity : BaseActivity() {
         }, 1000)
 
         handler.postDelayed({
-            if (sharedPreference.halloFlag == 1) {
-                startHomeActivity()
-            } else {
-                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
-                finish()
-            }
+            startNextActivity()
         }, 1200)
     }
 
@@ -238,23 +215,13 @@ class SplashActivity : BaseActivity() {
         }, 500)
 
         handler.postDelayed({
-            if (sharedPreference.halloFlag == 1) {
-                startHomeActivity()
-            } else {
-                startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
-                finish()
-            }
+            startNextActivity()
         }, 700)
     }
 
     //If Progress = 100
     private fun progress100() {
-        if (sharedPreference.halloFlag == 1) {
-            startHomeActivity()
-        } else {
-            startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
-            finish()
-        }
+        startNextActivity()
     }
 
     //On Back Pressed Method
@@ -267,8 +234,18 @@ class SplashActivity : BaseActivity() {
         splashProgress = sharedPreference.splashProgress
     }
 
-    private fun startHomeActivity() {
-        startActivityWithDefaultAnimation(HomeActivity.getIntent(this))
+    private fun startNextActivity() {
+        val selectedLanguage = sharedPreference.selectedLanguage
+        if (selectedLanguage.isNotEmpty()) {
+            val userId = sharedPreference.userId
+            if (userId.isNotEmpty()) {
+                startActivityWithDefaultAnimation(HomeActivity.getIntent(this))
+            } else {
+                startActivityWithDefaultAnimation(SignUpActivity.getIntent(this))
+            }
+        } else {
+            startActivityWithDefaultAnimation(WelcomeActivity.getIntent(this))
+        }
         finish()
     }
 }

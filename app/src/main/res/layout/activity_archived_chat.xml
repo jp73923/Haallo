@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".ui.starredchat.StarredChatActivity">
+    tools:context=".ui.archivedchat.ArchivedChatActivity">
 
     <RelativeLayout
         android:id="@+id/rlHeader"
@@ -31,7 +31,7 @@
             android:layout_toEndOf="@+id/ivBack"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:text="@string/label_starred_messages"
+            android:text="@string/label_archived"
             android:textColor="@color/md_white"
             android:textSize="@dimen/_14sdp" />
 
@@ -66,7 +66,7 @@
         android:layout_height="match_parent">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvStarredMessage"
+            android:id="@+id/rvArchiveddMessage"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/dp_8"

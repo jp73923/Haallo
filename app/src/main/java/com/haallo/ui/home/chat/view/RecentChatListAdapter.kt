@@ -1,4 +1,4 @@
-package com.haallo.ui.home.chat.broadcast.view
+package com.haallo.ui.home.chat.view
 
 import android.content.Context
 import android.content.res.ColorStateList
@@ -12,7 +12,6 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.haallo.R
 import com.haallo.api.chat.model.RecentMessageModel
-import com.haallo.base.OldBaseActivity
 import com.haallo.ui.chat.firebaseDb.FirebaseDbHandler
 import com.haallo.ui.chat.util.ChatDateTimeUtil
 import com.haallo.util.hide
@@ -117,44 +116,6 @@ class RecentChatListAdapter(
                 val timeAgo: String = ChatDateTimeUtil.getTimeAgoForChatList(context, timeStamp)
                 tvTime.text = timeAgo
             }
-
-            //var unReadMessage = firebaseDbHandler.unReadChatCountMessages()
-
-            /* rootChatList.setOnLongClickListener {
-                 if (chatList[position].receiverid != "") {
-                     val receiverId: String? = chatList[position].receiverid
-                     val senderId: String? = chatList[position].senderid
-                     val otherUserId: String
-                     val otherName: String
-                     val otherPic: String
-                     if (senderId != null && receiverId != null) {
-                         if (myUserId == receiverId) {
-                             otherUserId = chatList[position].senderid!!
-                             otherName = chatList[position].name!!
-                             otherPic = chatList[position].profile_image!!
-                         } else {
-                             otherUserId = chatList[position].id!!
-                             otherName = chatList[position].name!!
-                             otherPic = chatList[position].profile_image!!
-                         }
-                         recentChatListListener.onChatSelect(
-                             otherUserId,
-                             otherName,
-                             otherPic,
-                             "longclick"
-                         )
-                     }
-                 } else {
-                     recentChatListListenergGroup.onChatSelect(
-                         chatList[position].group_id!!,
-                         chatList[position].name!!,
-                         chatList[position].profile_image!!,
-                         chatList[position].isLeaved, "longclick"
-                     )
-
-                 }
-                 return@setOnLongClickListener true
-             }*/
 
             rootChatList.setOnClickListener {
                 if (chatList[position].receiverid != "") {

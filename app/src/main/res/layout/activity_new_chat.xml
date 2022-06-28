@@ -2,109 +2,146 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rootNewchat"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:context=".ui.newchat.NewChatActivity">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_56"
-        android:background="@color/colorPrimary">
+        android:layout_height="?actionBarSize"
+        android:background="@color/color_1F3257">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_8"
-            android:padding="@dimen/dp_8"
-            android:src="@drawable/back" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tvHeading"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_toEndOf="@+id/ivBack"
-            android:fontFamily="@font/poppins_medium"
-            android:text="@string/new_chat"
-            android:visibility="visible"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_16"
-            tools:ignore="RelativeOverlap" />
-
-        <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/etSearch"
+        <RelativeLayout
+            android:id="@+id/rlHeader"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_8"
-            android:layout_marginEnd="@dimen/dp_48"
-            android:layout_toEndOf="@+id/ivBack"
-            android:background="@null"
-            android:hint="@string/search_hint"
-            android:fontFamily="@font/poppins_medium"
-            android:visibility="gone"
-            android:textColorHint="@color/gray"
-            android:imeOptions="actionDone"
-            android:inputType="text"
-            android:textColor="@color/white"
-            android:textSize="@dimen/sp_16"
-            tools:ignore="RelativeOverlap" />
+            android:layout_height="match_parent">
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/ivSearch"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
-            android:layout_marginEnd="@dimen/dp_8"
-            android:padding="@dimen/dp_8"
-            android:src="@drawable/search" />
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/outline_arrow_back_24" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvHeading"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:layout_toStartOf="@+id/ivSearch"
+                android:layout_toEndOf="@+id/ivBack"
+                android:fontFamily="@font/poppins_regular"
+                android:gravity="center_vertical"
+                android:text="@string/new_chat"
+                android:textColor="@color/md_white"
+                android:textSize="@dimen/_14sdp" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivSearch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/outline_search_24" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rlSearch"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_8sdp"
+            android:background="@drawable/shape_rectangle_round_search"
+            android:visibility="gone">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivTemp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/outline_search_24"
+                android:tint="@color/md_grey200" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/etSearch"
+                android:layout_width="@dimen/zero_dp"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toStartOf="@+id/ivClear"
+                android:layout_toEndOf="@+id/ivTemp"
+                android:background="@drawable/shape_rectangle_round_search"
+                android:fontFamily="@font/poppins_medium"
+                android:hint="@string/search_hint"
+                android:imeOptions="actionDone"
+                android:lines="1"
+                android:maxLines="1"
+                android:padding="@dimen/_6sdp"
+                android:singleLine="true"
+                android:textColor="@color/md_grey200"
+                android:textColorHint="@color/md_grey200"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/ivClear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/outline_close_24"
+                android:tint="@color/md_grey200" />
+
+        </RelativeLayout>
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/rlNewGroup"
+    <LinearLayout
+        android:id="@+id/llNewGroup"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/dp_64"
-        android:background="@color/white"
-        android:paddingStart="@dimen/dp_8"
-        android:paddingEnd="@dimen/dp_1">
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/ivGroup"
-            android:layout_width="@dimen/dp_48"
-            android:layout_height="@dimen/dp_48"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_12"
-            android:contentDescription="@string/image"
-            android:src="@drawable/group"
-            app:civ_border_color="@color/gray"
-            app:civ_border_width="@dimen/dp_1" />
-
-        <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/tv_new_group"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="@dimen/dp_16"
-            android:layout_toEndOf="@+id/ivGroup"
-            android:text="@string/new_group"
-            android:textColor="@color/colorPrimaryDark"
-            android:textSize="@dimen/sp_20" />
+            android:layout_margin="@dimen/_8sdp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="@dimen/_4sdp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="@dimen/_36sdp"
+                android:layout_height="@dimen/_36sdp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/group"
+                app:civ_border_color="@color/md_grey200"
+                app:civ_border_width="@dimen/_1sdp" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/tvNewGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/_12sdp"
+                android:fontFamily="@font/arimo_regular"
+                android:text="@string/new_group"
+                android:textColor="@color/colorText"
+                android:textSize="@dimen/_13sdp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
 
         <View
-            android:id="@+id/view_new_chat"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/dp_1"
-            android:layout_alignParentBottom="true"
-            android:background="@color/colorDivider" />
+            android:layout_height="@dimen/half_dp"
+            android:background="@color/md_grey300" />
 
-    </RelativeLayout>
+    </LinearLayout>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvContactList"
@@ -112,6 +149,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/list_item_user" />
+        tools:listitem="@layout/view_matching_chat_contact" />
 
 </LinearLayout>

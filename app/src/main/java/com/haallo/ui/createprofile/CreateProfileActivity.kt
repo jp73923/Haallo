@@ -20,11 +20,11 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.location.places.ui.PlacePicker
 import com.haallo.R
+import com.haallo.api.fbrtdb.model.FirebaseUser
 import com.haallo.api.profile.model.EditProfilePhotoState
 import com.haallo.base.BaseActivity
 import com.haallo.base.extension.*
 import com.haallo.databinding.ActivityCreateProfileBinding
-import com.haallo.ui.chat.model.UserModel
 import com.haallo.ui.createprofile.viewmodel.CreateProfileViewModel
 import com.haallo.ui.editprofile.EditProfilePhotoBottomSheet
 import com.haallo.ui.home.HomeActivity
@@ -416,13 +416,12 @@ class CreateProfileActivity : BaseActivity() {
                 sharedPreference.profilePic = it.result.image
             }
 
-            sharedPreference.halloFlag = 1
             sharedPreference.about = "Hey I am using Haallo!"
 
-            val userModel = UserModel()
+            val userModel = FirebaseUser()
             userModel.countryCode = sharedPreference.countryCode
             userModel.name = sharedPreference.name
-            userModel.uid = sharedPreference.userId
+            userModel.uid = sharedPreference.userId.toLong()
             userModel.phone = sharedPreference.mobileNumber
             userModel.photo = sharedPreference.profilePic
             userModel.status = "Hey I am using Haallo!!"

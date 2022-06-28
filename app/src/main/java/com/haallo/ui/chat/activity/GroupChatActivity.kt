@@ -41,6 +41,7 @@ import com.github.dhaval2404.imagepicker.ImagePicker
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.firebase.database.*
 import com.haallo.R
+import com.haallo.api.chat.model.CreateGroupModel
 import com.haallo.base.Base
 import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.constant.Constants
@@ -61,8 +62,7 @@ import com.haallo.ui.chat.model.GroupRecentMessageModel
 import com.haallo.ui.chat.placespicker.Place
 import com.haallo.ui.chat.placespicker.PlacesPickerActivity
 import com.haallo.ui.chat.util.RealPathUtil
-import com.haallo.ui.group.GroupInfoActivityOld
-import com.haallo.ui.group.model.CreateGroupModel
+import com.haallo.ui.groupinfo.GroupInfoActivity
 import com.haallo.ui.groupAudio.AudioActivity
 import com.haallo.ui.home.HomeActivity
 import com.haallo.util.*
@@ -966,7 +966,7 @@ class GroupChatActivity : Base(), View.OnClickListener, GiphyDialogFragment.GifS
                     showToast("You have left the group !")
                 } else {
                     startActivity(
-                        Intent(this, GroupInfoActivityOld::class.java)
+                        Intent(this, GroupInfoActivity::class.java)
                             .putExtra(IntentConstant.GROUP_ID, otherUserId)
                     )
                 }
@@ -1945,7 +1945,7 @@ class GroupChatActivity : Base(), View.OnClickListener, GiphyDialogFragment.GifS
         }
         info?.setOnClickListener {
             startActivity(
-                Intent(this, GroupInfoActivityOld::class.java)
+                Intent(this, GroupInfoActivity::class.java)
                     .putExtra(IntentConstant.GROUP_ID, receiverId)
             )
             dialog.dismiss()

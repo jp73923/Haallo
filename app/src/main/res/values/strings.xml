@@ -120,6 +120,8 @@
     <string name="msg_chat_removed">Chat removed!</string>
     <string name="msg_no_records_found">No records found</string>
 
+    <string name="msg_select_at_least_one_participant">Please Select at least one participant</string>
+
     <string name="error_in_finding_file_path">Error in finding file path</string>
 
     <string name="error_enter_mobile_number">Please enter mobile number</string>

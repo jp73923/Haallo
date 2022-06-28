@@ -4,18 +4,15 @@ import android.os.Parcelable
 import androidx.room.Entity
 import androidx.room.Ignore
 import androidx.room.PrimaryKey
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
-/**
- * Class which provides a model for post
- */
-@Entity(tableName = "ContactTable")
 @Parcelize
+@Entity(tableName = "ContactTable")
 data class ContactEntity(
     @PrimaryKey(autoGenerate = true)
     var id: Int = 0,
     var name: String = "",
-    var phone_number: String = "",
+    var phoneNo: String = "",
 
     @Ignore
     var isSelected: Boolean = false
@@ -23,7 +20,7 @@ data class ContactEntity(
 
     fun getFirstCharOfName(): String {
         return if (name.isNotEmpty()) {
-            name[0].toUpperCase().toString()
+            name[0].uppercaseChar().toString()
         } else {
             "!"
         }

@@ -22,9 +22,9 @@ import com.haallo.databinding.FragmentHomeChatBinding
 import com.haallo.ui.archivedchat.ArchivedChatActivity
 import com.haallo.ui.chat.activity.ChatActivity
 import com.haallo.ui.chat.activity.GroupChatActivity
-import com.haallo.ui.group.GroupInfoActivityOld
+import com.haallo.ui.groupinfo.GroupInfoActivity
 import com.haallo.ui.home.chat.view.RecentChatListAdapter
-import com.haallo.ui.newchat.NewChatActivity
+import com.haallo.ui.newchat.NewChatContactActivity
 import com.haallo.ui.starredchat.StarredChatActivity
 import com.haallo.util.showLongToast
 import com.haallo.util.showToast
@@ -115,7 +115,7 @@ class HomeChatFragment : BaseFragment(), RecentChatListAdapter.RecentChatListLis
             Manifest.permission.WRITE_CONTACTS,
         ).subscribe { permission: Permission ->
             if (permission.granted) {
-                startActivityWithDefaultAnimation(NewChatActivity.getIntent(context))
+                startActivityWithDefaultAnimation(NewChatContactActivity.getIntent(context))
             } else {
                 if (permission.shouldShowRequestPermissionRationale) {
                     showLongToast(getString(R.string.msg_please_allow_contact_permission_new_group))
@@ -127,9 +127,6 @@ class HomeChatFragment : BaseFragment(), RecentChatListAdapter.RecentChatListLis
     }
 
     override fun onChatSelect(otherUserId: String, otherUserName: String, otherUserPic: String, type: String) {
-        //First manage proper loading of recent chat list with proper model class and later open chat activity
-        return
-
         if (type == "click") {
             startActivity(
                 Intent(context, ChatActivity::class.java)
@@ -158,8 +155,6 @@ class HomeChatFragment : BaseFragment(), RecentChatListAdapter.RecentChatListLis
             )
         } else {
             showActionPrompt(otherUserId)
-            //  firebaseDbHandler.deleteChat(otherUserId)
-            // showToast(otherUserName)
         }
     }
 
@@ -179,7 +174,7 @@ class HomeChatFragment : BaseFragment(), RecentChatListAdapter.RecentChatListLis
         }
         info?.setOnClickListener {
             startActivity(
-                Intent(this.requireActivity(), GroupInfoActivityOld::class.java)
+                Intent(this.requireActivity(), GroupInfoActivity::class.java)
                     .putExtra(IntentConstant.GROUP_ID, receiverId)
             )
             dialog.dismiss()

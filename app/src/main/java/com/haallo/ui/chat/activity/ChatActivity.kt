@@ -60,7 +60,7 @@ import com.haallo.ui.chat.model.RecentMsgModel
 import com.haallo.ui.chat.placespicker.Place
 import com.haallo.ui.chat.placespicker.PlacesPickerActivity
 import com.haallo.ui.chat.util.RealPathUtil
-import com.haallo.ui.group.GroupInfoActivityOld
+import com.haallo.ui.groupinfo.GroupInfoActivity
 import com.haallo.util.*
 import com.imagepicker.FilePickUtils
 import com.jaiselrahman.filepicker.activity.FilePickerActivity
@@ -371,9 +371,7 @@ class ChatActivity : ScreenshotDetectionActivity(), View.OnClickListener, GiphyD
     //Create Chat Node
     private fun createChatNode() {
         //  chatNodeId = otherUserIdwithU + "_" + myUserIdwithU
-        if (myUserIdwithU.removePrefix("u_").toInt() < otherUserIdwithU?.removePrefix("u_")!!
-                .toInt()
-        ) {
+        if (myUserIdwithU.removePrefix("u_").toInt() < otherUserIdwithU?.removePrefix("u_")!!.toInt()) {
             chatNodeId = myUserIdwithU + "_" + otherUserIdwithU
         } else {
             chatNodeId = otherUserIdwithU + "_" + myUserIdwithU
@@ -1884,7 +1882,7 @@ class ChatActivity : ScreenshotDetectionActivity(), View.OnClickListener, GiphyD
             finish()
         }
         info?.setOnClickListener {
-            startActivity(Intent(this, GroupInfoActivityOld::class.java).putExtra(IntentConstant.GROUP_ID, receiverId))
+            startActivity(Intent(this, GroupInfoActivity::class.java).putExtra(IntentConstant.GROUP_ID, receiverId))
             dialog.dismiss()
         }
         dialog.show()

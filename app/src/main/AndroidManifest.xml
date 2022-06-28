@@ -184,11 +184,11 @@
             android:screenOrientation="nosensor" />
 
         <activity
-            android:name=".ui.group.GroupInfoActivityOld"
+            android:name=".ui.groupinfo.GroupInfoActivity"
             android:exported="true" />
 
         <activity
-            android:name=".ui.group.GroupNameActivityOld"
+            android:name=".ui.newgroup.GroupNameActivity"
             android:exported="true" />
 
         <activity
@@ -212,12 +212,12 @@
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.newchat.NewChatActivity"
+            android:name=".ui.newchat.NewChatContactActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
         <activity
-            android:name=".ui.group.PickContactsActivityOld"
+            android:name=".ui.newgroup.NewGroupContactActivity"
             android:screenOrientation="nosensor"
             android:windowSoftInputMode="stateHidden|adjustPan" />
 
@@ -321,11 +321,7 @@
         </provider>
 
         <service
-            android:name=".service.FetchContactsService"
-            android:permission="android.permission.BIND_JOB_SERVICE" />
-
-        <service
-            android:name=".service.MyFirebaseMessagingService"
+            android:name=".notification.MyFirebaseMessagingService"
             android:exported="false">
             <intent-filter>
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />

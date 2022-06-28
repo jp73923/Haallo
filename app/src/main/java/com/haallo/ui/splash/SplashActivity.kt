@@ -13,7 +13,6 @@ import com.haallo.R
 import com.haallo.base.BaseActivity
 import com.haallo.base.extension.startActivityWithDefaultAnimation
 import com.haallo.databinding.ActivitySplashBinding
-import com.haallo.service.FetchContactsService
 import com.haallo.ui.home.HomeActivity
 import com.haallo.ui.signup.SignUpActivity
 import com.haallo.ui.welcome.WelcomeActivity
@@ -58,16 +57,11 @@ class SplashActivity : BaseActivity() {
         }
     }
 
-    private fun startContactFetch() {
-        FetchContactsService.enqueueWork(this, Intent(this, FetchContactsService::class.java), true)
-    }
-
     //Check permissions
     private fun checkAppPermission() {
         if (PermissionsUtil.hasPermissions(this)) {
             setSplashProgress()
             handlerFunction()
-            startContactFetch()
         } else {
             requestPermissions()
         }//request permissions if there are no permissions granted

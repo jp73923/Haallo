@@ -10,6 +10,7 @@ import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.haallo.BuildConfig
 import com.haallo.R
 import com.haallo.base.ActivityManager
+import com.haallo.database.db.HaalloDatabase
 import com.haallo.di.BaseAppComponent
 import com.haallo.di.BaseUiApp
 import com.haallo.util.SharedPreferenceUtil
@@ -44,6 +45,8 @@ open class HaalloApplication : BaseUiApp() {
         AndroidNetworking.initialize(applicationContext)
 
         setupLog()
+
+        HaalloDatabase.initDatabase(this)
     }
 
     private fun setupLog() {

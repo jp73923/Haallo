@@ -10,6 +10,7 @@ import androidx.appcompat.widget.AppCompatTextView
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.haallo.R
 import com.haallo.api.chat.model.RecentMessageModel
 import com.haallo.ui.chat.firebaseDb.FirebaseDbHandler
@@ -54,7 +55,11 @@ class RecentChatListAdapter(
             }
 
             if (otherUserPic != null && otherUserPic != "") {
-                Picasso.get().load(otherUserPic).into(ivUserProfile)
+                Glide.with(context)
+                    .load(otherUserPic)
+                    .placeholder(R.drawable.logo_haallo)
+                    .error(R.drawable.logo_haallo)
+                    .into(ivUserProfile)
             }
 
             if (otherUserName != null && otherUserName != "") {

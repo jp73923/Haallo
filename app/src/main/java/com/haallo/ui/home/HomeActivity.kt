@@ -1,17 +1,24 @@
 package com.haallo.ui.home
 
+import android.Manifest
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.haallo.R
+import com.haallo.application.HaalloApplication
 import com.haallo.base.BaseActivity
+import com.haallo.base.ViewModelFactory
+import com.haallo.base.extension.getViewModelFromFactory
 import com.haallo.base.extension.subscribeAndObserveOnMainThread
 import com.haallo.base.extension.throttleClicks
 import com.haallo.databinding.ActivityHomeBinding
 import com.haallo.ui.home.view.HomePageViewPagerAdapter
+import com.haallo.ui.home.viewmodel.HomeViewModel
 import com.haallo.util.getCurrentTimeStamp
+import javax.inject.Inject
 
 class HomeActivity : BaseActivity() {
 
@@ -23,11 +30,18 @@ class HomeActivity : BaseActivity() {
         }
     }
 
+    @Inject
+    internal lateinit var viewModelFactory: ViewModelFactory<HomeViewModel>
+    private lateinit var homeViewModel: HomeViewModel
+
     private lateinit var binding: ActivityHomeBinding
 //    private lateinit var tabManager: HomeTabManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        HaalloApplication.component.inject(this)
+        homeViewModel = getViewModelFromFactory(viewModelFactory)
 
         binding = ActivityHomeBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -69,6 +83,10 @@ class HomeActivity : BaseActivity() {
                 setSelectedTab(context, position)
             }
         })
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS) != PackageManager.PERMISSION_GRANTED) {
+            homeViewModel.fetchPhoneContacts(this)
+        }
     }
 
     private fun setSelectedTab(context: Context, mPos: Int) {

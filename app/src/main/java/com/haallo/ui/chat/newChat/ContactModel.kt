@@ -1,9 +1,9 @@
 package com.haallo.ui.chat.newChat
 
 data class ContactModel(
-    val number: String = "",
+    val id: String = "",
     val name: String = "",
+    val number: String = "",
     val pic: String = "",
-    val id:String = "",
-    val isOnHallo:Boolean = false
+    var isSelected: Boolean = false
 )

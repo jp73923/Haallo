@@ -1,22 +1,21 @@
 package com.haallo.ui.newchat.viewmodel
 
-import android.content.Context
-import com.haallo.api.phonecontact.PhoneContactRepository
-import com.haallo.api.phonecontact.model.PhoneContact
+import com.haallo.api.contact.ContactRepository
 import com.haallo.base.BaseViewModel
 import com.haallo.base.extension.subscribeOnIoAndObserveOnMainThread
+import com.haallo.database.entity.ContactEntity
 import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 
 class NewChatViewModel(
-    private val phoneContactRepository: PhoneContactRepository
+    private val contactRepository: ContactRepository
 ) : BaseViewModel() {
 
     private val newChatStateSubject: PublishSubject<NewChatViewState> = PublishSubject.create()
     val newChatState: Observable<NewChatViewState> = newChatStateSubject.hide()
 
-    fun getAllPhoneContacts(context: Context) {
-        phoneContactRepository.getAllPhoneContacts(context)
+    fun getAllPhoneContacts() {
+        contactRepository.getAllPhoneContacts()
             .doOnSubscribe {
                 newChatStateSubject.onNext(NewChatViewState.LoadingState(true))
             }
@@ -33,6 +32,6 @@ class NewChatViewModel(
     sealed class NewChatViewState {
         data class ErrorMessage(val errorMessage: String) : NewChatViewState()
         data class LoadingState(val isLoading: Boolean) : NewChatViewState()
-        data class GetAllPhoneContactList(val phoneContactArrayList: ArrayList<PhoneContact>) : NewChatViewState()
+        data class GetAllPhoneContactList(val phoneContactArrayList: List<ContactEntity>) : NewChatViewState()
     }
 }

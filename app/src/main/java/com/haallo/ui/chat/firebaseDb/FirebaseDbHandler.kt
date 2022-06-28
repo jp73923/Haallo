@@ -4,13 +4,13 @@ import android.content.Context
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.*
+import com.haallo.api.chat.model.CreateGroupModel
 import com.haallo.api.chat.model.RecentMessageModel
 import com.haallo.api.fbrtdb.model.FirebaseUser
 import com.haallo.constant.IntentConstant
 import com.haallo.ui.call.CallModel
 import com.haallo.ui.chat.activity.GroupChatActivity
 import com.haallo.ui.chat.model.*
-import com.haallo.ui.group.model.CreateGroupModel
 import com.haallo.util.SharedPreferenceUtil
 import timber.log.Timber
 import java.util.*
